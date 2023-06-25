@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 function AdminPortal() {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({
     username: "",
-    password: ""
+    password: "",
+    isAdmin: false
   });
 
   useEffect(() => {
-    // Fetch all users and their results
     const fetchUsers = async () => {
       const token = localStorage.getItem('token');
       const response = await axios.get("http://localhost:5162/api/Users", {
@@ -33,7 +34,6 @@ function AdminPortal() {
   const handleNewUserSubmit = async (e) => {
     e.preventDefault();
 
-    // Post new user data to server
     const token = localStorage.getItem('token');
     await axios.post("http://localhost:5162/api/Users", newUser, {
       headers: {
@@ -41,7 +41,6 @@ function AdminPortal() {
       }
     });
 
-    // Refresh the user list
     const response = await axios.get("http://localhost:5162/api/Users", {
       headers: {
         Authorization: `Bearer ${token}`
@@ -53,12 +52,14 @@ function AdminPortal() {
   return (
     <div>
       <h1>Admin Portal</h1>
-      
+
+      <Link to="/addcompany">Add Company</Link>  {/* Add navigation to Add Company page */}
+
       <h2>Users and their results</h2>
       <ul>
         {users.map((user) => (
           <li key={user.id}>
-            {user.username}: {user.result}
+            {user.username}: {user.isAdmin ? "Admin" : "User"}
           </li>
         ))}
       </ul>
@@ -72,6 +73,10 @@ function AdminPortal() {
         <label>
           Password:
           <input type="password" name="password" value={newUser.password} onChange={handleInputChange} />
+        </label>
+        <label>
+          Is Admin:
+          <input type="checkbox" name="isAdmin" checked={newUser.isAdmin} onChange={e => setNewUser({...newUser, isAdmin: e.target.checked})} />
         </label>
         <button type="submit">Create User</button>
       </form>

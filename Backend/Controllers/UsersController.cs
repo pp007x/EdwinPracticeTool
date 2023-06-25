@@ -10,7 +10,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-
 [Route("api/[controller]")]
 [ApiController]
 public class UsersController : ControllerBase

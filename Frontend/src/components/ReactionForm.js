@@ -6,7 +6,7 @@ function QuestionForm({ loggedInUserId }) {
     const [answers, setAnswers] = useState({});
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get("http://localhost:5162/api/Users/Questions")
+        axios.get("http://localhost:5162/api/Question/Questions")
             .then(response => {
                 setQuestions(response.data);
             });
@@ -28,7 +28,7 @@ function QuestionForm({ loggedInUserId }) {
         // Get the JWT token from local storage
         const token = localStorage.getItem('token');
     
-        axios.post("http://localhost:5162/api/Users/TotalScores", totalScore, {
+        axios.post("http://localhost:5162/api/TotalScores/TotalScores", totalScore, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
