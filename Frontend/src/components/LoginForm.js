@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
+import '../Css/LoginForm.css';  // import your CSS file
+import logo from '../images/HigtechLogo.png';
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -40,19 +42,18 @@ function LoginForm() {
   };
 
   return (
-    <div>
+    <div className="inputBox">
+      <img src={logo} alt="Logo" className="logo" /> {/* Add the logo */}
       <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        {loginError && <div>{loginError}</div>}
-        <button type="submit">Login</button>
+        <label className="label">Username:</label>
+        <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" />
+        <label className="label">Password:</label>
+        <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
+        {loginError && <div className="error">{loginError}</div>}
+        <button type="submit" className="loginButton">Login</button>
       </form>
+      <button className="loginButton" onClick={() => navigate('/register')}>Register</button>
+
     </div>
   );
 }

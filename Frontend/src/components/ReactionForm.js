@@ -6,7 +6,7 @@ function QuestionForm({ loggedInUserId }) {
     const [answers, setAnswers] = useState({});
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get("http://localhost:5162/api/Question/Questions")
+        axios.get("http://localhost:5162/api/Question/GetQuestions")
             .then(response => {
                 setQuestions(response.data);
             });
