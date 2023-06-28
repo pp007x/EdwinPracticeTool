@@ -30,16 +30,8 @@ public class CompaniesController : ControllerBase
 
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public async Task<ActionResult<Company>> PostCompany([FromForm]Company company, IFormFile logo)
+    public async Task<ActionResult<Company>> PostCompany([FromForm]Company company)
     {
-        if (logo != null)
-        {
-            using (var memoryStream = new MemoryStream())
-            {
-                await logo.CopyToAsync(memoryStream);
-                company.Logo = memoryStream.ToArray();
-            }
-        }
         
         _context.Companies.Add(company);
         await _context.SaveChangesAsync();

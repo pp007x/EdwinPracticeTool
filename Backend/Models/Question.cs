@@ -13,8 +13,10 @@ public class Answer
     public int Id { get; set; }
     public int QuestionId { get; set; }
     public string AnswerText { get; set; }
-    public int ScoreValue { get; set; }
-
+    public int ScoreValueD { get; set; }
+    public int ScoreValueI { get; set; }
+    public int ScoreValueS { get; set; }
+    public int ScoreValueC { get; set; }
     public Question Question { get; set; }
 }
 
@@ -31,6 +33,9 @@ public class AnswerDTO
     public int Id { get; set; }
     public int QuestionId { get; set; }
     public string AnswerText { get; set; }
-    public int ScoreValue { get; set; }
+    public int ScoreValueD { get; set; }
+    public int ScoreValueI { get; set; }
+    public int ScoreValueS { get; set; }
+    public int ScoreValueC { get; set; }
 }
 }

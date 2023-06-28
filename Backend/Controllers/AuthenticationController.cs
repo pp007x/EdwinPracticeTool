@@ -48,24 +48,27 @@ public class AuthenticationController : ControllerBase
         return Ok(token);
     }
 
-    private string GenerateJwtToken(User user)
+private string GenerateJwtToken(User user)
+{
+    var claims = new List<Claim>
     {
-        var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, user.Username),
-            new Claim(ClaimTypes.Role, user.IsAdmin ? "Admin" : "User")
-        };
+        new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()), // assuming user.Id is the unique identifier for the user
+        new Claim(ClaimTypes.Name, user.Username),
+        new Claim(ClaimTypes.Role, user.IsAdmin ? "Admin" : "User")
+    };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Issuer"],
-            claims: claims,
-            expires: DateTime.Now.AddMinutes(120),
-            signingCredentials: creds);
+    var token = new JwtSecurityToken(
+        issuer: _configuration["Jwt:Issuer"],
+        audience: _configuration["Jwt:Audience"],  // changed this line to Jwt:Audience from Jwt:Issuer
+        claims: claims,
+        expires: DateTime.Now.AddMinutes(120),
+        signingCredentials: creds);
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
-    }
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
+
+
 }

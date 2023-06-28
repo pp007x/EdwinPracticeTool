@@ -39,7 +39,10 @@ public class QuestionsController : ControllerBase
                 Id = a.Id,
                 QuestionId = a.QuestionId,
                 AnswerText = a.AnswerText,
-                ScoreValue = a.ScoreValue
+                ScoreValueC = a.ScoreValueC,
+                ScoreValueS = a.ScoreValueS,
+                ScoreValueI = a.ScoreValueI,
+                ScoreValueD = a.ScoreValueD
             }).ToList()
         }).ToList();
 

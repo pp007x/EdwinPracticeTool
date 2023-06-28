@@ -15,5 +15,6 @@ public class UserContext : DbContext
     public DbSet<Answer> Answers { get; set; }
     public DbSet<TotalScore> TotalScores { get; set; }
     public DbSet<Company> Companies { get; set; }
+    public DbSet<Onderwerp> Onderwerpen { get; set; }
 }
 }

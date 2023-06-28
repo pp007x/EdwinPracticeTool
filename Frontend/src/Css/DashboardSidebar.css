@@ -3,8 +3,18 @@
     background-color: #f4f4f4;
     padding: 20px;
     box-sizing: border-box;
-    position: relative;
-  }
+    position: fixed; /* updated from sticky to fixed */
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    height: 100%; /* updated from 100% to 100vh */
+}
+
+
+
+  
+  /* Rest of the CSS */
+  
   
   .logo-container {
     display: flex;

@@ -7,28 +7,26 @@ const DashboardSidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="sidebar">
-      <div className="logo-container">
-        <img src={logo} alt="Logo" className="logo" />
-      </div>
-      <hr />
-      <div className="navigation">
-        <Link
-          to="/dashboard"
-          className={`nav-button ${location.pathname === '/dashboard' ? 'active' : ''}`}
-        >
-          <button>
+    <div className="sidebar-container">
+      <div className="sidebar">
+        <div className="logo-container">
+          <img src={logo} alt="Logo" className="logo" />
+        </div>
+        <hr />
+        <div className="navigation">
+          <Link
+            to="/dashboard"
+            className={`nav-button ${location.pathname === '/dashboard' ? 'active' : ''}`}
+          >
             Dashboard
-          </button>
-        </Link>
-        <Link
-          to="/companydashboard"
-          className={`nav-button ${location.pathname === '/companydashboard' ? 'active' : ''}`}
-        >
-          <button>
+          </Link>
+          <Link
+            to="/companydashboard"
+            className={`nav-button ${location.pathname === '/companydashboard' ? 'active' : ''}`}
+          >
             Company
-          </button>
-        </Link>
+          </Link>
+        </div>
       </div>
     </div>
   );

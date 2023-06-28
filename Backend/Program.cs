@@ -14,6 +14,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // Add services to the container.
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlite(connectionString));
+
+builder.Services.AddScoped<DatabaseSeeder>(); // Register DatabaseSeeder to DI container
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -55,7 +58,11 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<UserContext>();
-        context.Database.EnsureCreated();
+        if (context.Database.EnsureCreated()) // If database is newly created
+        {
+            var seeder = services.GetRequiredService<DatabaseSeeder>(); // Get seeder from DI container
+            seeder.SeedData(); // Seed the database
+        }
     }
     catch (Exception ex)
     {

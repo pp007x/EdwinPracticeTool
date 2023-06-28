@@ -33,7 +33,7 @@ function LoginForm() {
       if (userRole === 'Admin') {
         navigate('/admin');
       } else {
-        navigate('/home');
+        navigate('/dashboard');
       }
 
     } catch (error) {
