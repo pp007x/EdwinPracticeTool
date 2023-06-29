@@ -8,11 +8,12 @@ import AddCompany from './components/AddCompany';
 import RegisterForm from './components/RegisterForm';
 import Dashboard from './components/Dashboard';
 import CompanyDashboard from './components/DashboardCompany';
+
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/login" element={<LoginForm />} />
+                <Route path="/" element={<LoginForm />} />
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/reactionform" element={<ReactionForm />} />
                 <Route path="/admin" element={<ProtectedComponent><AdminPage /></ProtectedComponent>} />
@@ -20,7 +21,6 @@ function App() {
                 <Route path="/register" element={<RegisterForm />} /> 
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/companydashboard" element={<CompanyDashboard />} />
-                
             </Routes>
         </Router>
     );
