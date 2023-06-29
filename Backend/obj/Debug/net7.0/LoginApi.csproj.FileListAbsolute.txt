@@ -152,3 +152,5 @@ C:\Users\steph\Documents\EdwinPracticeTool\Backend\obj\Debug\net7.0\refint\Login
 C:\Users\steph\Documents\EdwinPracticeTool\Backend\obj\Debug\net7.0\LoginApi.pdb
 C:\Users\steph\Documents\EdwinPracticeTool\Backend\obj\Debug\net7.0\LoginApi.genruntimeconfig.cache
 C:\Users\steph\Documents\EdwinPracticeTool\Backend\obj\Debug\net7.0\ref\LoginApi.dll
+C:\Users\steph\Documents\EdwinPracticeTool\Backend\bin\Debug\net7.0\web.config
+C:\Users\steph\Documents\EdwinPracticeTool\Backend\bin\Debug\net7.0\LoginApi.staticwebassets.runtime.json

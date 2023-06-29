@@ -7,6 +7,8 @@ using Microsoft.IdentityModel.Tokens;
 using LoginApi.Data; // replace with your actual namespace
 using System;
 using System.Text;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -58,9 +60,9 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<UserContext>();
-        if (context.Database.EnsureCreated()) // If database is newly created
+        if (context.Database.EnsureCreated()) // If the database is newly created
         {
-            var seeder = services.GetRequiredService<DatabaseSeeder>(); // Get seeder from DI container
+            var seeder = services.GetRequiredService<DatabaseSeeder>(); // Get the seeder from the DI container
             seeder.SeedData(); // Seed the database
         }
     }
@@ -81,7 +83,22 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowReactApp"); // Use CORS policy
+// Serve static files and use default files
+app.UseDefaultFiles(new DefaultFilesOptions
+{
+    DefaultFileNames = new List<string> { "index.html" },
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "build")),
+});
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "build")),
+    RequestPath = ""
+});
+
+app.UseCors("AllowReactApp"); // Use the CORS policy
 
 app.UseRouting();
 
