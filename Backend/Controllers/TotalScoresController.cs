@@ -9,6 +9,8 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -71,6 +73,12 @@ public class TotalScoresController : ControllerBase
         }
 
         return totalScore;
+    }
+
+    [HttpGet("all")]
+    public async Task<ActionResult<IEnumerable<TotalScore>>> GetAllTotalScores()
+    {
+        return await _context.TotalScores.ToListAsync();
     }
 
 }

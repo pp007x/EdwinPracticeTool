@@ -1,8 +1,8 @@
 using LoginApi.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using UserContext = LoginApi.Data.UserContext;
-
 public class DatabaseSeeder
 {
     private readonly UserContext dbContext;
@@ -147,6 +147,13 @@ public class DatabaseSeeder
 
     private void SeedUsers()
     {
+        var random = new Random();
+
+        var boxes = new List<string>
+        {
+            "C", "Cd", "Cs", "Ci","Dc", "D", "Ds", "Di","Sc", "Sd", "S", "Si", "Ic", "Id", "Is", "I"
+        };
+
         var users = new List<User>
         {
             new User
@@ -163,9 +170,171 @@ public class DatabaseSeeder
                 Id = 2,
                 Username = "user2",
                 Password = "password2",
-                CompanyId = 2,
+                CompanyId = 1,
                 IsAdmin = false,
                 Box = "Sd"
+            },
+            new User
+            {
+                Id = 3,
+                Username = "John",
+                Password = "password3",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 4,
+                Username = "Jane",
+                Password = "password4",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 5,
+                Username = "Michael",
+                Password = "password5",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 6,
+                Username = "Emily",
+                Password = "password6",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 7,
+                Username = "David",
+                Password = "password7",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 8,
+                Username = "Sarah",
+                Password = "password8",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 9,
+                Username = "Matthew",
+                Password = "password9",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 10,
+                Username = "Olivia",
+                Password = "password10",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 11,
+                Username = "Daniel",
+                Password = "password11",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 12,
+                Username = "Sophia",
+                Password = "password12",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 13,
+                Username = "William",
+                Password = "password13",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 14,
+                Username = "Emma",
+                Password = "password14",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 15,
+                Username = "Liam",
+                Password = "password15",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 16,
+                Username = "Jacob",
+                Password = "password16",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 17,
+                Username = "Mia",
+                Password = "password17",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 18,
+                Username = "Ethan",
+                Password = "password18",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 19,
+                Username = "Ava",
+                Password = "password19",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
+            },
+            new User
+            {
+                Id = 20,
+                Username = "Noah",
+                Password = "password20",
+                CompanyId = 1,
+                IsAdmin = false,
+                Box = boxes[random.Next(boxes.Count)]
             }
         };
 
@@ -173,32 +342,27 @@ public class DatabaseSeeder
         dbContext.SaveChanges();
     }
 
-    private void SeedTotalScores()
-    {
-        var totalScores = new List<TotalScore>
-        {
-            new TotalScore
-            {
-                Id = 1,
-                UserId = 1,
-                ScoreValueC = 10,
-                ScoreValueS = 20,
-                ScoreValueI = 30,
-                ScoreValueD = 40
-            },
-            new TotalScore
-            {
-                Id = 2,
-                UserId = 2,
-                ScoreValueC = 5,
-                ScoreValueS = 15,
-                ScoreValueI = 25,
-                ScoreValueD = 35
-            }
-        };
+private void SeedTotalScores()
+{
+    var users = dbContext.Users;
+    var random = new Random();
 
-        dbContext.TotalScores.AddRange(totalScores);
-        dbContext.SaveChanges();
+    var totalScores = new List<TotalScore>();
+
+    foreach (var user in users)
+    {
+        totalScores.Add(new TotalScore
+        {
+            UserId = user.Id,
+            ScoreValueC = random.Next(1, 41),
+            ScoreValueS = random.Next(1, 41),
+            ScoreValueI = random.Next(1, 41),
+            ScoreValueD = random.Next(1, 41)
+        });
     }
+
+    dbContext.TotalScores.AddRange(totalScores);
+    dbContext.SaveChanges();
 }
 
+}

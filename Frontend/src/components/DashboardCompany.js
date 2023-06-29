@@ -16,23 +16,34 @@ const boxCodeToIndex = {
   "c": 0, "d": 1, "s": 2, "i": 3,
 };
 
-
 const CompanyDashboard = () => {
   const [userBoxes, setUserBoxes] = useState([]);
+  const [userScores, setUserScores] = useState([]);
 
   useEffect(() => {
     const fetchUserBoxes = async () => {
       try {
-        const response = await axios.get('http://localhost:5162/api/Companies/1/users'); // replace 1 with actual companyId
+        const response = await axios.get('http://localhost:5162/api/Companies/1/users'); 
         const data = response.data;
-        console.log(data);
         setUserBoxes(data);
       } catch (error) {
         console.error('Error fetching user boxes:', error);
       }
     };
 
+    const fetchUserScores = async () => {
+      try {
+        const response = await axios.get('http://localhost:5162/api/TotalScores/all'); 
+        const data = response.data;
+        setUserScores(data);
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching user scores:', error);
+      }
+    };
+
     fetchUserBoxes();
+    fetchUserScores();
   }, []);
 
   return (
@@ -100,15 +111,18 @@ const CompanyDashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {userBoxes.map((user, index) => (
-                    <tr key={index}>
-                      <td>{user.username}</td>
-                      <td>{user.box[0]}</td>
-                      <td>{user.box[1]}</td>
-                      <td>{user.box[2]}</td>
-                      <td>{user.box[3]}</td>
-                    </tr>
-                  ))}
+                  {userBoxes.map((user, index) => {
+                    const userScore = userScores.find(score => score.userId === user.id) || {};
+                    return (
+                      <tr key={index}>
+                        <td>{user.username}</td>
+                        <td>{userScore.scoreValueD }</td>
+                        <td>{userScore.scoreValueI}</td>
+                        <td>{userScore.scoreValueS}</td>
+                        <td>{userScore.scoreValueC}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
