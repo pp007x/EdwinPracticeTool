@@ -60,7 +60,8 @@ namespace LoginApi.Controllers
             {
                 return NotFound();
             }
-
+            Console.WriteLine(users[0].Box);
+            
             return users;
         }
     }

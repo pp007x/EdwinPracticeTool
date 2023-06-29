@@ -7,6 +7,7 @@ namespace LoginApi.Models
         public string Password { get; set; }
         public int CompanyId { get; set; }
         public bool IsAdmin { get; set; } = false;
+        public string? Box { get; set; }
     }
 
 

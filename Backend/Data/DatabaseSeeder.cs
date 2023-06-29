@@ -155,7 +155,8 @@ public class DatabaseSeeder
                 Username = "user1",
                 Password = "password1",
                 CompanyId = 1,
-                IsAdmin = true
+                IsAdmin = true,
+                Box = "Ds"
             },
             new User
             {
@@ -163,7 +164,8 @@ public class DatabaseSeeder
                 Username = "user2",
                 Password = "password2",
                 CompanyId = 2,
-                IsAdmin = false
+                IsAdmin = false,
+                Box = "Sd"
             }
         };
 

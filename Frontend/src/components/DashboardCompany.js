@@ -11,6 +11,12 @@ const descriptions = [
   "Diplomaat (Ic)", "Inspirator (Id)", "Bemiddelaar (Is)", "Entertainer (I)"
 ];
 
+const boxCodeToIndex = {
+  "C": 0, "D": 1, "S": 2, "I": 3,
+  "c": 0, "d": 1, "s": 2, "i": 3,
+};
+
+
 const CompanyDashboard = () => {
   const [userBoxes, setUserBoxes] = useState([]);
 
@@ -19,11 +25,11 @@ const CompanyDashboard = () => {
       try {
         const response = await axios.get('http://localhost:5162/api/Companies/1/users'); // replace 1 with actual companyId
         const data = response.data;
+        console.log(data);
         setUserBoxes(data);
       } catch (error) {
         console.error('Error fetching user boxes:', error);
       }
-      console.log('Data:' + userBoxes);
     };
 
     fetchUserBoxes();
@@ -56,9 +62,13 @@ const CompanyDashboard = () => {
                               <p className="description-name">{descriptions[descriptionIndex]}</p>
                               <div className="score-container">
                                 {userBoxes
-                                  .filter(user => user.box === `${letter}${descriptionIndex}`)
+                                  .filter(user => 
+                                    typeof user.box === 'string' && 
+                                    user.box.length === 2 &&
+                                    boxCodeToIndex[user.box[0].toUpperCase()] === bigSquareIndex &&
+                                    boxCodeToIndex[user.box[1].toLowerCase()] === smallSquareIndex)
                                   .map((user, index) => (
-                                    <p className="score-name" key={index}>{user.userName}</p>
+                                    <p className="score-name" key={index}>{user.username}</p>
                                   ))
                                 }
                               </div>
@@ -92,7 +102,7 @@ const CompanyDashboard = () => {
                 <tbody>
                   {userBoxes.map((user, index) => (
                     <tr key={index}>
-                      <td>{user.userName}</td>
+                      <td>{user.username}</td>
                       <td>{user.box[0]}</td>
                       <td>{user.box[1]}</td>
                       <td>{user.box[2]}</td>
