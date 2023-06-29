@@ -52,14 +52,26 @@ public class DatabaseSeeder
             new Onderwerp
             {
                 Id = 1,
-                Name = "Onderwerp 1",
-                Description = "Description 1"
+                Name = "Dominant",
+                Description = "Doe dominant enzo"
             },
             new Onderwerp
             {
                 Id = 2,
-                Name = "Onderwerp 2",
-                Description = "Description 2"
+                Name = "Invloedrijk",
+                Description = "Doe invloedrijk enzo"
+            },
+            new Onderwerp
+            {
+                Id = 3,
+                Name = "Stabiel",
+                Description = "Doe stabiel enzo"
+            },
+            new Onderwerp
+            {
+                Id = 4,
+                Name = "Consciëntieus",
+                Description = "Doe consciëntieus enzo"
             }
         };
 

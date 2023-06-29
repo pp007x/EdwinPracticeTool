@@ -18,8 +18,20 @@ public class TotalScore
     public int ScoreValueS { get; set; }
     public int ScoreValueI { get; set; }
     public int ScoreValueD { get; set; }
-    
-}
 
+    // Returns the id of the highest score
+    public int GetHighestScoreId()
+    {
+        int maxScore = Math.Max(Math.Max(ScoreValueC, ScoreValueS), Math.Max(ScoreValueI, ScoreValueD));
+
+        if (maxScore == ScoreValueC) return 4;
+        if (maxScore == ScoreValueS) return 3;
+        if (maxScore == ScoreValueI) return 2;
+        if (maxScore == ScoreValueD) return 1;
+
+        // Default to 1 in case all scores are 0
+        return 1;
+    }
+}
 
 }

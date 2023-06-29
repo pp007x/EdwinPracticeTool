@@ -4,17 +4,19 @@ import {
 } from 'recharts';
 import DashboardSidebar from './DashboardSidebar';
 import '../Css/Dashboard.css';
+import axios from 'axios';
 
-const Header = () => (
+const Header = ({ title }) => (
   <div className="header">
     <hr />
-    <div className="page-title">Dashboard</div>
+    <div className="page-title">{title}</div>
   </div>
 );
 
 const Dashboard = () => {
   const [chartData, setChartData] = useState([]);
   const [resultData, setResultData] = useState(null);
+  const [onderwerpData, setOnderwerpData] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token'); // assuming token is stored in local storage
@@ -49,6 +51,19 @@ const Dashboard = () => {
         },
       ];
       setChartData(transformedData);
+
+      // Here we'll fetch the Onderwerp based on user's scores
+      axios.get(`http://localhost:5162/api/Onderwerp/user/${serverData.userId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      })
+      .then(response => {
+        setOnderwerpData(response.data);
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
     })
     .catch(error => {
       console.error('There has been a problem with your fetch operation:', error);
@@ -59,7 +74,7 @@ const Dashboard = () => {
     <div className="dashboard">
       <DashboardSidebar />
       <div className="main">
-        <Header />
+        <Header title={onderwerpData ? onderwerpData.name : 'Loading...'} />
         <div className="content">
           <div className="chart-container">
             <div className="radar-chart">
@@ -91,8 +106,8 @@ const Dashboard = () => {
             )}
           </div>
           <div className="text-content">
-            <h2>Header</h2>
-            <p>Some text goes here</p>
+            <h2>{onderwerpData ? onderwerpData.name : 'Loading...'}</h2>
+            <p>{onderwerpData ? onderwerpData.description : 'Loading...'}</p>
           </div>
           <button className="download-button">Download Uitslag</button>
         </div>

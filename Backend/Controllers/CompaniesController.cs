@@ -4,52 +4,64 @@ using LoginApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-[Route("api/[controller]")]
-[ApiController]
-public class CompaniesController : ControllerBase
+namespace LoginApi.Controllers
 {
-    private readonly UserContext _context;
-    private readonly ILogger<CompaniesController> _logger;
-    private readonly IConfiguration _configuration;
-
-    public CompaniesController(UserContext context, ILogger<CompaniesController> _logger, IConfiguration _configuration)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CompaniesController : ControllerBase
     {
-        _context = context;
-        _logger = _logger;
-        _configuration = _configuration;
-    }
+        private readonly UserContext _context;
+        private readonly ILogger<CompaniesController> _logger;
+        private readonly IConfiguration _configuration;
 
-    [HttpPost]
-    [Authorize(Roles = "Admin")]
-    public async Task<ActionResult<Company>> PostCompany([FromForm]Company company)
-    {
-        
-        _context.Companies.Add(company);
-        await _context.SaveChangesAsync();
-
-        return CreatedAtAction(nameof(GetCompany), new { id = company.Id }, company);
-    }
-
-    [HttpGet("{id}")]
-    [Authorize(Roles = "Admin")]
-    public async Task<ActionResult<Company>> GetCompany(int id)
-    {
-        var company = await _context.Companies.FindAsync(id);
-
-        if (company == null)
+        public CompaniesController(UserContext context, ILogger<CompaniesController> logger, IConfiguration configuration)
         {
-            return NotFound();
+            _context = context;
+            _logger = logger;
+            _configuration = configuration;
         }
 
-        return company;
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<Company>> PostCompany([FromBody] Company company)
+        {
+            _context.Companies.Add(company);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetCompany), new { id = company.Id }, company);
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<Company>> GetCompany(int id)
+        {
+            var company = await _context.Companies.FindAsync(id);
+
+            if (company == null)
+            {
+                return NotFound();
+            }
+
+            return company;
+        }
+
+        [HttpGet("{companyId}/users")]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsersForCompany(int companyId)
+        {
+            var users = await _context.Users.Where(u => u.CompanyId == companyId).ToListAsync();
+
+            if (users.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return users;
+        }
     }
 }
