@@ -1,0 +1,45 @@
+.reaction-form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 100px;
+    margin: 20px;
+}
+
+.reaction-form h3 {
+    margin-bottom: 10px;
+}
+
+.reaction-form .answer-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.reaction-form .question-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.reaction-form .answer-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.reaction-form .answer-section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.reaction-form input[type="radio"] {
+    margin-right: 10px;
+}
+
+.reaction-form label {
+    margin-left: 5px;
+}
+
+.reaction-form button {
+    margin-top: 10px;
+}

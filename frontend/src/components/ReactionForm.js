@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../Css/ReactionForm.css';
 
 const QuestionForm = () => {
   const [questions, setQuestions] = useState([]);
@@ -77,25 +78,27 @@ const QuestionForm = () => {
   };
 
   return (
-    <div>
+    <div className="reaction-form">
       {questions.length > 0 ? (
         <form onSubmit={handleSubmit}>
           {questions.map((question) => (
-            <div key={question.id}>
+            <div key={question.id} className="question-section">
               <h3>{question.questionText}</h3>
-              {question.answers.map((answer) => (
-                <div key={answer.id}>
-                  <input
-                    type="radio"
-                    id={answer.id.toString()}
-                    name={question.id.toString()}
-                    value={answer.id}
-                    checked={answers[question.id] === answer.id}
-                    onChange={() => handleAnswerChange(question.id, answer.id)}
-                  />
-                  <label htmlFor={answer.id.toString()}>{answer.answerText}</label>
-                </div>
-              ))}
+              <div className="answer-options">
+                {question.answers.map((answer) => (
+                  <div key={answer.id} className="answer-option">
+                    <input
+                      type="radio"
+                      id={answer.id.toString()}
+                      name={question.id.toString()}
+                      value={answer.id}
+                      checked={answers[question.id] === answer.id}
+                      onChange={() => handleAnswerChange(question.id, answer.id)}
+                    />
+                    <label htmlFor={answer.id.toString()} className="answer-section">{answer.answerText}</label>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
           <button type="submit">Submit</button>

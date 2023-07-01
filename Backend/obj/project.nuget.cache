@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "In8MJRwIHaT622oN+Q0gcUXXZp4oWcDwOL8IHxfeOixY75XXYWyugNlKfzXDhEfbDwleSOrNoQD4a3061bjG1w==",
+  "dgSpecHash": "59Icacy1+yO0uIFb3FZj5CEIOrJVzbCUCWUtYaR4EwJ6sO1pzrvV80L0XcgyJu/1E5LwG3Qd8zi07luD3gXEXA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\LoginApi.csproj",
+  "projectFilePath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\LoginApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\steph\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.7\\microsoft.aspnetcore.authentication.jwtbearer.7.0.7.nupkg.sha512",
