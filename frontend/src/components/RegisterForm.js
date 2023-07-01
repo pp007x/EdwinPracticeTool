@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
-import '../Css/LoginForm.css';  // import your CSS file
+import '../Css/LoginForm.css';
 
 function RegisterForm() {
   const [username, setUsername] = useState("");
@@ -11,25 +11,26 @@ function RegisterForm() {
   const [registerError, setRegisterError] = useState("");
   const navigate = useNavigate();
 
+
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const response = await axios.post("http://localhost:5162/api/Authentication/Register", {
+      const registrationResponse = await axios.post("http://localhost:5162/api/Authentication/Register", {
         username,
         password,
-        companyCode
+        companyId: parseInt(companyCode)  // Ensure this value is integer
       });
-
-      localStorage.setItem('token', response.data);
-
-      handleLogin();
-
+  
+      localStorage.setItem('token', registrationResponse.data);
+  
+      await handleLogin(); // Wait for the registration process to complete before proceeding with login
+  
     } catch (error) {
       setRegisterError("Registration failed.");
     }
   };
-
+  
   const handleLogin = async () => {
     const data = {
       username: username,
@@ -37,17 +38,17 @@ function RegisterForm() {
     };
 
     try {
-      const response = await axios.post("http://localhost:5162/api/Authentication/Login", data);
-      
-      localStorage.setItem('token', response.data);
+      const loginResponse = await axios.post("http://localhost:5162/api/Authentication/Login", data);
 
-      const decodedToken = jwtDecode(response.data);
+      localStorage.setItem('token', loginResponse.data);
+
+      const decodedToken = jwtDecode(loginResponse.data);
       const userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
 
       if (userRole === 'Admin') {
         navigate('/admin');
       } else {
-        navigate('/home');
+        navigate('/reactionform');
       }
 
     } catch (error) {
@@ -61,7 +62,7 @@ function RegisterForm() {
 
   return (
     <div className="inputBox">
-      <button className="returnButton" onClick={handleReturnClick}>Return</button>
+      <button className="returnButton" onClick={handleReturnClick}>BackOff</button>
       <form onSubmit={handleRegisterSubmit}>
         <label className="label">Username:</label>
         <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" />

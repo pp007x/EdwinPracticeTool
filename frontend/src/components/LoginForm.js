@@ -13,33 +13,53 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const data = {
       username: username,
       password: password
     };
-
+  
     try {
       const response = await axios.post("http://localhost:5162/api/Authentication/Login", data);
       
       // Save the JWT token to local storage
       localStorage.setItem('token', response.data);
-
+  
       // Get the role from the token
       const decodedToken = jwtDecode(response.data);
       const userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-
-      // Navigate to the correct page based on the role
-      if (userRole === 'Admin') {
-        navigate('/admin');
-      } else {
-        navigate('/dashboard');
+  
+      // Check user's scores
+      try {
+        const totalScoreResponse = await axios.get("http://localhost:5162/api/TotalScores/user", {
+          headers: {
+            'Authorization': `Bearer ${response.data}`
+          }
+        });
+  
+        const totalScore = totalScoreResponse.data;
+  
+        // If user's scores are null, navigate to /reactionform
+        if (!totalScore || totalScore === null) {
+          navigate('/reactionform');
+        } else {
+          // Navigate to the correct page based on the role
+          if (userRole === 'Admin') {
+            navigate('/admin');
+          } else {
+            navigate('/dashboard');
+          }
+        }
+  
+      } catch (error) {
+        console.error("Failed to get user's scores.", error);
       }
-
+  
     } catch (error) {
       setLoginError("Invalid username or password.");
     }
   };
+  
 
   return (
     <div className="inputBox">

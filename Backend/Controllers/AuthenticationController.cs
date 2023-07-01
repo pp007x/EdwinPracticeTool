@@ -26,6 +26,37 @@ public class AuthenticationController : ControllerBase
         _configuration = configuration;
     }
 
+
+    [HttpPost("Register")]
+    public async Task<ActionResult<string>> Register(User newUser)
+    {
+        _logger.LogInformation("Register endpoint hit");
+        _logger.LogInformation($"Attempt to register with Username: {newUser.Username}");
+
+        // Check if the user with the provided username already exists
+        var existingUser = await _context.Users
+            .SingleOrDefaultAsync(x => x.Username == newUser.Username);
+
+        if (existingUser != null)
+        {
+            _logger.LogInformation("Username already exists");
+            return BadRequest("Username already exists");
+        }
+
+        // Add the new user to the database
+        _context.Users.Add(newUser);
+        await _context.SaveChangesAsync();
+
+        // Generate a JWT token for the new user
+        var token = GenerateJwtToken(newUser);
+
+        _logger.LogInformation("User successfully registered");
+
+        return Ok(token);
+    }
+
+
+
     [HttpPost("Login")]
     public async Task<ActionResult<string>> Login(User user)
     {

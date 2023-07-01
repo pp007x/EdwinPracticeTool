@@ -48,7 +48,8 @@ public class TotalScoresController : ControllerBase
 
         return CreatedAtAction(nameof(GetTotalScoreByUser), new { id = totalScore.Id }, totalScore);
     }
-    [Authorize]
+
+
     [HttpGet("user")]
     public async Task<ActionResult<TotalScore>> GetTotalScoreByUser()
     {

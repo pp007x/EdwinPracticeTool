@@ -29,7 +29,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         builder =>
         {
-            builder.WithOrigins("http://practicedevedwin.azurewebsites.net") // replace with your React app's address
+            builder.WithOrigins("http://localhost:3000") // replace with your React app's address
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
@@ -49,7 +49,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["SecretKey:JwtSecret"]))
         };
     });
-
 
 var app = builder.Build();
 
@@ -107,5 +106,8 @@ app.UseAuthentication(); // Enable authentication
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Adding fallback route here.
+app.MapFallbackToFile("/build/index.html");
 
 app.Run();
