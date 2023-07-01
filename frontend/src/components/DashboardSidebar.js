@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../images/HigtechLogo.png';
-import '../Css/DashboardSidebar.css';
+import '../Css/DashboardSidebar.module.css';
 
 const DashboardSidebar = () => {
   const location = useLocation();

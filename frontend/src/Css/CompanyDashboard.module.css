@@ -1,0 +1,172 @@
+body.dashboard {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../images/LoginBackground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+  }
+  
+  .dashboard {
+    display: flex;
+    height: 100%;
+  }
+  
+  .main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  
+  .header {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #3487C7;
+    color: white;
+    position: relative;
+    border-bottom: none;
+  }
+  
+  .page-title {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+  
+  .header::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: transparent;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: white;
+  }
+  
+  .dashboard-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .big-square-container {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    gap: 20px;
+    position: relative;
+    width: 500px;
+  }
+  
+  .participant-table-container {
+    width: 400px; /* Adjust this as needed */
+  }
+  
+  .big-square {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    position: relative;
+    box-sizing: border-box;
+  }
+  
+  .big-square .corner-letter {
+    position: absolute;
+    font-size: 1.2em;
+  }
+  
+  .big-square-1 .corner-letter { top: -20px; left: -20px; }
+  .big-square-2 .corner-letter { top: -20px; right: -20px; }
+  .big-square-3 .corner-letter { bottom: -20px; left: -20px; }
+  .big-square-4 .corner-letter { bottom: -20px; right: -20px; }
+  
+  .small-squares {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* two columns of equal width */
+    grid-gap: 10px; /* gap between the small squares */
+  }
+  
+  .small-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    min-width: 0; /* reset min-width */
+  }
+  
+  .box-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .description-name,
+  .score-name {
+    margin: 5px;
+  }
+  
+  .center-words {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .center-words .top-word { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); }
+  .center-words .right-word { position: absolute; top: 50%; right: -40px; transform: translateY(-50%); }
+  .center-words .bottom-word { position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); padding-bottom: 25px; }
+  .center-words .left-word { position: absolute; top: 50%; left: -40px; transform: translateY(-50%); padding-left: 20px;}
+  
+  /* Different tints for small squares */
+  .small-square-1 { background-color: #1e90ff; }
+  .small-square-2 { background-color: #6ca9ff; }
+  .small-square-3 { background-color: #9fd1ff; }
+  .small-square-4 { background-color: #c1e0ff; }
+  
+  .small-square-9 { background-color: #a3f1a3; }
+  .small-square-10 { background-color: #71e671; }
+  .small-square-11 { background-color: #35cc35; }
+  .small-square-12 { background-color: #c4f9c4; }
+  
+  .small-square-5 { background-color: #ff8080; }
+  .small-square-6 { background-color: #ff4c4c; }
+  .small-square-7 { background-color: #ffb3b3; }
+  .small-square-8 { background-color: #ffd5d5; }
+  
+  .small-square-13 { background-color: #fff7d5; }
+  .small-square-14 { background-color: #ffe680; }
+  .small-square-15 { background-color: #fff1b3; }
+  .small-square-16 { background-color: #ffd700; }
+  
+  /* Table styles */
+  .participant-table-container {
+    margin-left: 20px;
+    width: 400px; /* Adjust this as needed */
+  }
+  
+  .participant-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .participant-table th,
+  .participant-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .participant-table th {
+    background-color: #4caf50;
+    color: white;
+  }
+  

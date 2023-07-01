@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DashboardSidebar from './DashboardSidebar';
 import Header from './DashboardHeader';
-import '../Css/CompanyDashboard.css';
+import '../Css/CompanyDashboard.module.css';
 import axios from 'axios';
 
 const descriptions = [

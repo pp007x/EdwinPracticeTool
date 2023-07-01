@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
-import '../Css/LoginForm.css';  // import your CSS file
+import '../Css/LoginForm.module.css';  // import your CSS file
 import logo from '../images/HigtechLogo.png';
 
 function LoginForm() {

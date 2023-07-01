@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../Css/ReactionForm.css';
+import styles from '../Css/ReactionForm.module.css';
 
 const QuestionForm = () => {
   const [questions, setQuestions] = useState([]);
@@ -78,27 +78,29 @@ const QuestionForm = () => {
   };
 
   return (
-    <div className="reaction-form">
+    <div className={styles["form-control"]}>
       {questions.length > 0 ? (
         <form onSubmit={handleSubmit}>
           {questions.map((question) => (
-            <div key={question.id} className="question-section">
-              <h3>{question.questionText}</h3>
-              <div className="answer-options">
-                {question.answers.map((answer) => (
-                  <div key={answer.id} className="answer-option">
-                    <input
-                      type="radio"
-                      id={answer.id.toString()}
-                      name={question.id.toString()}
-                      value={answer.id}
-                      checked={answers[question.id] === answer.id}
-                      onChange={() => handleAnswerChange(question.id, answer.id)}
-                    />
-                    <label htmlFor={answer.id.toString()} className="answer-section">{answer.answerText}</label>
-                  </div>
-                ))}
-              </div>
+            <div key={question.id}>
+              <label>
+                {question.questionText}
+                <div className={styles["answer-options"]}>
+                  {question.answers.map((answer) => (
+                    <label htmlFor={answer.id.toString()} key={answer.id}>
+                      <input
+                        type="radio"
+                        id={answer.id.toString()}
+                        name={question.id.toString()}
+                        value={answer.id}
+                        checked={answers[question.id] === answer.id}
+                        onChange={() => handleAnswerChange(question.id, answer.id)}
+                      />
+                      {answer.answerText}
+                    </label>
+                  ))}
+                </div>
+              </label>
             </div>
           ))}
           <button type="submit">Submit</button>

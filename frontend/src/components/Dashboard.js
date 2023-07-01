@@ -3,7 +3,7 @@ import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts';
 import DashboardSidebar from './DashboardSidebar';
-import '../Css/Dashboard.css';
+import '../Css/Dashboard.module.css';
 import axios from 'axios';
 
 const Header = ({ title }) => (

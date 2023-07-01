@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Css/DashboardHeader.css';
+import '../Css/DashboardHeader.module.css';
 
 const Header = () => (
   <div className="header">
