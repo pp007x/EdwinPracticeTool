@@ -1,19 +1,18 @@
-// CompaniesController.cs
-using LoginApi.Data;
-using LoginApi.Models;
-using Microsoft.AspNetCore.Authorization;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using LoginApi.Data;
+using LoginApi.Models;
 
 namespace LoginApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class CompaniesController : ControllerBase
     {
         private readonly UserContext _context;
@@ -27,18 +26,22 @@ namespace LoginApi.Controllers
             _configuration = configuration;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Company>>> GetCompanies()
+        {
+            return await _context.Companies.ToListAsync();
+        }
+
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<Company>> PostCompany([FromBody] Company company)
+        public async Task<ActionResult<Company>> PostCompany(Company company)
         {
             _context.Companies.Add(company);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetCompany), new { id = company.Id }, company);
+            return CreatedAtAction("GetCompanies", new { id = company.Id }, company);
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Company>> GetCompany(int id)
         {
             var company = await _context.Companies.FindAsync(id);
@@ -60,8 +63,7 @@ namespace LoginApi.Controllers
             {
                 return NotFound();
             }
-            Console.WriteLine(users[0].Box);
-            
+
             return users;
         }
     }

@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import DashboardSidebar from './DashboardSidebar';
-import Header from './DashboardHeader';
-import '../Css/CompanyDashboard.module.css';
 import axios from 'axios';
 
 const descriptions = [
@@ -25,7 +22,8 @@ const CompanyDashboard = () => {
       try {
         const response = await axios.get('http://localhost:5162/api/Companies/1/users'); 
         const data = response.data;
-        setUserBoxes(data);
+        // Ensure data is an array before setting it
+        setUserBoxes(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error('Error fetching user boxes:', error);
       }
@@ -35,7 +33,8 @@ const CompanyDashboard = () => {
       try {
         const response = await axios.get('http://localhost:5162/api/TotalScores/all'); 
         const data = response.data;
-        setUserScores(data);
+        // Ensure data is an array before setting it
+        setUserScores(Array.isArray(data) ? data : []);
         console.log(data);
       } catch (error) {
         console.error('Error fetching user scores:', error);
@@ -48,9 +47,9 @@ const CompanyDashboard = () => {
 
   return (
     <div className="dashboard">
-      <DashboardSidebar />
+      {/* <DashboardSidebar /> */}
       <div className="main">
-        <Header />
+        {/* <Header /> */}
         <div className="content">
           <div className="dashboard-title">
             <h1>Company Dashboard</h1>

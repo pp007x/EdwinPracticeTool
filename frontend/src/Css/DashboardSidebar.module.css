@@ -1,6 +1,6 @@
 .sidebar {
     width: 250px;
-    background-color: #f4f4f4;
+    background-color: #fdfdfd;
     padding: 20px;
     box-sizing: border-box;
     position: fixed; /* updated from sticky to fixed */
@@ -9,9 +9,6 @@
     overflow-y: auto;
     height: 100%; /* updated from 100% to 100vh */
 }
-
-
-
   
   /* Rest of the CSS */
   

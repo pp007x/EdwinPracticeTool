@@ -1,14 +1,13 @@
-using LoginApi.Data;
-using LoginApi.Models;
-using Microsoft.AspNetCore.Authorization;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using LoginApi.Data;
+using LoginApi.Models;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -29,20 +28,21 @@ public class UsersController : ControllerBase
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<IEnumerable<User>>> GetUsers()
     {
-        return await _context.Users
-            .Select(u => new User
-            {
-                Id = u.Id,
-                Username = u.Username,
-                IsAdmin = u.IsAdmin
-            })
-            .ToListAsync();
+        return await _context.Users.ToListAsync();
     }
 
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<User>> PostUser(User user)
     {
+        if (user.CompanyId != null)
+        {
+            var company = await _context.Companies.FindAsync(user.CompanyId);
+            if (company == null)
+            {
+                return NotFound(new { message = "Company not found" });
+            }
+        }
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
@@ -53,7 +53,7 @@ public class UsersController : ControllerBase
     [Authorize]
     public ActionResult<User> GetProfile()
     {
-        var usernameClaim = HttpContext.User.Identity.Name;
+        var usernameClaim = User.Identity.Name;
         var user = _context.Users.FirstOrDefault(u => u.Username == usernameClaim);
 
         if (user == null)

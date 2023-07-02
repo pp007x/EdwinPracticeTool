@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import styles from '../Css/ReactionForm.module.css';
+// import styles from '../Css/ReactionForm.module.css';
 
 const QuestionForm = () => {
   const [questions, setQuestions] = useState([]);
@@ -78,14 +78,14 @@ const QuestionForm = () => {
   };
 
   return (
-    <div className={styles["form-control"]}>
+    <div className={"form-control"}>
       {questions.length > 0 ? (
         <form onSubmit={handleSubmit}>
           {questions.map((question) => (
             <div key={question.id}>
               <label>
                 {question.questionText}
-                <div className={styles["answer-options"]}>
+                <div className="answer-options">
                   {question.answers.map((answer) => (
                     <label htmlFor={answer.id.toString()} key={answer.id}>
                       <input

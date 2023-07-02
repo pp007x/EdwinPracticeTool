@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts';
-import DashboardSidebar from './DashboardSidebar';
-import '../Css/Dashboard.module.css';
+// import DashboardSidebar from './DashboardSidebar';
+// import '../Css/Dashboard.module.css';
 import axios from 'axios';
 
 const Header = ({ title }) => (
@@ -19,7 +19,7 @@ const Dashboard = () => {
   const [onderwerpData, setOnderwerpData] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token'); // assuming token is stored in local storage
+    const token = localStorage.getItem('token');
 
     fetch(`http://localhost:5162/api/TotalScores/user`, {
       headers: {
@@ -52,7 +52,6 @@ const Dashboard = () => {
       ];
       setChartData(transformedData);
 
-      // Here we'll fetch the Onderwerp based on user's scores
       axios.get(`http://localhost:5162/api/Onderwerp/user/${serverData.userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -72,7 +71,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <DashboardSidebar />
+      {/* <DashboardSidebar /> */}
       <div className="main">
         <Header title={onderwerpData ? onderwerpData.name : 'Loading...'} />
         <div className="content">
