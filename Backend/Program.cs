@@ -29,7 +29,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         builder =>
         {
-            builder.WithOrigins("https://edwindemo.azurewebsites.net/") // replace with your React app's address
+            builder.WithOrigins("https://edwindemo.azurewebsites.net") // replace with your React app's address
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
