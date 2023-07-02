@@ -77,7 +77,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    });
 }
 
 app.UseHttpsRedirection();
@@ -108,6 +111,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 // Adding fallback route here.
-app.MapFallbackToFile("/build/index.html");
+app.MapFallbackToFile("/index.html");
 
 app.Run();
