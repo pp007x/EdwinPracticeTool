@@ -16,7 +16,7 @@ function RegisterForm() {
     e.preventDefault();
   
     try {
-      const registrationResponse = await axios.post("https://edwindemo.azurewebsites.net/api/Authentication/Register", {
+      const registrationResponse = await axios.post("https://temptestedwin.azurewebsites.net/api/Authentication/Register", {
         username,
         password,
         companyId: parseInt(companyCode)  // Ensure this value is integer
@@ -38,7 +38,7 @@ function RegisterForm() {
     };
 
     try {
-      const loginResponse = await axios.post("https://edwindemo.azurewebsites.net/api/Authentication/Login", data);
+      const loginResponse = await axios.post("https://temptestedwin.azurewebsites.net/api/Authentication/Login", data);
 
       localStorage.setItem('token', loginResponse.data);
 
