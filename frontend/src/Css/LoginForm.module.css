@@ -27,7 +27,7 @@ form {
     color: red;
   }
   
-  body.login {
+  .loginFormWrapper {
     margin: 0;
     padding: 0;
     background-image: url('../images/LoginBackground.jpg');
