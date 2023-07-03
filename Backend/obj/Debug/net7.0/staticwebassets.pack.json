@@ -29,12 +29,12 @@
       "PackagePath": "staticwebassets\\build\\robots.txt"
     },
     {
-      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\css\\main.963aba5d.css",
-      "PackagePath": "staticwebassets\\build\\static\\css\\main.963aba5d.css"
+      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\css\\main.ab84114f.css",
+      "PackagePath": "staticwebassets\\build\\static\\css\\main.ab84114f.css"
     },
     {
-      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\css\\main.963aba5d.css.map",
-      "PackagePath": "staticwebassets\\build\\static\\css\\main.963aba5d.css.map"
+      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\css\\main.ab84114f.css.map",
+      "PackagePath": "staticwebassets\\build\\static\\css\\main.ab84114f.css.map"
     },
     {
       "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\js\\787.a743e0dc.chunk.js",
@@ -45,16 +45,20 @@
       "PackagePath": "staticwebassets\\build\\static\\js\\787.a743e0dc.chunk.js.map"
     },
     {
-      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\js\\main.ff292f6b.js",
-      "PackagePath": "staticwebassets\\build\\static\\js\\main.ff292f6b.js"
+      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\js\\main.82dd1f11.js",
+      "PackagePath": "staticwebassets\\build\\static\\js\\main.82dd1f11.js"
     },
     {
-      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\js\\main.ff292f6b.js.LICENSE.txt",
-      "PackagePath": "staticwebassets\\build\\static\\js\\main.ff292f6b.js.LICENSE.txt"
+      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\js\\main.82dd1f11.js.LICENSE.txt",
+      "PackagePath": "staticwebassets\\build\\static\\js\\main.82dd1f11.js.LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\js\\main.ff292f6b.js.map",
-      "PackagePath": "staticwebassets\\build\\static\\js\\main.ff292f6b.js.map"
+      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\js\\main.82dd1f11.js.map",
+      "PackagePath": "staticwebassets\\build\\static\\js\\main.82dd1f11.js.map"
+    },
+    {
+      "Id": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\wwwroot\\build\\static\\media\\LoginBackground.a6695b7bdd8b803907ad.jpg",
+      "PackagePath": "staticwebassets\\build\\static\\media\\LoginBackground.a6695b7bdd8b803907ad.jpg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.LoginApi.Microsoft.AspNetCore.StaticWebAssets.props",
