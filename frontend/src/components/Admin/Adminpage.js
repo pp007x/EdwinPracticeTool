@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AdminSidebar from './AdminSidebar';
 import AdminHeader from './AdminHeader';
 import styles from '../../Css/AdminPortal.module.css';
+import config from '../../config';
 
 function AdminPortal() {
   const [users, setUsers] = useState([]);
@@ -16,7 +17,7 @@ function AdminPortal() {
   useEffect(() => {
     const fetchUsers = async () => {
       const token = localStorage.getItem('token');
-      const response = await axios.get("http://localhost:5162/api/Users", {
+      const response = await axios.get(`${config.API_BASE_URL}/api/Users`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -38,13 +39,13 @@ function AdminPortal() {
     e.preventDefault();
 
     const token = localStorage.getItem('token');
-    await axios.post("http://localhost:5162/api/Users", newUser, {
+    await axios.post(`${config.API_BASE_URL}/api/Users`, newUser, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
 
-    const response = await axios.get("http://localhost:5162/api/Users", {
+    const response = await axios.get(`${config.API_BASE_URL}/api/Users`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

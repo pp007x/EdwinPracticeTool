@@ -3,7 +3,7 @@
     background-color: #fdfdfd;
     padding: 20px;
     box-sizing: border-box;
-    position: fixed; /* updated from sticky to fixed */
+    position: flex; /* updated from sticky to fixed */
     top: 0;
     left: 0;
     overflow-y: auto;

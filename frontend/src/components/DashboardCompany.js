@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import config from '../config';
+import styles from '../Css/CompanyDashboard.module.css'; // Add this line
+import DashboardSidebar from './DashboardSidebar';
+import DashboardHeader from './DashboardHeader';
 
 const descriptions = [
   "Analyticus (C)", "Strateeg (Cd)", "Perfectionist (Cs)", "Raadgever (Ci)",
@@ -20,7 +24,7 @@ const CompanyDashboard = () => {
   useEffect(() => {
     const fetchUserBoxes = async () => {
       try {
-        const response = await axios.get('http://localhost:5162/api/Companies/1/users'); 
+        const response = await axios.get(`${config.API_BASE_URL}/api/Companies/1/users`);
         const data = response.data;
         // Ensure data is an array before setting it
         setUserBoxes(Array.isArray(data) ? data : []);
@@ -31,7 +35,7 @@ const CompanyDashboard = () => {
 
     const fetchUserScores = async () => {
       try {
-        const response = await axios.get('http://localhost:5162/api/TotalScores/all'); 
+        const response = await axios.get(`${config.API_BASE_URL}/api/TotalScores/all`);
         const data = response.data;
         // Ensure data is an array before setting it
         setUserScores(Array.isArray(data) ? data : []);
@@ -46,39 +50,39 @@ const CompanyDashboard = () => {
   }, []);
 
   return (
-    <div className="dashboard">
-      {/* <DashboardSidebar /> */}
-      <div className="main">
-        {/* <Header /> */}
-        <div className="content">
-          <div className="dashboard-title">
+    <div className={styles.dashboard}>
+    <DashboardSidebar />
+    <div className={styles.main}>
+      <DashboardHeader />
+        <div className={styles.content}>
+          <div className={styles["dashboard-title"]}>
             <h1>Company Dashboard</h1>
             <p>Welcome to the Company Dashboard page!</p>
           </div>
 
-          <div className="dashboard-content">
-            <div className="box-and-table-container">
-              <div className="big-square-container">
+          <div className={styles["dashboard-content"]}>
+            <div className={styles["box-and-table-container"]}>
+              <div className={styles["big-square-container"]}>
                 {['C', 'D', 'S', 'I'].map((letter, bigSquareIndex) => (
-                  <div className={`big-square big-square-${bigSquareIndex + 1}`} key={bigSquareIndex}>
-                    <p className="corner-letter">{letter}</p>
-                    <div className="small-squares">
+                  <div className={`${styles["big-square"]} ${styles["big-square-" + (bigSquareIndex + 1)]}`} key={bigSquareIndex}>
+                    <p className={styles["corner-letter"]}>{letter}</p>
+                    <div className={styles["small-squares"]}>
                       {[0, 1, 2, 3].map((smallSquareIndex) => {
                         const descriptionIndex = bigSquareIndex * 4 + smallSquareIndex;
                         const colorClass = `small-square-${descriptionIndex + 1}`;
                         return (
-                          <div className={`small-square ${colorClass}`} key={smallSquareIndex}>
-                            <div className="box-content">
-                              <p className="description-name">{descriptions[descriptionIndex]}</p>
-                              <div className="score-container">
+                          <div className={`${styles["small-square"]} ${styles[colorClass]}`} key={smallSquareIndex}>
+                            <div className={styles["box-content"]}>
+                              <p className={styles["description-name"]}>{descriptions[descriptionIndex]}</p>
+                              <div className={styles["score-container"]}>
                                 {userBoxes
-                                  .filter(user => 
-                                    typeof user.box === 'string' && 
+                                  .filter(user =>
+                                    typeof user.box === 'string' &&
                                     user.box.length === 2 &&
                                     boxCodeToIndex[user.box[0].toUpperCase()] === bigSquareIndex &&
                                     boxCodeToIndex[user.box[1].toLowerCase()] === smallSquareIndex)
                                   .map((user, index) => (
-                                    <p className="score-name" key={index}>{user.username}</p>
+                                    <p className={styles["score-name"]} key={index}>{user.username}</p>
                                   ))
                                 }
                               </div>
@@ -89,17 +93,17 @@ const CompanyDashboard = () => {
                     </div>
                   </div>
                 ))}
-                <div className="center-words">
-                  <p className="top-word">Taak</p>
-                  <p className="right-word">Direct</p>
-                  <p className="bottom-word">Mens</p>
-                  <p className="left-word">Indirect</p>
+                <div className={styles["center-words"]}>
+                  <p className={styles["top-word"]}>Taak</p>
+                  <p className={styles["right-word"]}>Direct</p>
+                  <p className={styles["bottom-word"]}>Mens</p>
+                  <p className={styles["left-word"]}>Indirect</p>
                 </div>
               </div>
             </div>
 
-            <div className="participant-table-container">
-              <table className="participant-table">
+            <div className={styles["participant-table-container"]}>
+              <table className={styles["participant-table"]}>
                 <thead>
                   <tr>
                     <th>Deelnemer</th>
@@ -115,7 +119,7 @@ const CompanyDashboard = () => {
                     return (
                       <tr key={index}>
                         <td>{user.username}</td>
-                        <td>{userScore.scoreValueD }</td>
+                        <td>{userScore.scoreValueD}</td>
                         <td>{userScore.scoreValueI}</td>
                         <td>{userScore.scoreValueS}</td>
                         <td>{userScore.scoreValueC}</td>

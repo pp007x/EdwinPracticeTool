@@ -3,6 +3,7 @@ import axios from "axios";
 import AdminSidebar from './AdminSidebar';
 import AdminHeader from './AdminHeader';
 import styles from '../../Css/CreateUser.module.css';
+import config from '../../config';
 
 function CreateUser() {
   const [newUser, setNewUser] = useState({
@@ -13,13 +14,13 @@ function CreateUser() {
   });
 
   const [companies, setCompanies] = useState([]);
-  const [isUserAdded, setIsUserAdded] = useState(false); // New state variable
+  const [isUserAdded, setIsUserAdded] = useState(false);
 
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get("http://localhost:5162/api/Companies", {
+        const response = await axios.get(`${config.API_BASE_URL}/api/Companies`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -47,13 +48,13 @@ function CreateUser() {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post("http://localhost:5162/api/Users", newUser, {
+      await axios.post(`${config.API_BASE_URL}/api/Users`, newUser, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      setIsUserAdded(true); // Set the user added state to true
-      setNewUser({ // Clear the form inputs
+      setIsUserAdded(true);
+      setNewUser({
         username: "",
         password: "",
         isAdmin: false,
@@ -73,7 +74,7 @@ function CreateUser() {
         </div>
         <div className={styles.content}>
           <h1>Create New User</h1>
-          {isUserAdded && <p>User added successfully!</p>} {/* Display message when user is added */}
+          {isUserAdded && <p>User added successfully!</p>}
           <form onSubmit={handleNewUserSubmit}>
             <label>
               Username:

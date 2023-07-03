@@ -12,7 +12,6 @@ namespace LoginApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
     public class CompaniesController : ControllerBase
     {
         private readonly UserContext _context;

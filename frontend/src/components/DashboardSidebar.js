@@ -1,28 +1,28 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../images/HigtechLogo.png';
-// import '../Css/DashboardSidebar.module.css';
+import styles from '../Css/DashboardSidebar.module.css';
 
 const DashboardSidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="sidebar-container">
-      <div className="sidebar">
-        <div className="logo-container">
-          <img src={logo} alt="Logo" className="logo" />
+    <div className={styles["sidebar-container"]}>
+      <div className={styles.sidebar}>
+        <div className={styles["logo-container"]}>
+          <img src={logo} alt="Logo" className={styles.logo} />
         </div>
         <hr />
-        <div className="navigation">
+        <div className={styles.navigation}>
           <Link
             to="/dashboard"
-            className={`nav-button ${location.pathname === '/dashboard' ? 'active' : ''}`}
+            className={`${styles["nav-button"]} ${location.pathname === '/dashboard' ? styles.active : ''}`}
           >
             Dashboard
           </Link>
           <Link
             to="/companydashboard"
-            className={`nav-button ${location.pathname === '/companydashboard' ? 'active' : ''}`}
+            className={`${styles["nav-button"]} ${location.pathname === '/companydashboard' ? styles.active : ''}`}
           >
             Company
           </Link>

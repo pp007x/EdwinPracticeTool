@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import styles from '../Css/ReactionForm.module.css';
+import styles from '../Css/ReactionForm.module.css';
+import config from '../config';
 
 const QuestionForm = () => {
   const [questions, setQuestions] = useState([]);
@@ -11,7 +12,7 @@ const QuestionForm = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const result = await axios.get("http://localhost:5162/api/Questions");
+        const result = await axios.get(`${config.API_BASE_URL}/api/Questions`);
         setQuestions(result.data);
       } catch (error) {
         console.error('Failed to fetch questions:', error);
@@ -53,39 +54,39 @@ const QuestionForm = () => {
       scoreValueC: totalScoreC
     };
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const totalScore = calculateTotalScore();
-
+  
     try {
       const token = localStorage.getItem('token');
-      const config = {
+      const localConfig = {
         headers: { Authorization: `Bearer ${token}` }
       };
       const response = await axios.post(
-        "http://localhost:5162/api/TotalScores",
+        `${config.API_BASE_URL}/api/TotalScores`,
         totalScore,
-        config
+        localConfig
       );
       console.log(response.data);
-
+  
       navigate('/dashboard');
     } catch (error) {
       console.error("Failed to submit total score:", error);
     }
   };
+  
 
   return (
-    <div className={"form-control"}>
+    <div className={styles["form-control"]}>
       {questions.length > 0 ? (
         <form onSubmit={handleSubmit}>
           {questions.map((question) => (
             <div key={question.id}>
               <label>
                 {question.questionText}
-                <div className="answer-options">
+                <div className={styles["answer-options"]}>
                   {question.answers.map((answer) => (
                     <label htmlFor={answer.id.toString()} key={answer.id}>
                       <input
@@ -103,13 +104,13 @@ const QuestionForm = () => {
               </label>
             </div>
           ))}
-          <button type="submit">Submit</button>
+          <button type="submit" className={styles["button"]}>Submit</button>
         </form>
       ) : (
         <div>No questions loaded</div>
       )}
     </div>
-  );
+  );  
 };
 
 export default QuestionForm;

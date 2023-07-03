@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts';
-// import DashboardSidebar from './DashboardSidebar';
-// import '../Css/Dashboard.module.css';
+import DashboardSidebar from './DashboardSidebar';
+import styles from '../Css/Dashboard.module.css';
 import axios from 'axios';
+import config from '../config';
 
 const Header = ({ title }) => (
-  <div className="header">
+  <div className={styles.header}>
     <hr />
-    <div className="page-title">{title}</div>
+    <div className={styles["page-title"]}>{title}</div>
   </div>
 );
 
@@ -21,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    fetch(`http://localhost:5162/api/TotalScores/user`, {
+    fetch(`${config.API_BASE_URL}/api/TotalScores/user`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
@@ -52,7 +53,7 @@ const Dashboard = () => {
       ];
       setChartData(transformedData);
 
-      axios.get(`http://localhost:5162/api/Onderwerp/user/${serverData.userId}`, {
+      axios.get(`${config.API_BASE_URL}/api/Onderwerp/user/${serverData.userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -70,13 +71,13 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="dashboard">
-      {/* <DashboardSidebar /> */}
-      <div className="main">
+    <div className={styles.dashboard}>
+      <DashboardSidebar />
+      <div className={styles.main}>
         <Header title={onderwerpData ? onderwerpData.name : 'Loading...'} />
-        <div className="content">
-          <div className="chart-container">
-            <div className="radar-chart">
+        <div className={styles.content}>
+          <div className={styles["chart-container"]}>
+            <div className={styles["radar-chart"]}>
               <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={chartData}>
                 <PolarGrid />
                 <PolarAngleAxis
@@ -90,12 +91,12 @@ const Dashboard = () => {
                   stroke="#3487C7"
                   fill="#3487C7"
                   fillOpacity={0.6}
-                  className="radar-polygon"
+                  className={styles["radar-polygon"]}
                 />
               </RadarChart>
             </div>
             {resultData && (
-              <div className="results">
+              <div className={styles.results}>
                 <h2>Resultaat: {resultData.scoreValueD + resultData.scoreValueI + resultData.scoreValueS + resultData.scoreValueC}</h2>
                 <div>D: {resultData.scoreValueD}</div>
                 <div>I: {resultData.scoreValueI}</div>
@@ -104,11 +105,11 @@ const Dashboard = () => {
               </div>
             )}
           </div>
-          <div className="text-content">
+          <div className={styles["text-content"]}>
             <h2>{onderwerpData ? onderwerpData.name : 'Loading...'}</h2>
             <p>{onderwerpData ? onderwerpData.description : 'Loading...'}</p>
           </div>
-          <button className="download-button">Download Uitslag</button>
+          <button className={styles["download-button"]}>Download Uitslag</button>
         </div>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React from 'react';
-// import '../Css/DashboardHeader.module.css';
+import styles from '../Css/DashboardHeader.module.css';
 
 const Header = () => (
-  <div className="header">
+  <div className={styles.header}>
     <hr />
-    <div className="page-title">Dashboard</div>
+    <div className={styles["page-title"]}>Dashboard</div>
   </div>
 );
 

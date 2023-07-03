@@ -3,6 +3,7 @@ import axios from "axios";
 import AdminSidebar from './AdminSidebar';
 import AdminHeader from './AdminHeader';
 import styles from '../../Css/AddCompany.module.css';
+import config from '../../config';
 
 function AddCompany() {
   const [company, setCompany] = useState({
@@ -11,7 +12,7 @@ function AddCompany() {
     code: Math.random().toString(36).substr(2, 10)
   });
 
-  const [isCompanyAdded, setIsCompanyAdded] = useState(false); // New state variable
+  const [isCompanyAdded, setIsCompanyAdded] = useState(false);
 
   const handleInputChange = (e) => {
     setCompany({
@@ -20,25 +21,24 @@ function AddCompany() {
     });
   };
 
-
   const handleNewCompanySubmit = async (e) => {
     e.preventDefault();
-  
+
     const formData = new FormData();
     formData.append('name', company.name);
     formData.append('description', company.description);
     formData.append('code', company.code);
-  
+
     try {
       const token = localStorage.getItem('token');
-      await axios.post("http://localhost:5162/api/Companies", formData, {
+      await axios.post(`${config.API_BASE_URL}/api/Companies`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
         }
       });
-      setIsCompanyAdded(true); // Set the company added state to true
-      setCompany({ // Clear the form inputs
+      setIsCompanyAdded(true);
+      setCompany({
         name: "",
         description: "",
         code: Math.random().toString(36).substr(2, 10)
@@ -47,7 +47,6 @@ function AddCompany() {
       console.error(error);
     }
   };
-  
 
   return (
     <>
@@ -58,7 +57,7 @@ function AddCompany() {
         </div>
         <div className={styles.content}>
           <h1>Add New Company</h1>
-          {isCompanyAdded && <p>Company added successfully!</p>} {/* Display message when company is added */}
+          {isCompanyAdded && <p>Company added successfully!</p>}
           <form onSubmit={handleNewCompanySubmit}>
             <label>
               Name:
