@@ -48,6 +48,30 @@ public class TotalScoresController : ControllerBase
 
         return CreatedAtAction(nameof(GetTotalScoreByUser), new { id = totalScore.Id }, totalScore);
     }
+[Authorize]
+[HttpGet("user/me")]
+public async Task<ActionResult<TotalScore>> GetTotalScoresByLoggedInUser()
+{
+    var nameIdentifierClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+    if (nameIdentifierClaim == null)
+    {
+        return BadRequest("No user is currently logged in.");
+    }
+
+    if (!int.TryParse(nameIdentifierClaim.Value, out var loggedInUserId))
+    {
+        return BadRequest("Invalid user ID.");
+    }
+
+    var totalScore = await _context.TotalScores.FirstOrDefaultAsync(score => score.UserId == loggedInUserId);
+
+    if (totalScore == null)
+    {
+        return NotFound();
+    }
+
+    return totalScore;
+}
 
 
 

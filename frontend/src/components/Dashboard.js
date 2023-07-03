@@ -22,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    fetch(`${config.API_BASE_URL}/api/TotalScores/user`, {
+    fetch(`${config.API_BASE_URL}/api/TotalScores/user/me`, {  // <-- changed this line
       headers: {
         'Authorization': `Bearer ${token}`,
       },

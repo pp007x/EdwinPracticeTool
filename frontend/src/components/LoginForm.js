@@ -26,18 +26,21 @@ function LoginForm() {
       // Save the JWT token to local storage
       localStorage.setItem('token', response.data);
 
-      // Get the role from the token
+      // Decode the token
       const decodedToken = jwtDecode(response.data);
+      
+      // Get the role and the user ID from the token
       const userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      const userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']; // Assuming the user ID is stored in this claim
 
       // Check user's scores
       try {
-        const totalScoreResponse = await axios.get(`${config.API_BASE_URL}/api/TotalScores/user`, {
+        const totalScoreResponse = await axios.get(`${config.API_BASE_URL}/api/TotalScores/user/me`, {
           headers: {
             'Authorization': `Bearer ${response.data}`
           }
         });
-
+        
         const totalScore = totalScoreResponse.data;
 
         // If user's scores are null, navigate to /reactionform
@@ -60,7 +63,6 @@ function LoginForm() {
       setLoginError("Invalid username or password.");
     }
   };
-
 
   return (
     <div className={styles.loginFormWrapper}>
