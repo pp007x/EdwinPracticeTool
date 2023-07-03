@@ -32,6 +32,24 @@ const AdminSidebar = () => {
           >
             Add User
           </Link>
+          <Link
+            to="/admin/companies"
+            className={`${styles["nav-button"]} ${location.pathname === '/admin/companies' ? styles.active : ''}`}
+          >
+            Info per company
+          </Link>
+          <Link
+            to="/admin/users"
+            className={`${styles["nav-button"]} ${location.pathname === '/admin/users' ? styles.active : ''}`}
+          >
+            Info per user
+          </Link>
+          <Link
+            to="/admin/newquestion"
+            className={`${styles["nav-button"]} ${location.pathname === '/admin/newquestion' ? styles.active : ''}`}
+          >
+            Add Questions
+          </Link>
         </div>
       </div>
     </div>

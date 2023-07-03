@@ -50,31 +50,21 @@ public class TotalScoresController : ControllerBase
     }
 
 
-    [HttpGet("user")]
-    public async Task<ActionResult<TotalScore>> GetTotalScoreByUser()
+
+[HttpGet("user/{id}")]
+public async Task<ActionResult<TotalScore>> GetTotalScoreByUser(int id)
+{
+    // Use the user ID to find the TotalScore
+    var totalScore = await _context.TotalScores.FirstOrDefaultAsync(score => score.UserId == id);
+
+    if (totalScore == null)
     {
-        // Extract the user ID from the JWT token
-        var nameIdentifierClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-        if (nameIdentifierClaim == null)
-        {
-            return BadRequest("No user is currently logged in.");
-        }
-
-        if (!int.TryParse(nameIdentifierClaim.Value, out var loggedInUserId))
-        {
-            return BadRequest("Invalid user ID.");
-        }
-
-        // Use the user ID to find the TotalScore
-        var totalScore = await _context.TotalScores.FirstOrDefaultAsync(score => score.UserId == loggedInUserId);
-
-        if (totalScore == null)
-        {
-            return NotFound();
-        }
-
-        return totalScore;
+        return NotFound();
     }
+
+    return totalScore;
+}
+
 
     [HttpGet("all")]
     public async Task<ActionResult<IEnumerable<TotalScore>>> GetAllTotalScores()

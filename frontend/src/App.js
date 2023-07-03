@@ -8,6 +8,9 @@ import RegisterForm from './components/RegisterForm';
 import Dashboard from './components/Dashboard';
 import CompanyDashboard from './components/DashboardCompany';
 import AdminAddUser from './components/Admin/AdminCreateUser';
+import AdminCompanyDashboard from './components/Admin/AdminCompanyDashboard';
+import AdminUserDashboard from './components/Admin/AdminUserDashboard';
+import AdminNewQuestion from './components/Admin/AdminNewQuestions';
 function App() {
     return (
         <Router>
@@ -21,6 +24,9 @@ function App() {
                 <Route path="/companydashboard" element={<CompanyDashboard />} />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/admin/adduser" element={<ProtectedComponent><AdminAddUser /></ProtectedComponent>} />
+                <Route path="/admin/companies" element={<ProtectedComponent><AdminCompanyDashboard /></ProtectedComponent>} />
+                <Route path="/admin/users" element={<ProtectedComponent><AdminUserDashboard /></ProtectedComponent>} />
+                <Route path="/admin/newquestion" element={<ProtectedComponent><AdminNewQuestion /></ProtectedComponent>} />
             </Routes>
         </Router>
     );

@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using LoginApi.Data;
 using LoginApi.Models;
@@ -58,9 +57,9 @@ namespace LoginApi.Controllers
         {
             var users = await _context.Users.Where(u => u.CompanyId == companyId).ToListAsync();
 
-            if (users.Count == 0)
+            if (users == null || users.Count == 0)
             {
-                return NotFound();
+                return Ok(new List<User>());
             }
 
             return users;
