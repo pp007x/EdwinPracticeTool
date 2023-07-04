@@ -9,6 +9,7 @@ using System;
 using System.Text;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -29,8 +30,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         builder =>
         {
-            builder.WithOrigins("https://temptestedwin.azurewebsites.net")
-            // builder.WithOrigins("http://localhost:3000") // replace with your React app's address
+            // builder.WithOrigins("https://temptestedwin.azurewebsites.net")
+            builder.WithOrigins("http://localhost:3000") // replace with your React app's address
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });

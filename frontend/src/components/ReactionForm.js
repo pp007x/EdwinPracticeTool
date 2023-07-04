@@ -4,21 +4,35 @@ import { useNavigate } from 'react-router-dom';
 import styles from '../Css/ReactionForm.module.css';
 import config from '../config';
 
-const QuestionForm = () => {
+const ReactionForm = () => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
+  const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchQuestions = async () => {
+    const fetchProfileAndQuestions = async () => {
       try {
-        const result = await axios.get(`${config.API_BASE_URL}/api/Questions`);
-        setQuestions(result.data);
+        const token = localStorage.getItem('token');
+        const localConfig = {
+          headers: { Authorization: `Bearer ${token}` }
+        };
+        
+        // Fetch the profile data
+        const profileResponse = await axios.get(`${config.API_BASE_URL}/api/Users/Profile`, localConfig);
+        
+        // Use the CompanyId from the profile data to fetch the questions
+        const questionsResponse = await axios.get(`${config.API_BASE_URL}/api/Questions?companyId=${profileResponse.data.CompanyId}`, localConfig);
+        
+        // Store the UserId
+        setUserId(profileResponse.data.id);
+
+        setQuestions(questionsResponse.data);
       } catch (error) {
-        console.error('Failed to fetch questions:', error);
+        console.error('Failed to fetch profile or questions:', error);
       }
     };
-    fetchQuestions();
+    fetchProfileAndQuestions();
   }, []);
 
   const handleAnswerChange = (questionId, answerId) => {
@@ -51,14 +65,16 @@ const QuestionForm = () => {
       scoreValueD: totalScoreD,
       scoreValueI: totalScoreI,
       scoreValueS: totalScoreS,
-      scoreValueC: totalScoreC
+      scoreValueC: totalScoreC,
+      userId: userId
     };
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const totalScore = calculateTotalScore();
-  
+
     try {
       const token = localStorage.getItem('token');
       const localConfig = {
@@ -70,13 +86,12 @@ const QuestionForm = () => {
         localConfig
       );
       console.log(response.data);
-  
+
       navigate('/dashboard');
     } catch (error) {
       console.error("Failed to submit total score:", error);
     }
   };
-  
 
   return (
     <div className={styles["form-control"]}>
@@ -94,7 +109,6 @@ const QuestionForm = () => {
                         id={answer.id.toString()}
                         name={question.id.toString()}
                         value={answer.id}
-                        checked={answers[question.id] === answer.id}
                         onChange={() => handleAnswerChange(question.id, answer.id)}
                       />
                       {answer.answerText}
@@ -104,13 +118,13 @@ const QuestionForm = () => {
               </label>
             </div>
           ))}
-          <button type="submit" className={styles["button"]}>Submit</button>
+          <button type="submit">Submit</button>
         </form>
       ) : (
-        <div>No questions loaded</div>
+        <p>Loading...</p>
       )}
     </div>
-  );  
+  );
 };
 
-export default QuestionForm;
+export default ReactionForm;

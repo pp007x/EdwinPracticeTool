@@ -3,12 +3,12 @@ using LoginApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -24,15 +24,39 @@ public class QuestionsController : ControllerBase
         _logger = logger;
         _configuration = configuration;
     }
+
+    [Authorize]
     [HttpGet]
     public async Task<ActionResult<List<QuestionDTO>>> GetQuestions()
     {
-        var questions = await _context.Questions.Include(q => q.Answers).ToListAsync();
+        var nameIdentifierClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+        if (nameIdentifierClaim == null)
+        {
+            return BadRequest("No user is currently logged in.");
+        }
 
-        var questionDTOs = questions.Select(q => new QuestionDTO 
+        if (!int.TryParse(nameIdentifierClaim.Value, out var loggedInUserId))
+        {
+            return BadRequest("Invalid user ID.");
+        }
+
+        var user = await _context.Users.FindAsync(loggedInUserId);
+
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var questions = await _context.Questions
+            .Where(q => q.CompanyId == user.CompanyId)
+            .Include(q => q.Answers)
+            .ToListAsync();
+
+        var questionDTOs = questions.Select(q => new QuestionDTO
         {
             Id = q.Id,
             QuestionText = q.QuestionText,
+            CompanyId = q.CompanyId,
             Answers = q.Answers.Select(a => new AnswerDTO
             {
                 Id = a.Id,

@@ -5,6 +5,8 @@ namespace LoginApi.Models
     public int Id { get; set; }
     public string QuestionText { get; set; }
     public List<Answer> Answers { get; set; }
+
+    public int CompanyId { get; set; }
 }
 
 
@@ -26,7 +28,9 @@ public class QuestionDTO
     public int Id { get; set; }
     public string QuestionText { get; set; }
     public List<AnswerDTO> Answers { get; set; }
+    public int CompanyId { get; set; } // Add this line
 }
+
 
 public class AnswerDTO
 {

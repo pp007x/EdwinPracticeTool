@@ -26,9 +26,13 @@ namespace LoginApi.Controllers
             {
                 foreach (var questionDTO in questionDTOs)
                 {
-                    var question = new Question { QuestionText = questionDTO.QuestionText };
-                    _context.Questions.Add(question);
-                    await _context.SaveChangesAsync();
+                var question = new Question 
+                { 
+                    QuestionText = questionDTO.QuestionText,
+                    CompanyId = questionDTO.CompanyId // Add this line
+                };
+                _context.Questions.Add(question);
+                await _context.SaveChangesAsync();
 
                     foreach (var answerDTO in questionDTO.Answers)
                     {

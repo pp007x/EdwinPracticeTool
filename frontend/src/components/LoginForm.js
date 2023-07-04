@@ -56,7 +56,7 @@ function LoginForm() {
         }
 
       } catch (error) {
-        console.error("Failed to get user's scores.", error);
+        navigate('/reactionform');
       }
 
     } catch (error) {

@@ -62,31 +62,6 @@ function AdminPortal() {
         </div>
         <div className={styles.content}>
           <h1>Admin Portal</h1>
-          <h2>Users and their results</h2>
-          <ul>
-            {users.map((user) => (
-              <li key={user.id}>
-                {user.username}: {user.isAdmin ? "Admin" : "User"}
-              </li>
-            ))}
-          </ul>
-
-          <h2>Create New User</h2>
-          <form onSubmit={handleNewUserSubmit}>
-            <label>
-              Username:
-              <input type="text" name="username" value={newUser.username} onChange={handleInputChange} />
-            </label>
-            <label>
-              Password:
-              <input type="password" name="password" value={newUser.password} onChange={handleInputChange} />
-            </label>
-            <label>
-              Is Admin:
-              <input type="checkbox" name="isAdmin" checked={newUser.isAdmin} onChange={e => setNewUser({...newUser, isAdmin: e.target.checked})} />
-            </label>
-            <button type="submit">Create User</button>
-          </form>
         </div>
       </div>
     </>

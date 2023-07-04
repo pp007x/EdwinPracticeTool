@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import yaml from 'js-yaml';
 import config from '../../config';
 import DashboardSidebar from './AdminSidebar';
@@ -14,6 +14,14 @@ const Header = ({ title }) => (
 function AdminNewQuestion() {
     const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [companies, setCompanies] = useState([]);
+    const [selectedCompany, setSelectedCompany] = useState(null);
+
+    useEffect(() => {
+        fetch(`${config.API_BASE_URL}/api/companies`)
+            .then(response => response.json())
+            .then(data => setCompanies(data));
+    }, []);
 
     const handleFileUpload = async (event) => {
         setLoading(true);
@@ -22,6 +30,7 @@ function AdminNewQuestion() {
         reader.onload = async (e) => {
             const yamlText = e.target.result;
             const questions = yaml.load(yamlText);
+            questions.forEach(question => question.CompanyId = selectedCompany);
             setQuestions(questions);
 
             try {
@@ -47,12 +56,17 @@ function AdminNewQuestion() {
 
     return (
         <div className={styles.dashboard}>
-          <DashboardSidebar />
-          <div className={styles.main}>
-            <Header title="Admin New Question" />
-            <input type="file" onChange={handleFileUpload} disabled={loading} />
-            {/* Render your questions here */}
-          </div>
+            <DashboardSidebar />
+            <div className={styles.main}>
+                <Header title="Admin New Question" />
+                <select value={selectedCompany} onChange={event => setSelectedCompany(event.target.value)}>
+                    <option value="">Select a company...</option>
+                    {companies.map(company => (
+                        <option key={company.id} value={company.id}>{company.name}</option>
+                    ))}
+                </select>
+                <input type="file" onChange={handleFileUpload} disabled={loading || !selectedCompany} />
+            </div>
         </div>
     );
 }

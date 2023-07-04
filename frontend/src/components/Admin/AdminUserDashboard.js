@@ -119,7 +119,7 @@ const Dashboard = () => {
             <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={chartData}>
               <PolarGrid />
               <PolarAngleAxis dataKey="subject" />
-              <PolarRadiusAxis angle={30} domain={[0, 100]} />
+              <PolarRadiusAxis angle={90} domain={[0, 40]} />
               <Radar name="Score" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
             </RadarChart>
 
