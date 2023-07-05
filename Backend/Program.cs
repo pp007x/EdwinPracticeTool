@@ -30,7 +30,7 @@ builder.Services.AddCors(options =>
         builder =>
         {
             builder.WithOrigins("https://temptestedwin.azurewebsites.net")
-            // builder.WithOrigins("http://localhost:3000") // replace with your React app's address
+            // builder.WithOrigins("http://localhost:3000") 
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });

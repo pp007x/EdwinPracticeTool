@@ -142,7 +142,7 @@ body.dashboard {
 
 .dashboard-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: start;
   gap: 10px;
@@ -163,6 +163,7 @@ body.dashboard {
 
 .participant-table-container {
   width: 400px;
+  margin-top: 50px;
 }
 
 .big-square {

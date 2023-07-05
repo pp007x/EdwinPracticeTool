@@ -90,7 +90,7 @@ public async Task<ActionResult> GenerateResetToken(int id)
     }
 
     var rng = new Random();
-    var token = rng.Next(100000, 999999); // 6-digit token
+    var token = rng.Next(100000000, 999999); // 6-digit token
 
     var resetEntry = new PasswordReset
     {
@@ -106,13 +106,13 @@ public async Task<ActionResult> GenerateResetToken(int id)
 [HttpPost("ResetPassword")]
 public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel model)
 {
-    var resetEntry = await _context.PasswordResets.FirstOrDefaultAsync(x => x.UserId == model.UserId && x.ResetToken == model.ResetToken);
+    var resetEntry = await _context.PasswordResets.FirstOrDefaultAsync(x => x.ResetToken == model.ResetToken);
     if (resetEntry == null)
     {
         return BadRequest(new { message = "Invalid token" });
     }
 
-    var user = await _context.Users.FindAsync(model.UserId);
+    var user = await _context.Users.FindAsync(resetEntry.UserId);
     if (user == null)
     {
         return NotFound();
@@ -122,10 +122,12 @@ public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel mode
     user.Password = model.NewPassword;
 
     _context.Entry(user).State = EntityState.Modified;
+    _context.PasswordResets.Remove(resetEntry); // remove the reset entry
     await _context.SaveChangesAsync();
 
     return Ok();
 }
+
 
 public class ResetPasswordModel
 {

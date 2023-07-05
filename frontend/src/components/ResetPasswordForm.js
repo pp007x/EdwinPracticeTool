@@ -20,20 +20,17 @@ function ResetPasswordForm() {
       return;
     }
 
-    const decodedToken = jwtDecode(token);
-    const userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
-
     try {
       await axios.post(`${config.API_BASE_URL}/api/Users/ResetPassword`, {
-        userId,
         resetToken: token,
         newPassword: password
       });
-
+    
       setError("Password reset successfully!");
     } catch (error) {
       setError("An error occurred");
     }
+    
   };
 
   return (

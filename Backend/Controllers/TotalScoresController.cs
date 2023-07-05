@@ -56,7 +56,7 @@ public async Task<IActionResult> PostTotalScore(TotalScore totalScore)
 
     var sortedScoreValues = scoreValues.OrderByDescending(x => x.Value).ToList();
 
-    var boxValue = sortedScoreValues[0].Key + sortedScoreValues[1].Key;
+    var boxValue = sortedScoreValues[0].Key + sortedScoreValues[1].Key.ToLower();
     
     var user = await _context.Users.FindAsync(loggedInUserId);
     if (user == null)

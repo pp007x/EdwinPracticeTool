@@ -52,6 +52,7 @@ public ActionResult<Onderwerp> GetOnderwerpForUser(int userId)
     var user = _context.Users.FirstOrDefault(u => u.Id == userId);
     if (user == null)
     {
+        Console.WriteLine("User not found");
         return NotFound();
     }
 
@@ -61,6 +62,7 @@ public ActionResult<Onderwerp> GetOnderwerpForUser(int userId)
     // Map the box to the Onderwerp name
     if (!_boxToOnderwerpMapping.TryGetValue(box, out string onderwerpName))
     {
+        Console.WriteLine("Box not found");
         return NotFound();
     }
 
@@ -68,6 +70,7 @@ public ActionResult<Onderwerp> GetOnderwerpForUser(int userId)
     var onderwerp = _context.Onderwerpen.FirstOrDefault(o => o.Name == onderwerpName);
     if (onderwerp == null)
     {
+        Console.WriteLine("Onderwerp not found");
         return NotFound();
     }
 
