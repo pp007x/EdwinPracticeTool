@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "59Icacy1+yO0uIFb3FZj5CEIOrJVzbCUCWUtYaR4EwJ6sO1pzrvV80L0XcgyJu/1E5LwG3Qd8zi07luD3gXEXA==",
+  "dgSpecHash": "J5CNyq1kGfvNdloHr/mcFArNEO5uuE4rCn8NyE72s1K8afiZZE7RM6hAsWvAQ0Zu24+qNofrPzlpKuxYzQ6ZZA==",
   "success": true,
   "projectFilePath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\LoginApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\steph\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.7\\microsoft.aspnetcore.authentication.jwtbearer.7.0.7.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.1\\microsoft.aspnetcore.openapi.7.0.1.nupkg.sha512",

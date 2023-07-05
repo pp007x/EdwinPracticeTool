@@ -43,11 +43,16 @@ public class UsersController : ControllerBase
                 return NotFound(new { message = "Company not found" });
             }
         }
+
+        // Hash the password before storing it in the database
+        user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetUsers", new { id = user.Id }, user);
     }
+
 
     [HttpGet("Profile")]
     public ActionResult<User> GetProfile()
@@ -119,7 +124,7 @@ public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel mode
     }
 
     // Update the user password here
-    user.Password = model.NewPassword;
+    user.Password = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
 
     _context.Entry(user).State = EntityState.Modified;
     _context.PasswordResets.Remove(resetEntry); // remove the reset entry
@@ -127,6 +132,7 @@ public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel mode
 
     return Ok();
 }
+
 
 
 public class ResetPasswordModel

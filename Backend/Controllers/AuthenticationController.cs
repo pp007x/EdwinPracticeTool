@@ -27,57 +27,59 @@ public class AuthenticationController : ControllerBase
     }
 
 
-    [HttpPost("Register")]
-    public async Task<ActionResult<string>> Register(User newUser)
+[HttpPost("Register")]
+public async Task<ActionResult<string>> Register(User newUser)
+{
+    _logger.LogInformation("Register endpoint hit");
+    _logger.LogInformation($"Attempt to register with Username: {newUser.Username}");
+
+    // Check if the user with the provided username already exists
+    var existingUser = await _context.Users
+        .SingleOrDefaultAsync(x => x.Username == newUser.Username);
+
+    if (existingUser != null)
     {
-        _logger.LogInformation("Register endpoint hit");
-        _logger.LogInformation($"Attempt to register with Username: {newUser.Username}");
-
-        // Check if the user with the provided username already exists
-        var existingUser = await _context.Users
-            .SingleOrDefaultAsync(x => x.Username == newUser.Username);
-
-        if (existingUser != null)
-        {
-            _logger.LogInformation("Username already exists");
-            return BadRequest("Username already exists");
-        }
-
-        // Add the new user to the database
-        _context.Users.Add(newUser);
-        await _context.SaveChangesAsync();
-
-        // Generate a JWT token for the new user
-        var token = GenerateJwtToken(newUser);
-
-        _logger.LogInformation("User successfully registered");
-
-        return Ok(token);
+        _logger.LogInformation("Username already exists");
+        return BadRequest("Username already exists");
     }
 
+    // Hash the password before storing it in the database
+    newUser.Password = BCrypt.Net.BCrypt.HashPassword(newUser.Password);
 
+    // Add the new user to the database
+    _context.Users.Add(newUser);
+    await _context.SaveChangesAsync();
 
-    [HttpPost("Login")]
-    public async Task<ActionResult<string>> Login(User user)
+    // Generate a JWT token for the new user
+    var token = GenerateJwtToken(newUser);
+
+    _logger.LogInformation("User successfully registered");
+
+    return Ok(token);
+}
+
+[HttpPost("Login")]
+public async Task<ActionResult<string>> Login(User user)
+{
+    _logger.LogInformation("Login endpoint hit");
+    _logger.LogInformation($"Attempt to login with Username: {user.Username}");
+
+    var foundUser = await _context.Users
+        .SingleOrDefaultAsync(x => x.Username == user.Username);
+
+    if (foundUser == null || !BCrypt.Net.BCrypt.Verify(user.Password, foundUser.Password))
     {
-        _logger.LogInformation("Login endpoint hit");
-        _logger.LogInformation($"Attempt to login with Username: {user.Username}");
-
-        var foundUser = await _context.Users
-            .SingleOrDefaultAsync(x => x.Username == user.Username && x.Password == user.Password);
-
-        if (foundUser == null)
-        {
-            _logger.LogInformation("User not found or incorrect password");
-            return NotFound();
-        }
-
-        var token = GenerateJwtToken(foundUser);
-
-        _logger.LogInformation("User found and authenticated");
-
-        return Ok(token);
+        _logger.LogInformation("User not found or incorrect password");
+        return NotFound();
     }
+
+    var token = GenerateJwtToken(foundUser);
+
+    _logger.LogInformation("User found and authenticated");
+
+    return Ok(token);
+}
+
 
 private string GenerateJwtToken(User user)
 {
