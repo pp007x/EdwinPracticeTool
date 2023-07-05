@@ -30,14 +30,14 @@ public class DatabaseSeeder
                 Id = 1,
                 Name = "Company 1",
                 Description = "Description 1",
-                Code = "Code 1"
+                Code = "1"
             },
             new Company
             {
                 Id = 2,
                 Name = "Company 2",
                 Description = "Description 2",
-                Code = "Code 2"
+                Code = "2"
             }
         };
 
@@ -45,39 +45,112 @@ public class DatabaseSeeder
         dbContext.SaveChanges();
     }
 
-    private void SeedOnderwerpen()
+private void SeedOnderwerpen()
+{
+    var onderwerpen = new List<Onderwerp>
     {
-        var onderwerpen = new List<Onderwerp>
+        new Onderwerp
         {
-            new Onderwerp
-            {
-                Id = 1,
-                Name = "Dominant",
-                Description = "Doe dominant enzo"
-            },
-            new Onderwerp
-            {
-                Id = 2,
-                Name = "Invloedrijk",
-                Description = "Doe invloedrijk enzo"
-            },
-            new Onderwerp
-            {
-                Id = 3,
-                Name = "Stabiel",
-                Description = "Doe stabiel enzo"
-            },
-            new Onderwerp
-            {
-                Id = 4,
-                Name = "Consciëntieus",
-                Description = "Doe consciëntieus enzo"
-            }
-        };
+            Id = 1,
+            Name = "Analyticus",
+            Description = "Doe Analyticus enzo"
+        },
+        new Onderwerp
+        {
+            Id = 2,
+            Name = "Strateeg",
+            Description = "Doe Strateeg enzo"
+        },
+        new Onderwerp
+        {
+            Id = 3,
+            Name = "Perfectionist",
+            Description = "Doe Perfectionist enzo"
+        },
+        new Onderwerp
+        {
+            Id = 4,
+            Name = "Raadgever",
+            Description = "Doe Raadgever enzo"
+        },
+        new Onderwerp
+        {
+            Id = 5,
+            Name = "Pionier",
+            Description = "Doe Pionier enzo"
+        },
+        new Onderwerp
+        {
+            Id = 6,
+            Name = "Beslisser",
+            Description = "Doe Beslisser enzo"
+        },
+        new Onderwerp
+        {
+            Id = 7,
+            Name = "Doorzetter",
+            Description = "Doe Doorzetter enzo"
+        },
+        new Onderwerp
+        {
+            Id = 8,
+            Name = "Avonturier",
+            Description = "Doe Avonturier enzo"
+        },
+        new Onderwerp
+        {
+            Id = 9,
+            Name = "Specialist",
+            Description = "Doe Specialist enzo"
+        },
+        new Onderwerp
+        {
+            Id = 10,
+            Name = "Doener",
+            Description = "Doe Doener enzo"
+        },
+        new Onderwerp
+        {
+            Id = 11,
+            Name = "Dienstverlener",
+            Description = "Doe Dienstverlener enzo"
+        },
+        new Onderwerp
+        {
+            Id = 12,
+            Name = "Helper",
+            Description = "Doe Helper enzo"
+        },
+        new Onderwerp
+        {
+            Id = 13,
+            Name = "Diplomaat",
+            Description = "Doe Diplomaat enzo"
+        },
+        new Onderwerp
+        {
+            Id = 14,
+            Name = "Inspirator",
+            Description = "Doe Inspirator enzo"
+        },
+        new Onderwerp
+        {
+            Id = 15,
+            Name = "Bemiddelaar",
+            Description = "Doe Bemiddelaar enzo"
+        },
+        new Onderwerp
+        {
+            Id = 16,
+            Name = "Entertainer",
+            Description = "Doe Entertainer enzo"
+        }
+    };
 
-        dbContext.Onderwerpen.AddRange(onderwerpen);
-        dbContext.SaveChanges();
-    }
+    dbContext.Onderwerpen.AddRange(onderwerpen);
+    dbContext.SaveChanges();
+}
+
 
     private void SeedQuestions()
     {

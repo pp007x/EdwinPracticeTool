@@ -26,6 +26,12 @@ const DashboardSidebar = () => {
           >
             Company
           </Link>
+          <Link
+            to="/info"
+            className={`${styles["nav-button"]} ${location.pathname === '/info' ? styles.active : ''}`}
+          >
+            Info over de profielen
+          </Link>
         </div>
       </div>
     </div>

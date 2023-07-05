@@ -64,5 +64,29 @@ namespace LoginApi.Controllers
 
             return users;
         }
+
+        // CompaniesController.cs
+[HttpDelete("{id}")]
+public async Task<IActionResult> DeleteCompany(int id)
+{
+    var company = await _context.Companies.FindAsync(id);
+    if (company == null)
+    {
+        return NotFound();
     }
+
+    // Remove all users associated with this company
+    var users = await _context.Users.Where(u => u.CompanyId == id).ToListAsync();
+    _context.Users.RemoveRange(users);
+
+    // Remove the company itself
+    _context.Companies.Remove(company);
+    await _context.SaveChangesAsync();
+
+    return NoContent();
+}
+
+    }
+
+    
 }

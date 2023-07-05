@@ -22,7 +22,7 @@ const ReactionForm = () => {
         const profileResponse = await axios.get(`${config.API_BASE_URL}/api/Users/Profile`, localConfig);
         
         // Use the CompanyId from the profile data to fetch the questions
-        const questionsResponse = await axios.get(`${config.API_BASE_URL}/api/Questions?companyId=${profileResponse.data.CompanyId}`, localConfig);
+        const questionsResponse = await axios.get(`${config.API_BASE_URL}/api/ReactionForm?companyId=${profileResponse.data.companyId}`, localConfig);
         
         // Store the UserId
         setUserId(profileResponse.data.id);

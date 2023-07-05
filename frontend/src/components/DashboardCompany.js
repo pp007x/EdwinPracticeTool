@@ -55,50 +55,51 @@ const CompanyDashboard = () => {
     <div className={styles.main}>
       <DashboardHeader />
         <div className={styles.content}>
+        <div className={styles.sidebarRight}>
           <div className={styles["dashboard-title"]}>
             <h1>Company Dashboard</h1>
             <p>Welcome to the Company Dashboard page!</p>
           </div>
 
           <div className={styles["dashboard-content"]}>
-            <div className={styles["box-and-table-container"]}>
+          <div className={styles["big-square-wrapper"]}>
               <div className={styles["big-square-container"]}>
                 {['C', 'D', 'S', 'I'].map((letter, bigSquareIndex) => (
                   <div className={`${styles["big-square"]} ${styles["big-square-" + (bigSquareIndex + 1)]}`} key={bigSquareIndex}>
                     <p className={styles["corner-letter"]}>{letter}</p>
                     <div className={styles["small-squares"]}>
-                      {[0, 1, 2, 3].map((smallSquareIndex) => {
-                        const descriptionIndex = bigSquareIndex * 4 + smallSquareIndex;
-                        const colorClass = `small-square-${descriptionIndex + 1}`;
-                        return (
-                          <div className={`${styles["small-square"]} ${styles[colorClass]}`} key={smallSquareIndex}>
-                            <div className={styles["box-content"]}>
-                              <p className={styles["description-name"]}>{descriptions[descriptionIndex]}</p>
-                              <div className={styles["score-container"]}>
-                                {userBoxes
-                                  .filter(user =>
-                                    typeof user.box === 'string' &&
-                                    user.box.length === 2 &&
-                                    boxCodeToIndex[user.box[0].toUpperCase()] === bigSquareIndex &&
-                                    boxCodeToIndex[user.box[1].toLowerCase()] === smallSquareIndex)
-                                  .map((user, index) => (
-                                    <p className={styles["score-name"]} key={index}>{user.username}</p>
-                                  ))
-                                }
-                              </div>
+                    {[0, 1, 2, 3].map((smallSquareIndex) => {
+                      const descriptionIndex = bigSquareIndex * 4 + smallSquareIndex;
+                      const colorClass = `small-square-${descriptionIndex + 1}`;
+                      return (
+                        <div className={`${styles["small-square"]} ${styles[colorClass]}`} key={smallSquareIndex}>
+                          <div className={styles["box-content"]}>
+                            <p className={styles["description-name"]}>{descriptions[descriptionIndex]}</p>
+                            {smallSquareIndex === 3 && bigSquareIndex === 0 && <p className={styles["indirect-label"]}>Indirect</p>}
+                            {smallSquareIndex === 0 && bigSquareIndex === 2 && <p className={styles["mens-label"]}>Mens</p>}
+                            {smallSquareIndex === 0 && bigSquareIndex === 1 && <p className={styles["taak-label"]}>Taak</p>}
+                            {smallSquareIndex === 0 && bigSquareIndex === 3 && <p className={styles["direct-label"]}>Direct</p>}
+                            <div className={styles["score-container"]}>
+                              {userBoxes
+                                .filter(user =>
+                                  console.log(bigSquareIndex) ||
+                                  typeof user.box === 'string' &&
+                                  user.box.length === 2 &&
+                                  boxCodeToIndex[user.box[0].toUpperCase()] === bigSquareIndex &&
+                                  boxCodeToIndex[user.box[1].toLowerCase()] === smallSquareIndex)
+                                .map((user, index) => (
+                                  <p className={styles["score-name"]} key={index}>{user.username}</p>
+                                ))
+                              }
                             </div>
                           </div>
-                        );
-                      })}
+                        </div>
+                      );
+                    })}
+
                     </div>
                   </div>
                 ))}
-                <div className={styles["center-words"]}>
-                  <p className={styles["top-word"]}>Taak</p>
-                  <p className={styles["right-word"]}>Direct</p>
-                  <p className={styles["bottom-word"]}>Mens</p>
-                  <p className={styles["left-word"]}>Indirect</p>
-                </div>
               </div>
             </div>
 
@@ -130,8 +131,9 @@ const CompanyDashboard = () => {
               </table>
             </div>
           </div>
+          </div>
         </div>
-      </div>
+        </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 import DashboardSidebar from './AdminSidebar';
-import styles from '../../Css/Dashboard.module.css';
+import styles from '../../Css/CompanyDashboard.module.css'; 
 import axios from 'axios';
 import config from '../../config';
 
@@ -91,35 +91,45 @@ const Dashboard = () => {
         .catch(error => console.error('There has been a problem with your fetch operation:', error));
     }
   }, [selectedUser]);
-
+  const CustomizedAxisTick = ({ x, y, payload }) => {
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text x={0} y={0} dy={16} textAnchor="end" fill="#666" transform="rotate(-35)">{payload.value}</text>
+      </g>
+    );
+  };
   return (
     <div className={styles.dashboard}>
       <DashboardSidebar />
       <div className={styles.main}>
         <Header title={onderwerpData ? onderwerpData.name : 'Loading...'} />
-
+        <div className={styles.sidebarRight}>
+        <h1>See user info</h1>
         <label>Select a Company:</label>
-        <select onChange={(e) => setSelectedCompany(e.target.value)}>
+        <div>
+        <select className={styles.dropdownMenu} onChange={(e) => setSelectedCompany(e.target.value)}>
           <option value="">Select a company</option>
           {companies.map((company, index) =>
             <option key={index} value={company.id}>{company.name}</option>
           )}
         </select>
-
+        </div>
+        <div>
         <label>Select a User:</label>
-        <select onChange={(e) => setSelectedUser(e.target.value)}>
+        <div>
+        <select className={styles.dropdownMenu} onChange={(e) => setSelectedUser(e.target.value)}>
           <option value="">Select a user</option>
           {users.map((user, index) =>
             <option key={index} value={user.id}>{user.username}</option>
           )}
         </select>
-
+        </div>
         {resultData && (
           <div>
             <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={chartData}>
               <PolarGrid />
               <PolarAngleAxis dataKey="subject" />
-              <PolarRadiusAxis angle={90} domain={[0, 40]} />
+              <PolarRadiusAxis angle={90} domain={[0, 40]} tick={<CustomizedAxisTick />} />
               <Radar name="Score" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
             </RadarChart>
 
@@ -130,6 +140,8 @@ const Dashboard = () => {
             <div>{`Score Value C: ${resultData.scoreValueC}`}</div>
           </div>
         )}
+        </div>
+      </div>
       </div>
     </div>
   );

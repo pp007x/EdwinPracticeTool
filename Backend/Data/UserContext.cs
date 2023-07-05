@@ -16,5 +16,6 @@ public class UserContext : DbContext
     public DbSet<TotalScore> TotalScores { get; set; }
     public DbSet<Company> Companies { get; set; }
     public DbSet<Onderwerp> Onderwerpen { get; set; }
+    public DbSet<PasswordReset> PasswordResets { get; set; }
 }
 }

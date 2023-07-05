@@ -36,7 +36,7 @@ body {
     margin-right: 10px;
   }
   
-  button[type='submit'] {
+  button {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;

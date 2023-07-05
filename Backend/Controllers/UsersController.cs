@@ -50,7 +50,6 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("Profile")]
-    [Authorize]
     public ActionResult<User> GetProfile()
     {
         var usernameClaim = User.Identity.Name;
@@ -63,4 +62,76 @@ public class UsersController : ControllerBase
 
         return user;
     }
+
+    // UserController.cs
+[HttpDelete("{id}")]
+[Authorize(Roles = "Admin")]
+public async Task<IActionResult> DeleteUser(int id)
+{
+    var user = await _context.Users.FindAsync(id);
+    if (user == null)
+    {
+        return NotFound();
+    }
+
+    _context.Users.Remove(user);
+    await _context.SaveChangesAsync();
+
+    return NoContent();
+}
+[HttpPost("GenerateResetToken/{id}")]
+[Authorize(Roles = "Admin")]
+public async Task<ActionResult> GenerateResetToken(int id)
+{
+    var user = await _context.Users.FindAsync(id);
+    if (user == null)
+    {
+        return NotFound();
+    }
+
+    var rng = new Random();
+    var token = rng.Next(100000, 999999); // 6-digit token
+
+    var resetEntry = new PasswordReset
+    {
+        UserId = id,
+        ResetToken = token
+    };
+
+    _context.PasswordResets.Add(resetEntry);
+    await _context.SaveChangesAsync();
+
+    return Ok(new { Token = token });
+}
+[HttpPost("ResetPassword")]
+public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel model)
+{
+    var resetEntry = await _context.PasswordResets.FirstOrDefaultAsync(x => x.UserId == model.UserId && x.ResetToken == model.ResetToken);
+    if (resetEntry == null)
+    {
+        return BadRequest(new { message = "Invalid token" });
+    }
+
+    var user = await _context.Users.FindAsync(model.UserId);
+    if (user == null)
+    {
+        return NotFound();
+    }
+
+    // Update the user password here
+    user.Password = model.NewPassword;
+
+    _context.Entry(user).State = EntityState.Modified;
+    await _context.SaveChangesAsync();
+
+    return Ok();
+}
+
+public class ResetPasswordModel
+{
+    public int UserId { get; set; }
+    public int ResetToken { get; set; }
+    public string NewPassword { get; set; }
+}
+
 }

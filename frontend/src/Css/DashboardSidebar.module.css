@@ -1,6 +1,6 @@
 .sidebar {
     width: 250px;
-    background-color: #fdfdfd;
+    background-color: #d6d6d6;
     padding: 20px;
     box-sizing: border-box;
     position: flex; /* updated from sticky to fixed */
@@ -8,6 +8,7 @@
     left: 0;
     overflow-y: auto;
     height: 100%; /* updated from 100% to 100vh */
+    
 }
   
   /* Rest of the CSS */
@@ -46,7 +47,7 @@
   }
   
   .nav-button.active {
-    background-color: #d0d0d0;
+    background-color: #bdbaba;
   }
   
   .nav-button > button {

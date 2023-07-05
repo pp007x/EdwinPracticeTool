@@ -11,6 +11,14 @@ import AdminAddUser from './components/Admin/AdminCreateUser';
 import AdminCompanyDashboard from './components/Admin/AdminCompanyDashboard';
 import AdminUserDashboard from './components/Admin/AdminUserDashboard';
 import AdminNewQuestion from './components/Admin/AdminNewQuestions';
+import AdminEditQuestions from './components/Admin/AdminEditQuestions';
+import AdminAddQuestions from './components/Admin/AdminAddQuestions';
+import AdminRemoveUser from './components/Admin/AdminRemoveUser';
+import AdminRemoveCompany from './components/Admin/AdminRemoveCompany';
+import AdminEditOnderwerp from './components/Admin/AdminEditOnderwerp';
+import InfoPagina from './components/InfoPagina';
+import AdminResetPassword from './components/Admin/AdminResetPassword';
+import ResetPassword from './components/ResetPasswordForm';
 function App() {
     return (
         <Router>
@@ -27,6 +35,14 @@ function App() {
                 <Route path="/admin/companies" element={<ProtectedComponent><AdminCompanyDashboard /></ProtectedComponent>} />
                 <Route path="/admin/users" element={<ProtectedComponent><AdminUserDashboard /></ProtectedComponent>} />
                 <Route path="/admin/newquestion" element={<ProtectedComponent><AdminNewQuestion /></ProtectedComponent>} />
+                <Route path="/admin/newquestions" element={<ProtectedComponent><AdminEditQuestions /></ProtectedComponent>} />
+                <Route path="/admin/addquestions" element={<ProtectedComponent><AdminAddQuestions /></ProtectedComponent>} />
+                <Route path="/admin/removeuser" element={<ProtectedComponent><AdminRemoveUser /></ProtectedComponent>} />
+                <Route path="/admin/removecompany" element={<ProtectedComponent><AdminRemoveCompany /></ProtectedComponent>} />
+                <Route path="/admin/editonderwerp" element={<ProtectedComponent><AdminEditOnderwerp /></ProtectedComponent>} />
+                <Route path="/info" element={<InfoPagina />} />
+                <Route path="/admin/resetpassword" element={<ProtectedComponent><AdminResetPassword /></ProtectedComponent>} />
+                <Route path="/resetpassword" element={<ResetPassword />} />
             </Routes>
         </Router>
     );

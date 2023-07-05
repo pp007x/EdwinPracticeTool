@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using LoginApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using LoginApi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace LoginApi.Controllers
 {
@@ -16,29 +17,63 @@ namespace LoginApi.Controllers
         {
             _context = context;
         }
+    [HttpGet]
+    public ActionResult<IEnumerable<Onderwerp>> GetOnderwerpen()
+    {
+        return _context.Onderwerpen.ToList();
+    }
 
-        [HttpGet("user/{userId}")]
-        public ActionResult<Onderwerp> GetOnderwerpForUser(int userId)
-        {
-            // Find the TotalScore for the user
-            var totalScore = _context.TotalScores.FirstOrDefault(ts => ts.UserId == userId);
-            if (totalScore == null)
-            {
-                return NotFound();
-            }
 
-            // Get the id of the highest score
-            int highestScoreId = totalScore.GetHighestScoreId();
+private readonly Dictionary<string, string> _boxToOnderwerpMapping = new Dictionary<string, string>
+{
+    {"C", "Analyticus"},
+    {"Cd", "Strateeg"},
+    {"Cs", "Perfectionist"},
+    {"Ci", "raadgever"},
+    {"Dc", "Pionier"},
+    {"D", "Beslisser"},
+    {"Ds", "Doorzetter"},
+    {"Di", "Avonturier"},
+    {"Sc", "Specialist"},
+    {"Sd", "Doener"},
+    {"S", "Dienstverlener"},
+    {"Si", "Helper"},
+    {"Ic", "Diplomaat"},
+    {"Id", "Inspirator"},
+    {"Is", "Bemiddelaar"},
+    {"I", "Entertainer"}
+};
 
-            // Find the Onderwerp with the id
-            var onderwerp = _context.Onderwerpen.FirstOrDefault(o => o.Id == highestScoreId);
-            if (onderwerp == null)
-            {
-                return NotFound();
-            }
 
-            return onderwerp;
-        }
+[HttpGet("user/{userId}")]
+public ActionResult<Onderwerp> GetOnderwerpForUser(int userId)
+{
+    // Fetch the user
+    var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+    if (user == null)
+    {
+        return NotFound();
+    }
+
+    // Get the user's box
+    string box = user.Box;
+
+    // Map the box to the Onderwerp name
+    if (!_boxToOnderwerpMapping.TryGetValue(box, out string onderwerpName))
+    {
+        return NotFound();
+    }
+
+    // Find the Onderwerp with the name
+    var onderwerp = _context.Onderwerpen.FirstOrDefault(o => o.Name == onderwerpName);
+    if (onderwerp == null)
+    {
+        return NotFound();
+    }
+
+    return onderwerp;
+}
+
 
         [HttpGet("box/{userId}")]
         public ActionResult<string> GetUserBox(int userId)
@@ -91,5 +126,44 @@ namespace LoginApi.Controllers
 
             return userBoxes;
         }
+    // OnderwerpController.cs
+[HttpGet("{id}")]
+public ActionResult<Onderwerp> GetOnderwerp(int id)
+{
+    var onderwerp = _context.Onderwerpen.Find(id);
+    if (onderwerp == null)
+    {
+        return NotFound();
+    }
+    return onderwerp;
+}
+
+[HttpPut("{id}")]
+public ActionResult<Onderwerp> UpdateOnderwerp(int id, Onderwerp onderwerp)
+{
+    if (id != onderwerp.Id)
+    {
+        return BadRequest();
+    }
+
+    _context.Entry(onderwerp).State = EntityState.Modified;
+    try
+    {
+        _context.SaveChanges();
+    }
+    catch (DbUpdateConcurrencyException)
+    {
+        if (!_context.Onderwerpen.Any(o => o.Id == id))
+        {
+            return NotFound();
+        }
+        else
+        {
+            throw;
+        }
+    }
+    return NoContent();
+}
+
     }
 }

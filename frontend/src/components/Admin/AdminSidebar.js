@@ -48,7 +48,44 @@ const AdminSidebar = () => {
             to="/admin/newquestion"
             className={`${styles["nav-button"]} ${location.pathname === '/admin/newquestion' ? styles.active : ''}`}
           >
-            Add Questions
+            Upload Questions
+          </Link>
+          <Link
+            to="/admin/newquestions"
+            className={`${styles["nav-button"]} ${location.pathname === '/admin/newquestions' ? styles.active : ''}`}
+          >
+            Edit questions
+          </Link>
+          <Link
+            to="/admin/addquestions"
+            className={`${styles["nav-button"]} ${location.pathname === '/admin/addquestions' ? styles.active : ''}`}
+          >
+            Add Question
+          </Link>
+          <Link
+            to="/admin/removeuser"
+            className={`${styles["nav-button"]} ${location.pathname === '/admin/removeuser' ? styles.active : ''}`}
+          >
+            Remove User
+          </Link>
+
+          <Link
+            to="/admin/removecompany"
+            className={`${styles["nav-button"]} ${location.pathname === '/admin/removecompany' ? styles.active : ''}`}
+          >
+            Remove Company
+          </Link>
+          <Link
+            to="/admin/editonderwerp"
+            className={`${styles["nav-button"]} ${location.pathname === '/admin/editonderwerp' ? styles.active : ''}`}
+          >
+            Aanpassen profielen
+          </Link>
+          <Link
+            to="/admin/resetpassword"
+            className={`${styles["nav-button"]} ${location.pathname === '/admin/resetpassword' ? styles.active : ''}`}
+          >
+            Reset Password
           </Link>
         </div>
       </div>

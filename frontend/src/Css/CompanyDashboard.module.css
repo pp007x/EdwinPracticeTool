@@ -2,7 +2,7 @@ body.dashboard {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('../images/LoginBackground.jpg');
+    background-color: #1e90ff;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -11,14 +11,87 @@ body.dashboard {
   
   .dashboard {
     display: flex;
-    height: 100%;
+    height: 100vh;
   }
-  
+  .inputField {
+    color: #000000; 
+    border: 1px solid #000000; 
+    padding: 5px;
+    width: 200px;
+    
+}
+
+.chart-container {
+  max-width: 600px;
+  max-height: 400px;
+}
+.inputFieldNumber {
+  color: #000000; 
+  border: 1px solid #000000; 
+  padding: 5px;
+  width: 30px;
+  text-align: center;
+  margin-left: 10px;
+}
+.labelWithCheckbox {
+  display: flex;
+  align-items: center; /* This will vertically center the elements */
+}
+.labelWithCheckbox input {
+  margin-left: 0; /* This removes any space to the left of the checkbox */
+}
+.inputFieldWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.inputFieldWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.inputFieldWrapper label {
+  flex-basis: 200px; /* Adjust the value as needed for desired label width */
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+
+.longLabel {
+  white-space: nowrap;
+}
+
+.checkboxSize {
+  transform: scale(0.5);
+}
+
+.dropdownMenu {
+  width: 300px; 
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #999;
+  border-radius: 5px;
+/* This is to remove the default dropdown arrow of the select box in other browsers */ /* Replace "path_to_your_custom_dropdown_arrow_image" with the path to your custom dropdown arrow image */
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.dropdownMenu:focus {
+  outline: none;
+  border-color: #1e90ff;  /* Change this to your preferred focus border color */
+}
+
+
   .main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    
   }
   
   .header {
@@ -28,6 +101,7 @@ body.dashboard {
     color: white;
     position: relative;
     border-bottom: none;
+    margin-bottom: 20px; /* Add this line */
   }
   
   .page-title {
@@ -52,12 +126,23 @@ body.dashboard {
     background-color: white;
     
   }
+
+  .sidebarRight{
+    margin-left: 20px;
+  }
   
   .dashboard-content {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: row; 
+    justify-content: flex-start;  /* Change space-between to flex-start */
+    align-items: start; 
+    gap: 10px;  /* Adjust this value as needed */
     margin-top: 50px;
+  }
+  
+  .big-square-wrapper {
+    /* You can adjust this width as needed */
+    flex: 1; /* Add this line to make this element take up remaining space */
   }
   
   .big-square-container {
@@ -101,32 +186,50 @@ body.dashboard {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    min-width: 0; /* reset min-width */
+    min-width: 200px; /* reset min-width */
   }
-  
   .box-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
   }
+
   
   .description-name,
   .score-name {
     margin: 5px;
   }
   
-  .center-words {
+
+  .box-and-table-container {
+    position: relative; /* Add this */
+    /* Rest of your CSS */
+  }
+
+  .indirect-label {
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    bottom: -40px;
+    left: -30px;
+  }
+
+  .taak-label {
+    position: absolute;
+    bottom: 90%;
+    left: -27px;
+  }
+
+  .mens-label {
+    position: absolute;
+    bottom: -20px;
+    right: -27px;
   }
   
-  .center-words .top-word { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); }
-  .center-words .right-word { position: absolute; top: 50%; right: -40px; transform: translateY(-50%); }
-  .center-words .bottom-word { position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); padding-bottom: 25px; }
-  .center-words .left-word { position: absolute; top: 50%; left: -40px; transform: translateY(-50%); padding-left: 20px;}
+  .direct-label{
+    position: absolute;
+    bottom: 90%;
+    right: -27px;
+  }
   
   /* Different tints for small squares */
   .small-square-1 { background-color: #1e90ff; }

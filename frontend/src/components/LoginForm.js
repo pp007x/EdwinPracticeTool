@@ -67,7 +67,7 @@ function LoginForm() {
   return (
     <div className={styles.loginFormWrapper}>
       <div className={styles.inputBox}>
-        <img src={logo} alt="Logo" className={styles.logo} /> {/* Add the logo */}
+        <img src={logo} alt="Logo" className={styles.logo} /> 
         <form onSubmit={handleSubmit} className={styles.form}>
           <label className={styles.label}>Username:</label>
           <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" className={styles.input} />
@@ -77,6 +77,7 @@ function LoginForm() {
           <button type="submit" className={styles.loginButton}>Login</button>
         </form>
         <button className={styles.registerButton} onClick={() => navigate('/register')}>Register</button>
+        <button className={styles.resetPasswordButton} onClick={() => navigate('/resetpassword')}>Forgot Password?</button>
       </div>
     </div>
   );

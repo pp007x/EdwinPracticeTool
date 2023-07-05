@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import config from '../../config';
 import styles from '../../Css/CompanyDashboard.module.css'; 
-import DashboardSidebar from './AdminSidebar';
-import DashboardHeader from './AdminHeader';
+import AdminSidebar from './AdminSidebar';
+import AdminHeader from './AdminHeader';
 
 const descriptions = [
   "Analyticus (C)", "Strateeg (Cd)", "Perfectionist (Cs)", "Raadgever (Ci)",
@@ -66,19 +66,22 @@ const AdminCompanyDashboard = () => {
 
   return (
     <div className={styles.dashboard}>
-        <DashboardSidebar />
+        <AdminSidebar />
         <div className={styles.main}>
-            <DashboardHeader />
+            <AdminHeader />
             <div className={styles.content}>
+            <div className={styles.sidebarRight}>
                 <div className={styles["dashboard-title"]}>
                     <h1>Company Dashboard</h1>
                     <p>Welcome to the Company Dashboard page!</p>
                 </div>
 
-                <div className={styles["company-selection-container"]}>
+                <div className={styles["company-selection-container"] }>
                     <div>
                         <label>Select a Company:</label>
-                        <select onChange={(e) => setSelectedCompany(e.target.value)}>
+                        </div>
+                        <div>
+                        <select className={styles.dropdownMenu} onChange={(e) => setSelectedCompany(e.target.value)}>
                             <option value="">Select a company</option>
                             {companies.map((company, index) =>
                                 <option key={index} value={company.id}>{company.name}</option>
@@ -87,81 +90,81 @@ const AdminCompanyDashboard = () => {
                     </div>
 
                     <div className={styles["dashboard-content"]}>
-                        <div className={styles["box-and-table-container"]}>
-                            <div className={styles["big-square-container"]}>
-                                {['C', 'D', 'S', 'I'].map((letter, bigSquareIndex) => (
-                                    <div className={`${styles["big-square"]} ${styles["big-square-" + (bigSquareIndex + 1)]}`} key={bigSquareIndex}>
-                                        <p className={styles["corner-letter"]}>{letter}</p>
-                                        <div className={styles["small-squares"]}>
-                                            {[0, 1, 2, 3].map((smallSquareIndex) => {
-                                                const descriptionIndex = bigSquareIndex * 4 + smallSquareIndex;
-                                                const colorClass = `small-square-${descriptionIndex + 1}`;
-                                                return (
-                                                    <div className={`${styles["small-square"]} ${styles[colorClass]}`} key={smallSquareIndex}>
-                                                        <div className={styles["box-content"]}>
-                                                            <p className={styles["description-name"]}>{descriptions[descriptionIndex]}</p>
-                                                            <div className={styles["score-container"]}>
-                                                                {userBoxes
-                                                                    .filter(user =>
-                                                                        typeof user.box === 'string' &&
-                                                                        user.box.length === 2 &&
-                                                                        boxCodeToIndex[user.box[0].toUpperCase()] === bigSquareIndex &&
-                                                                        boxCodeToIndex[user.box[1].toLowerCase()] === smallSquareIndex)
-                                                                    .map((user, index) => (
-                                                                        <p className={styles["score-name"]} key={index}>{user.username}</p>
-                                                                    ))
-                                                                }
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-                                ))}
-                                <div className={styles["center-words"]}>
-                                    <p className={styles["top-word"]}>Taak</p>
-                                    <p className={styles["right-word"]}>Direct</p>
-                                    <p className={styles["bottom-word"]}>Mens</p>
-                                    <p className={styles["left-word"]}>Indirect</p>
-                                </div>
+          <div className={styles["big-square-wrapper"]}>
+              <div className={styles["big-square-container"]}>
+                {['C', 'D', 'S', 'I'].map((letter, bigSquareIndex) => (
+                  <div className={`${styles["big-square"]} ${styles["big-square-" + (bigSquareIndex + 1)]}`} key={bigSquareIndex}>
+                    <p className={styles["corner-letter"]}>{letter}</p>
+                    <div className={styles["small-squares"]}>
+                    {[0, 1, 2, 3].map((smallSquareIndex) => {
+                      const descriptionIndex = bigSquareIndex * 4 + smallSquareIndex;
+                      const colorClass = `small-square-${descriptionIndex + 1}`;
+                      return (
+                        <div className={`${styles["small-square"]} ${styles[colorClass]}`} key={smallSquareIndex}>
+                          <div className={styles["box-content"]}>
+                            <p className={styles["description-name"]}>{descriptions[descriptionIndex]}</p>
+                            {smallSquareIndex === 2 && bigSquareIndex === 0 && <p className={styles["indirect-label"]}>Indirect</p>}
+                            {smallSquareIndex === 1 && bigSquareIndex === 2 && <p className={styles["mens-label"]}>Mens</p>}
+                            {smallSquareIndex === 0 && bigSquareIndex === 1 && <p className={styles["taak-label"]}>Taak</p>}
+                            {smallSquareIndex === 0 && bigSquareIndex === 3 && <p className={styles["direct-label"]}>Direct</p>}
+                            <div className={styles["score-container"]}>
+                              {userBoxes
+                                .filter(user =>
+                                  console.log(bigSquareIndex) ||
+                                  typeof user.box === 'string' &&
+                                  user.box.length === 2 &&
+                                  boxCodeToIndex[user.box[0].toUpperCase()] === bigSquareIndex &&
+                                  boxCodeToIndex[user.box[1].toLowerCase()] === smallSquareIndex)
+                                .map((user, index) => (
+                                  <p className={styles["score-name"]} key={index}>{user.username}</p>
+                                ))
+                              }
                             </div>
+                          </div>
                         </div>
+                      );
+                    })}
 
-                        <div className={styles["participant-table-container"]}>
-                            <table className={styles["participant-table"]}>
-                                <thead>
-                                <tr>
-                                    <th>Deelnemer</th>
-                                    <th>D</th>
-                                    <th>I</th>
-                                    <th>S</th>
-                                    <th>C</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {userBoxes.map((user, index) => {
-                                    const userScore = userScores.find(score => score.userId === user.id) || {};
-                                    return (
-                                        <tr key={index}>
-                                            <td>{user.username}</td>
-                                            <td>{userScore.scoreValueD}</td>
-                                            <td>{userScore.scoreValueI}</td>
-                                            <td>{userScore.scoreValueS}</td>
-                                            <td>{userScore.scoreValueC}</td>
-                                        </tr>
-                                    );
-                                })}
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
-                </div>
+                  </div>
+                ))}
+              </div>
             </div>
+
+            <div className={styles["participant-table-container"]}>
+              <table className={styles["participant-table"]}>
+                <thead>
+                  <tr>
+                    <th>Deelnemer</th>
+                    <th>D</th>
+                    <th>I</th>
+                    <th>S</th>
+                    <th>C</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {userBoxes.map((user, index) => {
+                    const userScore = userScores.find(score => score.userId === user.id) || {};
+                    return (
+                      <tr key={index}>
+                        <td>{user.username}</td>
+                        <td>{userScore.scoreValueD}</td>
+                        <td>{userScore.scoreValueI}</td>
+                        <td>{userScore.scoreValueS}</td>
+                        <td>{userScore.scoreValueC}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
         </div>
     </div>
-);
-
+  );
 };
 
 export default AdminCompanyDashboard;

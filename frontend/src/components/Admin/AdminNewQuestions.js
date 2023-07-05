@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import yaml from 'js-yaml';
 import config from '../../config';
 import DashboardSidebar from './AdminSidebar';
-import styles from '../../Css/Dashboard.module.css';
-
+import styles from '../../Css/CompanyDashboard.module.css'; 
 const Header = ({ title }) => (
   <div className={styles.header}>
     <hr />
@@ -59,13 +58,19 @@ function AdminNewQuestion() {
             <DashboardSidebar />
             <div className={styles.main}>
                 <Header title="Admin New Question" />
-                <select value={selectedCompany} onChange={event => setSelectedCompany(event.target.value)}>
+                <div className={styles.sidebarRight}>
+                <h1>Add new questions</h1>
+                    <label className={styles.label}>Select a company:</label>
+                    <div>
+                <select className={styles.dropdownMenu} value={selectedCompany} onChange={event => setSelectedCompany(event.target.value)}>
                     <option value="">Select a company...</option>
                     {companies.map(company => (
                         <option key={company.id} value={company.id}>{company.name}</option>
                     ))}
                 </select>
+                </div>
                 <input type="file" onChange={handleFileUpload} disabled={loading || !selectedCompany} />
+                </div>
             </div>
         </div>
     );

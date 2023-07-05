@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styles from '../../Css/CompanyDashboard.module.css'; 
 import AdminSidebar from './AdminSidebar';
 import AdminHeader from './AdminHeader';
-import styles from '../../Css/CreateUser.module.css';
 import config from '../../config';
 
 function CreateUser() {
@@ -66,44 +66,45 @@ function CreateUser() {
   };
 
   return (
-    <>
-      <AdminHeader />
-      <div className={styles.container}>
-        <div className={styles.sidebar}>
-          <AdminSidebar />
-        </div>
-        <div className={styles.content}>
+    <div className={styles.dashboard}>
+        <AdminSidebar />
+        <div className={styles.main}>
+            <AdminHeader />
+            <div className={styles.content}>
           <h1>Create New User</h1>
           {isUserAdded && <p>User added successfully!</p>}
           <form onSubmit={handleNewUserSubmit}>
             <label>
               Username:
-              <input type="text" name="username" value={newUser.username} onChange={handleInputChange} />
+              <input className={styles.inputField} type="text" name="username" value={newUser.username} onChange={handleInputChange} />
             </label>
             <label>
               Password:
-              <input type="password" name="password" value={newUser.password} onChange={handleInputChange} />
+              <input className={styles.inputField} type="password" name="password" value={newUser.password} onChange={handleInputChange} />
             </label>
-            <label>
-              Is Admin:
-              <input type="checkbox" name="isAdmin" checked={newUser.isAdmin} onChange={handleInputChange} />
-            </label>
-            <label>
-              Company:
-              <select name="companyId" value={newUser.companyId} onChange={handleInputChange}>
-                <option value="">Select company</option>
-                {companies && Array.isArray(companies) && companies.map((company) => (
-                  <option key={company.id} value={company.id}>
-                    {company.name}
-                  </option>
-                ))}
-              </select>
-            </label>
+
+            <label className={`${styles.longLabel}  ${styles.labelWithCheckbox}`}>
+            <span>Is Admin:</span>
+            <input className={`${styles.checkboxSize}`} type="checkbox" name="isAdmin" checked={newUser.isAdmin} onChange={handleInputChange} />
+          </label>
+
+          <label>
+            Company:
+            <select className={styles.dropdownMenu} name="companyId" value={newUser.companyId} onChange={handleInputChange}>
+              <option value="">Select company</option>
+              {companies && Array.isArray(companies) && companies.map((company) => (
+                <option key={company.id} value={company.id}>
+                  {company.name}
+                </option>
+              ))}
+            </select>
+          </label>
+
             <button type="submit">Create User</button>
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

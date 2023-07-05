@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import AdminSidebar from './AdminSidebar';
 import AdminHeader from './AdminHeader';
-import styles from '../../Css/AdminPortal.module.css';
+import styles from '../../Css/CompanyDashboard.module.css'; 
 import config from '../../config';
 
 function AdminPortal() {
@@ -54,17 +54,15 @@ function AdminPortal() {
   };
 
   return (
-    <>
-      <AdminHeader />
-      <div className={styles.container}>
-        <div className={styles.sidebar}>
-          <AdminSidebar />
-        </div>
-        <div className={styles.content}>
+    <div className={styles.dashboard} >
+        <AdminSidebar />
+        <div className={styles.main}>
+            <AdminHeader />
+            <div className={styles.content}>
           <h1>Admin Portal</h1>
         </div>
-      </div>
-    </>
+    </div>
+    </div>
   );
 }
 

@@ -69,7 +69,14 @@ const Dashboard = () => {
       console.error('There has been a problem with your fetch operation:', error);
     });
   }, []);
-
+  const CustomizedAxisTick = ({ x, y, payload }) => {
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text x={0} y={0} dy={16} textAnchor="end" fill="#666" transform="rotate(-35)">{payload.value}</text>
+      </g>
+    );
+  };
+  
   return (
     <div className={styles.dashboard}>
       <DashboardSidebar />
@@ -78,13 +85,12 @@ const Dashboard = () => {
         <div className={styles.content}>
           <div className={styles["chart-container"]}>
             <div className={styles["radar-chart"]}>
-              <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={chartData}>
+              <RadarChart cx={300} cy={250} outerRadius={180} width={600} height={500} data={chartData}>
                 <PolarGrid />
                 <PolarAngleAxis
                   dataKey="subject"
-                  tick={{ fontWeight: 'bold' }}
                 />
-                <PolarRadiusAxis angle={90} domain={[0, 40]} />
+                <PolarRadiusAxis angle={90} domain={[0, 40]} tick={<CustomizedAxisTick />} />
                 <Radar
                   name="Mike"
                   dataKey="A"
@@ -97,7 +103,7 @@ const Dashboard = () => {
             </div>
             {resultData && (
               <div className={styles.results}>
-                <h2>Resultaat: {resultData.scoreValueD + resultData.scoreValueI + resultData.scoreValueS + resultData.scoreValueC}</h2>
+                <h3>Resultaten</h3>
                 <div>D: {resultData.scoreValueD}</div>
                 <div>I: {resultData.scoreValueI}</div>
                 <div>S: {resultData.scoreValueS}</div>
@@ -109,7 +115,6 @@ const Dashboard = () => {
             <h2>{onderwerpData ? onderwerpData.name : 'Loading...'}</h2>
             <p>{onderwerpData ? onderwerpData.description : 'Loading...'}</p>
           </div>
-          <button className={styles["download-button"]}>Download Uitslag</button>
         </div>
       </div>
     </div>

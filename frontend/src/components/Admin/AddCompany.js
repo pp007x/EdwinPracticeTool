@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import AdminSidebar from './AdminSidebar';
 import AdminHeader from './AdminHeader';
-import styles from '../../Css/AddCompany.module.css';
+import styles from '../../Css/CompanyDashboard.module.css'; 
 import config from '../../config';
 
 function AddCompany() {
@@ -49,29 +49,27 @@ function AddCompany() {
   };
 
   return (
-    <>
-      <AdminHeader />
-      <div className={styles.container}>
-        <div className={styles.sidebar}>
-          <AdminSidebar />
-        </div>
-        <div className={styles.content}>
+    <div className={styles.dashboard}>
+        <AdminSidebar />
+        <div className={styles.main}>
+            <AdminHeader />
+            <div className={styles.content}>
           <h1>Add New Company</h1>
           {isCompanyAdded && <p>Company added successfully!</p>}
           <form onSubmit={handleNewCompanySubmit}>
             <label>
               Name:
-              <input type="text" name="name" value={company.name} onChange={handleInputChange} required />
+              <input type="text" name="name" value={company.name} className={styles.inputField} onChange={handleInputChange} required />
             </label>
             <label>
               Description:
-              <input type="text" name="description" value={company.description} onChange={handleInputChange} />
+              <input type="text" name="description" className={styles.inputField} value={company.description} onChange={handleInputChange} />
             </label>
             <button type="submit">Add Company</button>
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
