@@ -64,12 +64,18 @@ function CreateUser() {
       console.error(error);
     }
   };
-
+  const Header = ({ title }) => (
+    <div className={styles.header}>
+      <hr />
+      <div className={styles['page-title']}>{title}</div>
+    </div>
+  );
+  
   return (
     <div className={styles.dashboard}>
         <AdminSidebar />
         <div className={styles.main}>
-            <AdminHeader />
+        <Header title="Add user" />
             <div className={styles.content}>
           <h1>Create New User</h1>
           {isUserAdded && <p>User added successfully!</p>}

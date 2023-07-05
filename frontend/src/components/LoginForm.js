@@ -56,7 +56,7 @@ function LoginForm() {
         }
 
       } catch (error) {
-        navigate('/reactionform');
+        navigate('/infoReactionForm');
       }
 
     } catch (error) {

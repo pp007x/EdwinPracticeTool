@@ -36,12 +36,18 @@ function ResetPassword() {
 
     setGeneratedToken(response.data.token);
   };
-
+  const Header = ({ title }) => (
+    <div className={styles.header}>
+      <hr />
+      <div className={styles['page-title']}>{title}</div>
+    </div>
+  );
+  
   return (
     <div className={styles.dashboard}>
         <AdminSidebar />
         <div className={styles.main}>
-            <AdminHeader />
+        <Header title="Reset password" />
             <div className={styles.content}>
               <h1>Generate Password Reset Token</h1>
               <form onSubmit={handleGenerateResetToken}>

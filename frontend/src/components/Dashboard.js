@@ -104,10 +104,10 @@ const Dashboard = () => {
             {resultData && (
               <div className={styles.results}>
                 <h3>Resultaten</h3>
-                <div>D: {resultData.scoreValueD}</div>
-                <div>I: {resultData.scoreValueI}</div>
-                <div>S: {resultData.scoreValueS}</div>
-                <div>C: {resultData.scoreValueC}</div>
+                <div style={{ fontFamily: 'monospace', marginBottom: '5px', fontSize: '14px' }}><b>Score Value D:</b> {resultData.scoreValueD}</div>
+                  <div style={{ fontFamily: 'monospace', marginBottom: '5px', fontSize: '14px' }}><b>Score Value I:</b> {resultData.scoreValueI}</div>
+                  <div style={{ fontFamily: 'monospace', marginBottom: '5px', fontSize: '14px' }}><b>Score Value S:</b> {resultData.scoreValueS}</div>
+                  <div style={{ fontFamily: 'monospace', marginBottom: '5px', fontSize: '14px' }}><b>Score Value C:</b> {resultData.scoreValueC}</div>
               </div>
             )}
           </div>

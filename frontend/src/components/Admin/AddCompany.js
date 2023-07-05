@@ -48,11 +48,19 @@ function AddCompany() {
     }
   };
 
+  const Header = ({ title }) => (
+    <div className={styles.header}>
+      <hr />
+      <div className={styles['page-title']}>{title}</div>
+    </div>
+  );
+  
+
   return (
     <div className={styles.dashboard}>
         <AdminSidebar />
         <div className={styles.main}>
-            <AdminHeader />
+            <Header title="Add company" />
             <div className={styles.content}>
           <h1>Add New Company</h1>
           {isCompanyAdded && <p>Company added successfully!</p>}

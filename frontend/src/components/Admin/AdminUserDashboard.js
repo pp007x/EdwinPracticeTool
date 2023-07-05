@@ -98,53 +98,66 @@ const Dashboard = () => {
       </g>
     );
   };
+
+  const Header = ({ title }) => (
+    <div className={styles.header}>
+      <hr />
+      <div className={styles['page-title']}>{title}</div>
+    </div>
+  );
+  
+
   return (
     <div className={styles.dashboard}>
       <DashboardSidebar />
       <div className={styles.main}>
-        <Header title={onderwerpData ? onderwerpData.name : 'Loading...'} />
-        <div className={styles.sidebarRight}>
-        <h1>See user info</h1>
-        <label>Select a Company:</label>
-        <div>
-        <select className={styles.dropdownMenu} onChange={(e) => setSelectedCompany(e.target.value)}>
-          <option value="">Select a company</option>
-          {companies.map((company, index) =>
-            <option key={index} value={company.id}>{company.name}</option>
-          )}
-        </select>
-        </div>
-        <div>
-        <label>Select a User:</label>
-        <div>
-        <select className={styles.dropdownMenu} onChange={(e) => setSelectedUser(e.target.value)}>
-          <option value="">Select a user</option>
-          {users.map((user, index) =>
-            <option key={index} value={user.id}>{user.username}</option>
-          )}
-        </select>
-        </div>
-        {resultData && (
-          <div>
-            <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={chartData}>
-              <PolarGrid />
-              <PolarAngleAxis dataKey="subject" />
-              <PolarRadiusAxis angle={90} domain={[0, 40]} tick={<CustomizedAxisTick />} />
-              <Radar name="Score" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-            </RadarChart>
+        <Header title="Info per user" />
+        <div className={styles.content}>
+          <div className={styles.sidebarRight}>
+            <h1>See user info</h1>
+            <label>Select a Company:</label>
+            <div>
+              <select className={styles.dropdownMenu} onChange={(e) => setSelectedCompany(e.target.value)}>
+                <option value="">Select a company</option>
+                {companies.map((company, index) =>
+                  <option key={index} value={company.id}>{company.name}</option>
+                )}
+              </select>
+            </div>
+            <div>
+              <label>Select a User:</label>
+              <div>
+                <select className={styles.dropdownMenu} onChange={(e) => setSelectedUser(e.target.value)}>
+                  <option value="">Select a user</option>
+                  {users.map((user, index) =>
+                    <option key={index} value={user.id}>{user.username}</option>
+                  )}
+                </select>
+              </div>
+              {resultData && (
+                <div>
+                  <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={chartData}>
+                    <PolarGrid />
+                    <PolarAngleAxis dataKey="subject" />
+                    <PolarRadiusAxis angle={90} domain={[0, 40]} tick={<CustomizedAxisTick />} />
+                    <Radar name="Score" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                  </RadarChart>
+  
+                  <label><b>Score Value:</b></label>
+                  <div style={{ fontFamily: 'monospace', marginBottom: '5px', fontSize: '14px' }}><b>Score Value D:</b> {resultData.scoreValueD}</div>
+                  <div style={{ fontFamily: 'monospace', marginBottom: '5px', fontSize: '14px' }}><b>Score Value I:</b> {resultData.scoreValueI}</div>
+                  <div style={{ fontFamily: 'monospace', marginBottom: '5px', fontSize: '14px' }}><b>Score Value S:</b> {resultData.scoreValueS}</div>
+                  <div style={{ fontFamily: 'monospace', marginBottom: '5px', fontSize: '14px' }}><b>Score Value C:</b> {resultData.scoreValueC}</div>
 
-            <label><b>Score Value:</b></label>
-            <div>{`Score Value D: ${resultData.scoreValueD}`}</div>
-            <div>{`Score Value I: ${resultData.scoreValueI}`}</div>
-            <div>{`Score Value S: ${resultData.scoreValueS}`}</div>
-            <div>{`Score Value C: ${resultData.scoreValueC}`}</div>
+                </div>
+              )}
+            </div>
           </div>
-        )}
         </div>
-      </div>
       </div>
     </div>
   );
+  
 };
 
 export default Dashboard;

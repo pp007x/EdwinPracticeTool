@@ -41,12 +41,17 @@ function RemoveCompany() {
     setIsCompanyRemoved(true);
     setSelectedCompany("");
   };
-
+  const Header = ({ title }) => (
+    <div className={styles.header}>
+      <hr />
+      <div className={styles['page-title']}>{title}</div>
+    </div>
+  );
   return (
     <div className={styles.dashboard}>
         <AdminSidebar />
         <div className={styles.main}>
-            <AdminHeader />
+        <Header title="Remove company" />
             <div className={styles.content}>
           <h1>Remove Company</h1>
           {isCompanyRemoved && <p>Company removed successfully!</p>}

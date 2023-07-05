@@ -53,14 +53,19 @@ function EditOnderwerp() {
             console.error(error);
         }
     };
-
+    const Header = ({ title }) => (
+        <div className={styles.header}>
+          <hr />
+          <div className={styles['page-title']}>{title}</div>
+        </div>
+      );
     return (
         <div className={styles.dashboard}>
         <AdminSidebar />
         <div className={styles.main}>
-            <AdminHeader />
+        <Header title="Edit profiles" />
             <div className={styles.content}>
-                    <h1>Edit Onderwerp</h1>
+                    <h1>Edit profiles</h1>
                     <form onSubmit={handleSubmit}>
                         <label>
                             Onderwerp:
@@ -81,7 +86,7 @@ function EditOnderwerp() {
                             Description:
                             <input type="text" className={styles.inputField} name="description" value={selectedOnderwerp.description} onChange={handleInputChange} required />
                         </label>
-                        <button type="submit">Update Onderwerp</button>
+                        <button type="submit">Update profiles</button>
                     </form>
                 </div>
             </div>

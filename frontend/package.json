@@ -17,6 +17,9 @@
     "react-router-dom": "^6.13.0",
     "react-scripts": "^5.0.1",
     "recharts": "^2.7.2",
+    "survey-library": "^1.5.8",
+    "survey-react": "^1.9.96",
+    "survey-react-ui": "^1.9.96",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

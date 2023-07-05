@@ -24,13 +24,13 @@ const AdminSidebar = () => {
             to="/admin/addcompany"
             className={`${styles["nav-button"]} ${location.pathname === '/admin/addcompany' ? styles.active : ''}`}
           >
-            Add Company
+            Add company
           </Link>
           <Link
             to="/admin/adduser"
             className={`${styles["nav-button"]} ${location.pathname === '/admin/adduser' ? styles.active : ''}`}
           >
-            Add User
+            Add user
           </Link>
           <Link
             to="/admin/companies"
@@ -48,7 +48,7 @@ const AdminSidebar = () => {
             to="/admin/newquestion"
             className={`${styles["nav-button"]} ${location.pathname === '/admin/newquestion' ? styles.active : ''}`}
           >
-            Upload Questions
+            Upload questions
           </Link>
           <Link
             to="/admin/newquestions"
@@ -60,32 +60,32 @@ const AdminSidebar = () => {
             to="/admin/addquestions"
             className={`${styles["nav-button"]} ${location.pathname === '/admin/addquestions' ? styles.active : ''}`}
           >
-            Add Question
+            Add question
           </Link>
           <Link
             to="/admin/removeuser"
             className={`${styles["nav-button"]} ${location.pathname === '/admin/removeuser' ? styles.active : ''}`}
           >
-            Remove User
+            Remove user
           </Link>
 
           <Link
             to="/admin/removecompany"
             className={`${styles["nav-button"]} ${location.pathname === '/admin/removecompany' ? styles.active : ''}`}
           >
-            Remove Company
+            Remove company
           </Link>
           <Link
             to="/admin/editonderwerp"
             className={`${styles["nav-button"]} ${location.pathname === '/admin/editonderwerp' ? styles.active : ''}`}
           >
-            Aanpassen profielen
+            Edit profiles
           </Link>
           <Link
             to="/admin/resetpassword"
             className={`${styles["nav-button"]} ${location.pathname === '/admin/resetpassword' ? styles.active : ''}`}
           >
-            Reset Password
+            Reset password
           </Link>
         </div>
       </div>

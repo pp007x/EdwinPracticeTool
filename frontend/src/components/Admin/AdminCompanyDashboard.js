@@ -64,11 +64,19 @@ const AdminCompanyDashboard = () => {
     }
   }, [selectedCompany]);
 
+  const Header = ({ title }) => (
+    <div className={styles.header}>
+      <hr />
+      <div className={styles['page-title']}>{title}</div>
+    </div>
+  );
+  
+
   return (
     <div className={styles.dashboard}>
         <AdminSidebar />
         <div className={styles.main}>
-            <AdminHeader />
+        <Header title="Info per company" />
             <div className={styles.content}>
             <div className={styles.sidebarRight}>
                 <div className={styles["dashboard-title"]}>

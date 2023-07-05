@@ -57,23 +57,26 @@ function AdminNewQuestion() {
         <div className={styles.dashboard}>
             <DashboardSidebar />
             <div className={styles.main}>
-                <Header title="Admin New Question" />
-                <div className={styles.sidebarRight}>
-                <h1>Add new questions</h1>
-                    <label className={styles.label}>Select a company:</label>
-                    <div>
-                <select className={styles.dropdownMenu} value={selectedCompany} onChange={event => setSelectedCompany(event.target.value)}>
-                    <option value="">Select a company...</option>
-                    {companies.map(company => (
-                        <option key={company.id} value={company.id}>{company.name}</option>
-                    ))}
-                </select>
-                </div>
-                <input type="file" onChange={handleFileUpload} disabled={loading || !selectedCompany} />
+                <Header title="Upload questions" />
+                <div className={styles.content}>
+                    <div className={styles.sidebarRight}>
+                        <h1>Add new questions</h1>
+                        <label className={styles.label}>Select a company:</label>
+                        <div>
+                            <select className={styles.dropdownMenu} value={selectedCompany} onChange={event => setSelectedCompany(event.target.value)}>
+                                <option value="">Select a company...</option>
+                                {companies.map(company => (
+                                    <option key={company.id} value={company.id}>{company.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <input type="file" onChange={handleFileUpload} disabled={loading || !selectedCompany} />
+                    </div>
                 </div>
             </div>
         </div>
     );
+    
 }
 
 export default AdminNewQuestion;

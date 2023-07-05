@@ -82,100 +82,123 @@ function AdminEditQuestions() {
     <div className={styles.dashboard}>
       <DashboardSidebar />
       <div className={styles.main}>
-        <Header title="Admin Edit Questions" />
-        <div className={styles.sidebarRight}>
-        <h1>Edit Questions</h1>
-        <select className={styles.dropdownMenu} value={selectedCompany} onChange={handleCompanyChange}>
-          <option value="">Select a company...</option>
-          {companies.map(company => (
-            <option key={company.id} value={company.id}>{company.name}</option>
-          ))}
-        </select>
+        <Header title="Edit questions" />
+        <div className={styles.content}>
+          <div className={styles.sidebarRight}>
+            <h1>Edit Questions</h1>
+            <div className={styles.inputFieldWrapper}>
+              <label>
+                Select a company to edit questions for:
+                <select className={styles.dropdownMenu} value={selectedCompany} onChange={handleCompanyChange}>
+                  <option value="">Select a company...</option>
+                  {companies.map(company => (
+                    <option key={company.id} value={company.id}>{company.name}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
 
-        {questions.length > 0 ? (
-          <div >
-            <h2>Existing Questions for Company: {selectedCompany}</h2>
-            <ul>
-              {editedQuestions.map((question, questionIndex) => (
-                <li key={question.id}>
-                  <h3>
-                    <input
-                      type="text"
-                      className={styles.inputField}
-                      name="questionText"
-                      value={question.questionText}
-                      onChange={event => handleQuestionChange(questionIndex, event)}
-                    />
-                  </h3>
-                  <ul>
-                    {question.answers.map((answer, answerIndex) => (
-                      <li key={answer.id}>
-                        <p>
-                          Answer Text:
+            {questions.length > 0 ? (
+              <div>
+                <h2>Existing Questions for Company: {selectedCompany}</h2>
+                <ul>
+                  {editedQuestions.map((question, questionIndex) => (
+                    <li key={question.id}>
+                      <div className={styles.inputFieldWrapper}>
+                        <label>
+                          Question Text:
                           <input
-                          className={styles.inputField}
                             type="text"
-                            name="answerText"
-                            value={answer.answerText}
-                            onChange={event => handleAnswerChange(questionIndex, answerIndex, event)}
+                            className={styles.inputEditQuestion}
+                            name="questionText"
+                            value={question.questionText}
+                            onChange={event => handleQuestionChange(questionIndex, event)}
                           />
-                        </p>
-                        <p>
-                          Score Value D:
-                          <input
-                          className={styles.inputField}
-                            type="number"
-                            name="scoreValueD"
-                            value={answer.scoreValueD}
-                            onChange={event => handleAnswerChange(questionIndex, answerIndex, event)}
-                          />
-                        </p>
-                        <p>
-                          Score Value I:
-                          <input
-                            type="number"
-                            className={styles.inputField}
-                            name="scoreValueI"
-                            value={answer.scoreValueI}
-                            onChange={event => handleAnswerChange(questionIndex, answerIndex, event)}
-                          />
-                        </p>
-                        <p>
-                          Score Value S:
-                          <input
-                            type="number"
-                            className={styles.inputField}
-                            name="scoreValueS"
-                            value={answer.scoreValueS}
-                            onChange={event => handleAnswerChange(questionIndex, answerIndex, event)}
-                          />
-                        </p>
-                        <p>
-                          Score Value C:
-                          <input
-                            type="number"
-                            className={styles.inputField}
-                            name="scoreValueC"
-                            value={answer.scoreValueC}
-                            onChange={event => handleAnswerChange(questionIndex, answerIndex, event)}
-                          />
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
+                        </label>
+                      </div>
+                      <ul>
+                        {question.answers.map((answer, answerIndex) => (
+                          <li key={answer.id}>
+                            <div className={styles.inputFieldWrapper}>
+                              <label>
+                                Answer Text:
+                                <input
+                                  className={styles.inputEditQuestion}
+                                  type="text"
+                                  name="answerText"
+                                  value={answer.answerText}
+                                  onChange={event => handleAnswerChange(questionIndex, answerIndex, event)}
+                                />
+                              </label>
+                            </div>
+                            <div className={styles.inputFieldWrapper}>
+                              <label>
+                                Score Value D:
+                                <input
+                                  className={styles.inputFieldNumber}
+                                  type="number"
+                                  name="scoreValueD"
+                                  value={answer.scoreValueD}
+                                  onChange={event => handleAnswerChange(questionIndex, answerIndex, event)}
+                                />
+                              </label>
+                            </div>
+                            <div className={styles.inputFieldWrapper}>
+                              <label>
+                                Score Value I:
+                                <input
+                                  type="number"
+                                  className={styles.inputFieldNumber}
+                                  name="scoreValueI"
+                                  value={answer.scoreValueI}
+                                  onChange={event => handleAnswerChange(questionIndex, answerIndex, event)}
+                                />
+                              </label>
+                            </div>
+                            <div className={styles.inputFieldWrapper}>
+                              <label>
+                                Score Value S:
+                                <input
+                                  type="number"
+                                  className={styles.inputFieldNumber}
+                                  name="scoreValueS"
+                                  value={answer.scoreValueS}
+                                  onChange={event => handleAnswerChange(questionIndex, answerIndex, event)}
+                                />
+                              </label>
+                            </div>
+                            <div className={styles.inputFieldWrapper}>
+                              <label>
+                                Score Value C:
+                                <input
+                                  type="number"
+                                  className={styles.inputFieldNumber}
+                                  name="scoreValueC"
+                                  value={answer.scoreValueC}
+                                  onChange={event => handleAnswerChange(questionIndex, answerIndex, event)}
+                                />
+                              </label>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ul>
 
-            <button onClick={handleSubmit}>Submit All Changes</button>
+                <button onClick={handleSubmit}>Submit All Changes</button>
+              </div>
+            ) : (
+              <p>No questions found for the selected company.</p>
+            )}
           </div>
-        ) : (
-          <p>No questions found for the selected company.</p>
-        )}
         </div>
       </div>
     </div>
   );
+
+  
+  
 }
 
 export default AdminEditQuestions;

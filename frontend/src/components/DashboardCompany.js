@@ -48,17 +48,24 @@ const CompanyDashboard = () => {
     fetchUserBoxes();
     fetchUserScores();
   }, []);
-
+  const Header = ({ title }) => (
+    <div className={styles.header}>
+      <hr />
+      <div className={styles['page-title']}>{title}</div>
+    </div>
+  );
+  
   return (
     <div className={styles.dashboard}>
     <DashboardSidebar />
     <div className={styles.main}>
-      <DashboardHeader />
+    <Header title="Company" />
+
         <div className={styles.content}>
         <div className={styles.sidebarRight}>
           <div className={styles["dashboard-title"]}>
             <h1>Company Dashboard</h1>
-            <p>Welcome to the Company Dashboard page!</p>
+            <p>Here is all the info of your company</p>
           </div>
 
           <div className={styles["dashboard-content"]}>

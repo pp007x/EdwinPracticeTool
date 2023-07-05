@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../Css/Dashboard.module.css';
 import DashboardSidebar from './DashboardSidebar';
 import infopaginaImage from '../images/infopagina.PNG'; // Import the image
-
+import infopaginaImage2 from '../images/infopagina2.PNG'; // Import the image
 const Header = ({ title }) => (
   <div className={styles.header}>
     <hr />
@@ -15,10 +15,13 @@ function InfoPagina() {
     <div className={styles.dashboard}>
       <DashboardSidebar />
       <div className={styles.main}>
-        <Header title="Your Page Title" />
+        <Header title="Info over de profielen" />
         <div className={styles.content}>
           <div className={styles.imageContainer}>
+            <h3>Stuur ff goeie naam</h3>
             <img src={infopaginaImage} alt="Image" className={styles.image} /> {/* Use the imported image */}
+            <h3>Stuur ff goeie naam</h3>
+            <img src={infopaginaImage2} alt="Image" className={styles.image} /> {/* Use the imported image */}
           </div>
         </div>
       </div>

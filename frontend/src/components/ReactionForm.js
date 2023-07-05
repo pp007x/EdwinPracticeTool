@@ -96,14 +96,15 @@ const ReactionForm = () => {
   return (
     <div className={styles["form-control"]}>
       {questions.length > 0 ? (
-        <form onSubmit={handleSubmit}>
+        <form className={styles["reactionform"]} onSubmit={handleSubmit}>
+          <h1>Vragenlijst</h1>
           {questions.map((question) => (
-            <div key={question.id}>
+            <div className={styles["questionform"]} key={question.id}>
               <label>
                 {question.questionText}
                 <div className={styles["answer-options"]}>
                   {question.answers.map((answer) => (
-                    <label htmlFor={answer.id.toString()} key={answer.id}>
+                    <label className={styles["answerform"]} htmlFor={answer.id.toString()} key={answer.id}>
                       <input
                         type="radio"
                         id={answer.id.toString()}
@@ -118,10 +119,12 @@ const ReactionForm = () => {
               </label>
             </div>
           ))}
-          <button type="submit">Submit</button>
+          <div className={styles["button"]}>
+            <button type="submit">Submit</button>
+          </div>
         </form>
       ) : (
-        <p>Loading...</p>
+        <p>There are no questions</p>
       )}
     </div>
   );

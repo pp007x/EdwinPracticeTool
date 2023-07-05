@@ -15,6 +15,7 @@ function AdminAddQuestions() {
   const [selectedCompany, setSelectedCompany] = useState('');
   const [newQuestion, setNewQuestion] = useState({ questionText: '', companyId: '', answers: [] });
   const [newAnswer, setNewAnswer] = useState({ answerText: '', scoreValueD: 0, scoreValueI: 0, scoreValueS: 0, scoreValueC: 0 });
+  const [statusMessage, setStatusMessage] = useState('');
 
   useEffect(() => {
     fetch(`${config.API_BASE_URL}/api/companies`)
@@ -58,20 +59,24 @@ function AdminAddQuestions() {
     })
       .then(response => {
         if (response.ok) {
-          console.log('Question added successfully');
+          setStatusMessage('Question added successfully');
           setNewQuestion({ questionText: '', companyId: '', answers: [] });
         } else {
-          console.error('Failed to add question');
+          setStatusMessage('Failed to add question');
         }
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => {
+        setStatusMessage('Error: ' + error);
+        console.error('Error:', error);
+      });
   };
 
   return (
     <div className={styles.dashboard}>
       <DashboardSidebar />
       <div className={styles.main}>
-        <Header title="Admin Add Questions" />
+        <Header title="Add question" />
+        <div className={styles.content}>
         <div className={styles.sidebarRight}>
           <label> Select a company to add questions to: </label>
           <div>
@@ -126,7 +131,7 @@ function AdminAddQuestions() {
             </div>
             <div className={styles.inputFieldWrapper}>
               <label>
-                Score Value I:
+                Score Value I:  
                 <input
                   type="number"
                   name="scoreValueI"
@@ -176,7 +181,9 @@ function AdminAddQuestions() {
           ))}
 
           <button onClick={handleAddNewQuestion}>Add Question</button>
+          {statusMessage && <p>{statusMessage}</p>}
         </div>
+      </div>
       </div>
     </div>
   );

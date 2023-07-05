@@ -49,7 +49,7 @@ function RegisterForm() {
       if (userRole === 'Admin') {
         navigate('/admin');
       } else {
-        navigate('/reactionform');
+        navigate('/inforeactionform');
       }
 
     } catch (error) {
@@ -64,7 +64,7 @@ function RegisterForm() {
   return (
     <div className={styles.loginFormWrapper}>
       <div className={styles.inputBox}>
-        <button className={styles.returnButton} onClick={handleReturnClick}>BackOff</button>
+        <button className={styles.returnButton} onClick={handleReturnClick}>Back</button>
         <form onSubmit={handleRegisterSubmit} className={styles.form}>
           <label className={styles.label}>Username:</label>
           <input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" className={styles.input} />
