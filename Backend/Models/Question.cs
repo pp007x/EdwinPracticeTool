@@ -9,7 +9,41 @@ namespace LoginApi.Models
     public int CompanyId { get; set; }
 }
 
+public class OpenAnswerDTO
+{
+    public int QuestionId { get; set; }
+    public string AnswerText { get; set; }
+}
 
+
+public class QuestionOpen {
+    public int Id { get; set; }
+    public string QuestionText { get; set; }
+    public int CompanyId { get; set; }
+    public List<AnswerOpen> Answers { get; set; } 
+}
+
+
+public class AnswerOpenDTO
+{
+    public int Id { get; set; }
+    public int QuestionOpenId { get; set; }
+    public string AnswerText { get; set; }
+}
+
+public class AnswerOpen {
+    public int Id { get; set; }
+    public int QuestionOpenId { get; set; }
+    public string AnswerText { get; set;}
+     public QuestionOpen QuestionOpen { get; set; } 
+}
+
+public class AnswerOpenDB {
+    public int Id { get; set; }
+    public int QuestionOpenId { get; set; }
+    public string AnswerText { get; set;}
+    public int UserId { get; set; }
+}
 public class Answer
 {
     public int Id { get; set; }
@@ -21,7 +55,13 @@ public class Answer
     public int ScoreValueC { get; set; }
     public Question Question { get; set; }
 }
-
+public class QuestionOpenDTO
+{
+    public int Id { get; set; }
+    public string QuestionText { get; set; }
+    public int CompanyId { get; set; }
+    public List<AnswerOpenDTO> Answers { get; set; }
+}
 
 public class QuestionDTO
 {

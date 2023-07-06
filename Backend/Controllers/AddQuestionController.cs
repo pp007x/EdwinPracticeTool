@@ -26,6 +26,7 @@ public class AddQuestionController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult<QuestionDTO>> PostQuestion(QuestionDTO questionDto)
     {
         var question = new Question {
@@ -45,10 +46,31 @@ public class AddQuestionController : ControllerBase
 
         return CreatedAtAction("GetQuestion", new { id = question.Id }, questionDto);
     }
+[HttpPost]
+[Authorize(Roles = "Admin")]
+[Route("AddOpenQuestion")]
+public async Task<IActionResult> AddOpenQuestion([FromBody] QuestionOpenDTO questionDto)
+{
+    if (ModelState.IsValid)
+    {
+        var question = new QuestionOpen
+        {
+            QuestionText = questionDto.QuestionText,
+            CompanyId = questionDto.CompanyId,
+            Answers = questionDto.Answers.Select(a => new AnswerOpen { AnswerText = a.AnswerText }).ToList()
+        };
+        
+        _context.QuestionOpen.Add(question);
+        await _context.SaveChangesAsync();
+        return Ok();
+    }
+    return BadRequest();
+}
 
     [HttpGet("{id}")]
-public async Task<ActionResult<QuestionDTO>> GetQuestion(int id)
-{
+    [Authorize(Roles = "Admin")]
+    public async Task<ActionResult<QuestionDTO>> GetQuestion(int id)
+    {
     var question = await _context.Questions.FindAsync(id);
 
     if (question == null)

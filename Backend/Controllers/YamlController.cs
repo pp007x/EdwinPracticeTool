@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LoginApi.Controllers
 {
@@ -20,6 +21,7 @@ namespace LoginApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PostQuestionData([FromBody] List<QuestionDTO> questionDTOs)
         {
             try

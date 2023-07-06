@@ -16,6 +16,14 @@ namespace LoginApi.Models
         public int ResetToken { get; set; }
     }
 
+public class OpenAnswers {
+    public int Id { get; set; }
+    public int UserId { get; set; }
+    public int QuestionOpenId { get; set; }
+    public string AnswerText { get; set; }
+    public int Session { get; set; }
+}
+
 public class TotalScore
 {
     public int Id { get; set; }

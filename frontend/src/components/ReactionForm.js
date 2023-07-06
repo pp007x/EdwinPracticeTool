@@ -85,7 +85,6 @@ const ReactionForm = () => {
         totalScore,
         localConfig
       );
-      console.log(response.data);
 
       navigate('/dashboard');
     } catch (error) {

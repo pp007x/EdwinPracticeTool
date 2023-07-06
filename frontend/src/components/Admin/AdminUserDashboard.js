@@ -24,7 +24,13 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await axios.get(`${config.API_BASE_URL}/api/Companies`);
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${config.API_BASE_URL}/api/Companies`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+);
         setCompanies(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         console.error('Error fetching companies:', error);
@@ -36,7 +42,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (selectedCompany) {
-      axios.get(`${config.API_BASE_URL}/api/Companies/${selectedCompany}/users`)
+      const token = localStorage.getItem('token');
+      axios.get(`${config.API_BASE_URL}/api/Companies/${selectedCompany}/users`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then(response => {
           setUsers(Array.isArray(response.data) ? response.data : []);
         })

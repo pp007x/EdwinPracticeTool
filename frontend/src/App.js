@@ -20,6 +20,9 @@ import InfoPagina from './components/InfoPagina';
 import AdminResetPassword from './components/Admin/AdminResetPassword';
 import ResetPassword from './components/ResetPasswordForm';
 import InfoReactionForm from './components/InfoReactionForm';
+import InforeactionFormOpen from './components/AndereVragen/InfoReactionFormOpen';
+import ReactionFormOpen from './components/AndereVragen/ReactionFormOpen';
+import OpenDashboard from './components/AndereVragen/OpenDashboard';
 function App() {
     return (
         <Router>
@@ -45,6 +48,9 @@ function App() {
                 <Route path="/admin/resetpassword" element={<ProtectedComponent><AdminResetPassword /></ProtectedComponent>} />
                 <Route path="/resetpassword" element={<ResetPassword />} />
                 <Route path="/infoReactionForm" element={<InfoReactionForm />} />
+                <Route path="/inforeactionformOpen" element={<InforeactionFormOpen />} />
+                <Route path="/reactionformOpen" element={<ReactionFormOpen />} />
+                <Route path="/opendashboard" element={<OpenDashboard />} />
             </Routes>
         </Router>
     );

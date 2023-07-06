@@ -4,6 +4,7 @@ using LoginApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using LoginApi.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LoginApi.Controllers
 {
@@ -18,6 +19,7 @@ namespace LoginApi.Controllers
             _context = context;
         }
     [HttpGet]
+    [Authorize]
     public ActionResult<IEnumerable<Onderwerp>> GetOnderwerpen()
     {
         return _context.Onderwerpen.ToList();
@@ -45,7 +47,39 @@ private readonly Dictionary<string, string> _boxToOnderwerpMapping = new Diction
 };
 
 
+
+[HttpGet("user/me")]
+[Authorize]
+public async Task<ActionResult<Onderwerp>> GetOnderwerpForCurrentUser()
+{
+    var usernameClaim = User.Identity.Name;
+    var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == usernameClaim);
+
+    if (user == null)
+    {
+        return NotFound();
+    }
+
+    string box = user.Box;
+
+    if (!_boxToOnderwerpMapping.TryGetValue(box, out string onderwerpName))
+    {
+        return NotFound();
+    }
+
+    var onderwerp = await _context.Onderwerpen.FirstOrDefaultAsync(o => o.Name == onderwerpName);
+    if (onderwerp == null)
+    {
+        return NotFound();
+    }
+
+    return onderwerp;
+}
+
+
+
 [HttpGet("user/{userId}")]
+[Authorize(Roles = "Admin")]
 public ActionResult<Onderwerp> GetOnderwerpForUser(int userId)
 {
     // Fetch the user
@@ -78,59 +112,9 @@ public ActionResult<Onderwerp> GetOnderwerpForUser(int userId)
 }
 
 
-        [HttpGet("box/{userId}")]
-        public ActionResult<string> GetUserBox(int userId)
-        {
-            // Fetch the user's scores
-            var userScores = _context.TotalScores.FirstOrDefault(ts => ts.UserId == userId);
-            if (userScores == null)
-            {
-                return NotFound();
-            }
-
-            // Determine the box based on the scores
-            string box = DetermineUserBox(userScores);
-
-            return box;
-        }
-
-        private string DetermineUserBox(TotalScore scores)
-        {
-            // Determine the two highest scores and return the corresponding box
-            // This is a simplified example, you may need to adjust this function to match your exact logic
-            var scoreList = new List<Tuple<string, int>>
-            {
-                Tuple.Create("D", scores.ScoreValueD),
-                Tuple.Create("I", scores.ScoreValueI),
-                Tuple.Create("S", scores.ScoreValueS),
-                Tuple.Create("C", scores.ScoreValueC),
-            };
-
-            var sortedScores = scoreList.OrderByDescending(score => score.Item2).ToList();
-
-            return sortedScores[0].Item1 + sortedScores[1].Item1;
-        }
-
-        [HttpGet("company/{companyId}")]
-        public ActionResult<List<UserBox>> GetCompanyUsers(int companyId)
-        {
-            var companyUsers = _context.Users.Where(u => u.CompanyId == companyId);
-            if (companyUsers == null || !companyUsers.Any())
-            {
-                return NotFound();
-            }
-
-            List<UserBox> userBoxes = new List<UserBox>();
-            foreach (var user in companyUsers)
-            {
-                var box = GetUserBox(user.Id).Value;
-                userBoxes.Add(new UserBox { UserId = user.Id, UserName = user.Username, Box = box });
-            }
-
-            return userBoxes;
-        }
     // OnderwerpController.cs
 [HttpGet("{id}")]
+[Authorize(Roles = "Admin")]
 public ActionResult<Onderwerp> GetOnderwerp(int id)
 {
     var onderwerp = _context.Onderwerpen.Find(id);
@@ -142,6 +126,7 @@ public ActionResult<Onderwerp> GetOnderwerp(int id)
 }
 
 [HttpPut("{id}")]
+[Authorize(Roles = "Admin")]
 public ActionResult<Onderwerp> UpdateOnderwerp(int id, Onderwerp onderwerp)
 {
     if (id != onderwerp.Id)

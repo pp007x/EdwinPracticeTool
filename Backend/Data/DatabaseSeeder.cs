@@ -19,6 +19,8 @@ public class DatabaseSeeder
         SeedQuestions();
         SeedUsers();
         SeedTotalScores();
+        SeedQuestionOpen();
+        SeedAnswerOpen();
     }
 
     private void SeedCompanies()
@@ -30,15 +32,18 @@ public class DatabaseSeeder
                 Id = 1,
                 Name = "Company 1",
                 Description = "Description 1",
-                Code = "1"
+                Code = "1",
+                CompanyType = 1
             },
             new Company
             {
                 Id = 2,
                 Name = "Company 2",
                 Description = "Description 2",
-                Code = "2"
-            }
+                Code = "2",
+                CompanyType = 1
+            },
+            new Company { Id = 3, Name = "Company 3", Description = "Description 3", Code = "3", CompanyType = 2 },
         };
 
         dbContext.Companies.AddRange(companies);
@@ -233,7 +238,7 @@ private void SeedOnderwerpen()
             {
                 Id = 1,
                 Username = "user1",
-                Password = "password1",
+                Password = "$2a$11$wZX5t0Iln2z3LMp93Z0dUeja6Mhkx2Tv7uKzcrAk3nsvYA3uTw8Dm",
                 CompanyId = 1,
                 IsAdmin = true,
                 Box = "Ds"
@@ -242,8 +247,17 @@ private void SeedOnderwerpen()
             {
                 Id = 2,
                 Username = "user2",
-                Password = "password2",
+                Password = "$2a$11$wZX5t0Iln2z3LMp93Z0dUeja6Mhkx2Tv7uKzcrAk3nsvYA3uTw8Dm",
                 CompanyId = 1,
+                IsAdmin = false,
+                Box = "Sd"
+            },
+            new User
+            {
+                Id = 39,
+                Username = "user3",
+                Password = "$2a$11$wZX5t0Iln2z3LMp93Z0dUeja6Mhkx2Tv7uKzcrAk3nsvYA3uTw8Dm",
+                CompanyId = 3,
                 IsAdmin = false,
                 Box = "Sd"
             },
@@ -414,6 +428,56 @@ private void SeedOnderwerpen()
         dbContext.Users.AddRange(users);
         dbContext.SaveChanges();
     }
+
+
+private void SeedQuestionOpen()
+{
+    var questionOpen = new List<QuestionOpen>
+    {
+        new QuestionOpen
+        {
+            Id = 1,
+            QuestionText = "Open Question 1",
+            CompanyId = 3
+        },
+        new QuestionOpen
+        {
+            Id = 2,
+            QuestionText = "Open Question 2",
+            CompanyId = 3
+        }
+    };
+
+    dbContext.QuestionOpen.AddRange(questionOpen);
+    dbContext.SaveChanges();
+}
+
+private void SeedAnswerOpen()
+{
+    var answerOpen = new List<OpenAnswers>
+    {
+        new OpenAnswers
+        {
+            Id = 1,
+            QuestionOpenId = 1,
+            AnswerText = "Open Answer 1",
+            UserId = 39,
+            Session = 1
+        },
+        new OpenAnswers
+        {
+            Id = 2,
+            QuestionOpenId = 2,
+            AnswerText = "Open Answer 2",
+            UserId = 39,
+            Session = 1
+        }
+    };
+
+    dbContext.OpenAnswers.AddRange(answerOpen);
+    dbContext.SaveChanges();
+}
+
 
 private void SeedTotalScores()
 {

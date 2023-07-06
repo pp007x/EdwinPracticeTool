@@ -26,8 +26,9 @@ public class TotalScoresController : ControllerBase
         _logger = logger;
         _configuration = configuration;
     }
-    [Authorize]
+
 [HttpPost]
+[Authorize]
 public async Task<IActionResult> PostTotalScore(TotalScore totalScore)
 {
     var nameIdentifierClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
@@ -74,8 +75,9 @@ public async Task<IActionResult> PostTotalScore(TotalScore totalScore)
     return CreatedAtAction(nameof(GetTotalScoreByUser), new { id = totalScore.Id }, totalScore);
 }
 
-[Authorize]
+
 [HttpGet("user/me")]
+[Authorize]
 public async Task<ActionResult<TotalScore>> GetTotalScoresByLoggedInUser()
 {
     var nameIdentifierClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
@@ -102,6 +104,7 @@ public async Task<ActionResult<TotalScore>> GetTotalScoresByLoggedInUser()
 
 
 [HttpGet("user/{id}")]
+[Authorize(Roles = "Admin")]
 public async Task<ActionResult<TotalScore>> GetTotalScoreByUser(int id)
 {
     // Use the user ID to find the TotalScore

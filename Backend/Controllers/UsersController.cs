@@ -31,30 +31,41 @@ public class UsersController : ControllerBase
         return await _context.Users.ToListAsync();
     }
 
-    [HttpPost]
-    [Authorize(Roles = "Admin")]
-    public async Task<ActionResult<User>> PostUser(User user)
+[HttpPost]
+[Authorize(Roles = "Admin")]
+public async Task<ActionResult<User>> PostUser(User user)
+{
+    if (user.CompanyId != null)
     {
-        if (user.CompanyId != null)
+        var company = await _context.Companies.FindAsync(user.CompanyId);
+        if (company == null)
         {
-            var company = await _context.Companies.FindAsync(user.CompanyId);
-            if (company == null)
-            {
-                return NotFound(new { message = "Company not found" });
-            }
+            return NotFound(new { message = "Company not found" });
         }
 
-        // Hash the password before storing it in the database
-        user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-
-        _context.Users.Add(user);
-        await _context.SaveChangesAsync();
-
-        return CreatedAtAction("GetUsers", new { id = user.Id }, user);
+        // Check if the user with the provided username already exists within the same company
+        var existingUser = await _context.Users
+            .SingleOrDefaultAsync(x => x.Username == user.Username && x.CompanyId == user.CompanyId);
+        if (existingUser != null)
+        {
+            return BadRequest("Username already exists in the same company");
+        }
     }
+
+    // Hash the password before storing it in the database
+    user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
+    _context.Users.Add(user);
+    await _context.SaveChangesAsync();
+
+    return CreatedAtAction("GetUsers", new { id = user.Id }, user);
+}
+
+
 
 
     [HttpGet("Profile")]
+    [Authorize]
     public ActionResult<User> GetProfile()
     {
         var usernameClaim = User.Identity.Name;
@@ -95,7 +106,7 @@ public async Task<ActionResult> GenerateResetToken(int id)
     }
 
     var rng = new Random();
-    var token = rng.Next(100000000, 999999); // 6-digit token
+    var token = rng.Next(100000, 999999); // 6-digit token
 
     var resetEntry = new PasswordReset
     {

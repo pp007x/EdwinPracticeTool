@@ -17,7 +17,12 @@ function AdminNewQuestion() {
     const [selectedCompany, setSelectedCompany] = useState(null);
 
     useEffect(() => {
-        fetch(`${config.API_BASE_URL}/api/companies`)
+        const token = localStorage.getItem('token');
+        fetch(`${config.API_BASE_URL}/api/companies` , {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          })
             .then(response => response.json())
             .then(data => setCompanies(data));
     }, []);
@@ -33,10 +38,12 @@ function AdminNewQuestion() {
             setQuestions(questions);
 
             try {
+                const token = localStorage.getItem('token');
                 const response = await fetch(`${config.API_BASE_URL}/api/YamlUpload`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json',  Authorization: `Bearer ${token}` },
                     body: JSON.stringify(questions)
+                    
                 });
 
                 if (response.ok) {

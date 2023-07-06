@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import config from '../../config';
-import styles from '../../Css/CompanyDashboard.module.css'; 
+import styles from '../../Css/CompanyDashboard.module.css';
 import AdminSidebar from './AdminSidebar';
 import AdminHeader from './AdminHeader';
 
@@ -22,11 +22,17 @@ const AdminCompanyDashboard = () => {
   const [userScores, setUserScores] = useState([]);
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState('');
+  const [companyCode, setCompanyCode] = useState('');
 
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await axios.get(`${config.API_BASE_URL}/api/Companies`);
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${config.API_BASE_URL}/api/Companies`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         const data = response.data;
         setCompanies(Array.isArray(data) ? data : []);
       } catch (error) {
@@ -40,9 +46,24 @@ const AdminCompanyDashboard = () => {
   useEffect(() => {
     const fetchUserBoxes = async () => {
       try {
-        const response = await axios.get(`${config.API_BASE_URL}/api/Companies/${selectedCompany}/users`);
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${config.API_BASE_URL}/api/Companies/${selectedCompany}/users`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         const data = response.data;
         setUserBoxes(Array.isArray(data) ? data : []);
+        const selectedCompanyData = await axios.get(`${config.API_BASE_URL}/api/Companies/${selectedCompany}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        if (selectedCompanyData) {
+          setCompanyCode(selectedCompanyData.data.code);
+        } else {
+          setCompanyCode('');
+        }
       } catch (error) {
         console.error('Error fetching user boxes:', error);
       }
@@ -62,7 +83,7 @@ const AdminCompanyDashboard = () => {
       fetchUserBoxes();
       fetchUserScores();
     }
-  }, [selectedCompany]);
+  }, [selectedCompany, companies]);
 
   const Header = ({ title }) => (
     <div className={styles.header}>
@@ -82,6 +103,7 @@ const AdminCompanyDashboard = () => {
                 <div className={styles["dashboard-title"]}>
                     <h1>Company Dashboard</h1>
                     <p>Welcome to the Company Dashboard page!</p>
+                    <p>Company Code: {companyCode}</p>
                 </div>
 
                 <div className={styles["company-selection-container"] }>
@@ -118,7 +140,6 @@ const AdminCompanyDashboard = () => {
                             <div className={styles["score-container"]}>
                               {userBoxes
                                 .filter(user =>
-                                  console.log(bigSquareIndex) ||
                                   typeof user.box === 'string' &&
                                   user.box.length === 2 &&
                                   boxCodeToIndex[user.box[0].toUpperCase()] === bigSquareIndex &&

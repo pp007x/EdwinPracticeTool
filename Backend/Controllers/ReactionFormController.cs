@@ -25,8 +25,8 @@ public class ReactionFormController : ControllerBase
         _configuration = configuration;
     }
 
-    [Authorize]
     [HttpGet]
+    [Authorize]
     public async Task<ActionResult<List<QuestionDTO>>> GetQuestions()
     {
         var nameIdentifierClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);

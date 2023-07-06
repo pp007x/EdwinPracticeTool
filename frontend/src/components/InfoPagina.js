@@ -18,9 +18,9 @@ function InfoPagina() {
         <Header title="Info over de profielen" />
         <div className={styles.content}>
           <div className={styles.imageContainer}>
-            <h3>Stuur ff goeie naam</h3>
+            <h3>Verklaring van de kenmerken</h3>
             <img src={infopaginaImage} alt="Image" className={styles.image} /> {/* Use the imported image */}
-            <h3>Stuur ff goeie naam</h3>
+            <h3>Communicatiemethodes</h3>
             <img src={infopaginaImage2} alt="Image" className={styles.image} /> {/* Use the imported image */}
           </div>
         </div>

@@ -16,8 +16,21 @@ function AdminEditQuestions() {
   const [selectedCompany, setSelectedCompany] = useState('');
   const [editedQuestions, setEditedQuestions] = useState([]);
 
+
+  const getCompanyName = () => {
+    const company = companies.find(c => c.id === parseInt(selectedCompany,10));
+    return company ? company.name : '';
+  }
+
+
   useEffect(() => {
-    fetch(`${config.API_BASE_URL}/api/companies`)
+    const token = localStorage.getItem('token');
+    fetch(`${config.API_BASE_URL}/api/companies`
+    , {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            })
       .then(response => response.json())
       .then(data => setCompanies(data));
   }, []);
@@ -78,6 +91,8 @@ function AdminEditQuestions() {
       .catch(error => console.error('Error:', error));
   };
 
+
+
   return (
     <div className={styles.dashboard}>
       <DashboardSidebar />
@@ -100,7 +115,8 @@ function AdminEditQuestions() {
 
             {questions.length > 0 ? (
               <div>
-                <h2>Existing Questions for Company: {selectedCompany}</h2>
+                  <h2>Existing Questions for Company: {getCompanyName()}</h2>
+
                 <ul>
                   {editedQuestions.map((question, questionIndex) => (
                     <li key={question.id}>

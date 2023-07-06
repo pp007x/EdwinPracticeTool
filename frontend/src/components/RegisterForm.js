@@ -15,7 +15,13 @@ function RegisterForm() {
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-  
+
+    // Check password requirements
+    if (!(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password))) {
+      setRegisterError("Password must be at least 8 characters long, include at least one upper case letter, one lower case letter, one numeric digit, and one special character.");
+      return;
+    }
+
     try {
       const registrationResponse = await axios.post(`${config.API_BASE_URL}/api/Authentication/Register`, {
         username,
@@ -37,25 +43,35 @@ function RegisterForm() {
       username: username,
       password: password
     };
-
+  
     try {
       const loginResponse = await axios.post(`${config.API_BASE_URL}/api/Authentication/Login`, data);
-
+  
       localStorage.setItem('token', loginResponse.data);
-
+  
       const decodedToken = jwtDecode(loginResponse.data);
       const userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-
+  
+      // Fetch the user's company
+      const companyResponse = await axios.get(`${config.API_BASE_URL}/api/Companies/current`, {
+        headers: {
+          'Authorization': `Bearer ${loginResponse.data}`
+        }
+      });
+  
+      const companyType = companyResponse.data.CompanyType;
+  
       if (userRole === 'Admin') {
         navigate('/admin');
       } else {
-        navigate('/inforeactionform');
+        navigate(companyType === 1 ? '/inforeactionform' : '/inforeactionformOpen');
       }
-
+  
     } catch (error) {
       setRegisterError("Automatic login failed.");
     }
   };
+  
 
   const handleReturnClick = () => {
     navigate('/login');

@@ -4,4 +4,5 @@ public class Company
     public string Name { get; set; }
     public string Description { get; set; }
     public string Code { get; set; }
+    public int CompanyType { get; set; }
 }

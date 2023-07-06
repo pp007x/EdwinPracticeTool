@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using LoginApi.Data;
 using LoginApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LoginApi.Controllers
 {
@@ -25,21 +26,83 @@ namespace LoginApi.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<Company>>> GetCompanies()
         {
             return await _context.Companies.ToListAsync();
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Company>> PostCompany(Company company)
+[HttpPost]
+[Authorize(Roles = "Admin")]
+public async Task<ActionResult<Company>> PostCompany(Company company)
+{
+    try
+    {
+        _context.Companies.Add(company);
+        await _context.SaveChangesAsync();
+    }
+    catch (DbUpdateException ex)
+    {
+        if (ex.InnerException != null && ex.InnerException.Message.Contains("UNIQUE constraint failed"))
         {
-            _context.Companies.Add(company);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCompanies", new { id = company.Id }, company);
+            // This is a unique constraint error
+            return Conflict("A company with this name already exists.");
         }
+        else
+        {
+            throw;
+        }
+    }
+
+    return CreatedAtAction("GetCompanies", new { id = company.Id }, company);
+}
+
+[HttpGet("current")]
+[Authorize]
+public async Task<ActionResult<Company>> GetCurrentCompany()
+{
+    var usernameClaim = User.Identity.Name;
+    var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == usernameClaim);
+
+    if (user == null)
+    {
+        return NotFound();
+    }
+
+    var company = await _context.Companies.FindAsync(user.CompanyId);
+    if (company == null)
+    {
+        return NotFound();
+    }
+
+    return company;
+}
+[HttpGet("users")]
+[Authorize]
+public async Task<ActionResult<IEnumerable<User>>> GetUsersForCompany()
+{
+    var usernameClaim = User.Identity.Name;
+    var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == usernameClaim);
+
+    if (user == null)
+    {
+        return NotFound();
+    }
+
+    var companyId = user.CompanyId;
+    var users = await _context.Users.Where(u => u.CompanyId == companyId).ToListAsync();
+
+    if (users == null)
+    {
+        return NotFound();
+    }
+
+    return users;
+}
+
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Company>> GetCompany(int id)
         {
             var company = await _context.Companies.FindAsync(id);
@@ -53,6 +116,7 @@ namespace LoginApi.Controllers
         }
 
         [HttpGet("{companyId}/users")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsersForCompany(int companyId)
         {
             var users = await _context.Users.Where(u => u.CompanyId == companyId).ToListAsync();
@@ -67,6 +131,7 @@ namespace LoginApi.Controllers
 
         // CompaniesController.cs
 [HttpDelete("{id}")]
+[Authorize(Roles = "Admin")]
 public async Task<IActionResult> DeleteCompany(int id)
 {
     var company = await _context.Companies.FindAsync(id);

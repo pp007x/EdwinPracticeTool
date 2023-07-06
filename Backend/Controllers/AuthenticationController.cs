@@ -33,14 +33,14 @@ public async Task<ActionResult<string>> Register(User newUser)
     _logger.LogInformation("Register endpoint hit");
     _logger.LogInformation($"Attempt to register with Username: {newUser.Username}");
 
-    // Check if the user with the provided username already exists
+    // Check if the user with the provided username already exists in the same company
     var existingUser = await _context.Users
-        .SingleOrDefaultAsync(x => x.Username == newUser.Username);
+        .SingleOrDefaultAsync(x => x.Username == newUser.Username && x.CompanyId == newUser.CompanyId);
 
     if (existingUser != null)
     {
-        _logger.LogInformation("Username already exists");
-        return BadRequest("Username already exists");
+        _logger.LogInformation("Username already exists in the same company");
+        return BadRequest("Username already exists in the same company");
     }
 
     // Hash the password before storing it in the database
@@ -57,6 +57,7 @@ public async Task<ActionResult<string>> Register(User newUser)
 
     return Ok(token);
 }
+
 
 [HttpPost("Login")]
 public async Task<ActionResult<string>> Login(User user)

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import styles from '../Css/ReactionForm.module.css';
-import ReactionForm from './ReactionForm';
+import styles from '../../Css/ReactionForm.module.css';
 import { useNavigate } from 'react-router-dom';
 
 
-  const IntroPage = () => {
+  const IntroPageOpen = () => {
     const navigate = useNavigate();
   
     const handleIntroRead = () => {
-      navigate('/reactionform');
+      navigate('/reactionformopen');
     };
 
   return (
@@ -45,4 +44,4 @@ import { useNavigate } from 'react-router-dom';
   );
 };
 
-export default IntroPage;
+export default IntroPageOpen;

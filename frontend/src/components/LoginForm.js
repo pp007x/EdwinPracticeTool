@@ -22,17 +22,26 @@ function LoginForm() {
 
     try {
       const response = await axios.post(`${config.API_BASE_URL}/api/Authentication/Login`, data);
-
+    
       // Save the JWT token to local storage
       localStorage.setItem('token', response.data);
-
+    
       // Decode the token
       const decodedToken = jwtDecode(response.data);
       
       // Get the role and the user ID from the token
       const userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-      const userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']; // Assuming the user ID is stored in this claim
-
+      const userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']; 
+    
+      // Fetch the user's company
+      const companyResponse = await axios.get(`${config.API_BASE_URL}/api/Companies/current`, {
+        headers: {
+          'Authorization': `Bearer ${response.data}`
+        }
+      });
+    
+      const companyType = companyResponse.data.CompanyType;
+    
       // Check user's scores
       try {
         const totalScoreResponse = await axios.get(`${config.API_BASE_URL}/api/TotalScores/user/me`, {
@@ -42,27 +51,27 @@ function LoginForm() {
         });
         
         const totalScore = totalScoreResponse.data;
-
-        // If user's scores are null, navigate to /reactionform
+    
+        // If user's scores are null, navigate to /reactionform or /openreactionform based on CompanyType
         if (!totalScore || totalScore === null) {
-          navigate('/reactionform');
+          navigate(companyType === 1 ? '/reactionform' : '/openreactionform');
         } else {
-          // Navigate to the correct page based on the role
+          // Navigate to the correct page based on the role and CompanyType
           if (userRole === 'Admin') {
             navigate('/admin');
           } else {
-            navigate('/dashboard');
+            navigate(companyType === 1 ? '/dashboard' : '/opendashboard');
           }
         }
-
+    
       } catch (error) {
-        navigate('/infoReactionForm');
+        navigate(companyType === 1 ? '/infoReactionForm' : '/inforeactionformOpen');
       }
-
+    
     } catch (error) {
       setLoginError("Invalid username or password.");
     }
-  };
+  }    
 
   return (
     <div className={styles.loginFormWrapper}>

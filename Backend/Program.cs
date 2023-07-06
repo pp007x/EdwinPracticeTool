@@ -29,8 +29,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         builder =>
         {
-            builder.WithOrigins("https://temptestedwin.azurewebsites.net")
-            // builder.WithOrigins("http://localhost:3000") // replace with your React app's address
+            // builder.WithOrigins("https://temptestedwin.azurewebsites.net")
+            builder.WithOrigins("https://discprototype.azurewebsites.net")
+            // builder.WithOrigins("http://localhost:3000")
+            
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
@@ -83,6 +85,26 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
     });
 }
+else
+{
+    app.UseHsts();
+}
+
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Add("Content-Security-Policy",
+                            "default-src 'self'; " +
+                            "img-src 'self' data:; " +  // Add 'data:' here
+                            "font-src 'self'; " +
+                            "style-src 'self'; " +
+                            "script-src 'self';" +
+                            "frame-ancestors 'none';" +
+                            "form-action 'self';");
+    context.Response.Headers.Add("X-Frame-Options", "DENY");
+    await next();
+});
+
+
 
 app.UseHttpsRedirection();
 
@@ -93,6 +115,7 @@ app.UseDefaultFiles(new DefaultFilesOptions
     FileProvider = new PhysicalFileProvider(
         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "build")),
 });
+
 
 app.UseStaticFiles(new StaticFileOptions
 {

@@ -53,17 +53,18 @@ const Dashboard = () => {
       ];
       setChartData(transformedData);
 
-      axios.get(`${config.API_BASE_URL}/api/Onderwerp/user/${serverData.userId}`, {
+      axios.get(`${config.API_BASE_URL}/api/Onderwerp/user/me`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
-      })
-      .then(response => {
+    })
+    .then(response => {
         setOnderwerpData(response.data);
-      })
-      .catch(error => {
+    })
+    .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
-      });
+    });
+    
     })
     .catch(error => {
       console.error('There has been a problem with your fetch operation:', error);

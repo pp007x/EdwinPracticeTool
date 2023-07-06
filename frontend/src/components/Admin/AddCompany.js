@@ -13,6 +13,7 @@ function AddCompany() {
   });
 
   const [isCompanyAdded, setIsCompanyAdded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e) => {
     setCompany({
@@ -28,6 +29,8 @@ function AddCompany() {
     formData.append('name', company.name);
     formData.append('description', company.description);
     formData.append('code', company.code);
+    formData.append('companyType', company.companyType);  // Add this line
+  
 
     try {
       const token = localStorage.getItem('token');
@@ -38,13 +41,20 @@ function AddCompany() {
         }
       });
       setIsCompanyAdded(true);
+      setErrorMessage("");  // Clear any previous error messages
       setCompany({
         name: "",
         description: "",
         code: Math.random().toString(36).substr(2, 10)
       });
     } catch (error) {
-      console.error(error);
+      setIsCompanyAdded(false);
+      if (error.response && error.response.status === 409) {
+        setErrorMessage("A company with this name already exists.");
+      } else {
+        setErrorMessage("An unexpected error occurred. Please try again.");
+        console.error(error);
+      }
     }
   };
 
@@ -54,7 +64,6 @@ function AddCompany() {
       <div className={styles['page-title']}>{title}</div>
     </div>
   );
-  
 
   return (
     <div className={styles.dashboard}>
@@ -62,21 +71,30 @@ function AddCompany() {
         <div className={styles.main}>
             <Header title="Add company" />
             <div className={styles.content}>
-          <h1>Add New Company</h1>
-          {isCompanyAdded && <p>Company added successfully!</p>}
-          <form onSubmit={handleNewCompanySubmit}>
-            <label>
-              Name:
-              <input type="text" name="name" value={company.name} className={styles.inputField} onChange={handleInputChange} required />
-            </label>
-            <label>
-              Description:
-              <input type="text" name="description" className={styles.inputField} value={company.description} onChange={handleInputChange} />
-            </label>
-            <button type="submit">Add Company</button>
-          </form>
+                <h1>Add New Company</h1>
+                {isCompanyAdded && <p>Company added successfully!</p>}
+                {errorMessage && <p>{errorMessage}</p>} {/* Display the error message if it's set */}
+                <form onSubmit={handleNewCompanySubmit}>
+                  <label>
+                    Name:
+                    <input type="text" name="name" value={company.name} className={styles.inputField} onChange={handleInputChange} required />
+                  </label>
+                  <label>
+                    Description:
+                    <input type="text" name="description" className={styles.inputField} value={company.description} onChange={handleInputChange} />
+                  </label>
+                  <label>
+                    Type:
+                    <select name="companyType" value={company.companyType} className={styles.inputField} onChange={handleInputChange} required>
+                      <option value="">Select a type</option>
+                      <option value="1">Meerkeuze</option>
+                      <option value="2">Open vragen</option>
+                    </select>
+                  </label>
+                  <button type="submit">Add Company</button>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
   );
 }
