@@ -28,20 +28,36 @@ function EditOnderwerp() {
     }, []);
 
     const handleOnderwerpChange = (e) => {
-        setSelectedOnderwerp(onderwerpen.find(o => o.id === parseInt(e.target.value)));
+        const selectedOnderwerp = onderwerpen.find(o => o.id === parseInt(e.target.value));
+        if (selectedOnderwerp && selectedOnderwerp.description) {
+            selectedOnderwerp.description = selectedOnderwerp.description.replace(/<br>/g, '\n');
+        }
+        setSelectedOnderwerp(selectedOnderwerp);
     };
-
+    
     const handleInputChange = (e) => {
+        let value = e.target.value;
+        if (e.target.name === 'description') {
+            value = value.replace(/<br>/g, '\n');
+        }
         setSelectedOnderwerp({
             ...selectedOnderwerp,
-            [e.target.name]: e.target.value
+            [e.target.name]: value,
         });
     };
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`${config.API_BASE_URL}/api/Onderwerp/${selectedOnderwerp.id}`, selectedOnderwerp, {
+            // Create a copy of the selectedOnderwerp
+            const onderwerpToSave = {...selectedOnderwerp};
+    
+            // Replace newline characters with <br> tags in the description
+            if (onderwerpToSave.description) {
+                onderwerpToSave.description = onderwerpToSave.description.replace(/\n/g, '<br>');
+            }
+    
+            await axios.put(`${config.API_BASE_URL}/api/Onderwerp/${onderwerpToSave.id}`, onderwerpToSave, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -53,6 +69,7 @@ function EditOnderwerp() {
             console.error(error);
         }
     };
+    
     const Header = ({ title }) => (
         <div className={styles.header}>
           <hr />
@@ -84,7 +101,10 @@ function EditOnderwerp() {
                         </label>
                         <label>
                             Description:
-                            <input type="text" className={styles.inputField} name="description" value={selectedOnderwerp.description} onChange={handleInputChange} required />
+                            <textarea type="text" style={{
+                    width: "600px",
+                    height: "100px",
+                    resize: "none",}}className={styles.inputField} name="description" value={selectedOnderwerp.description} onChange={handleInputChange} required />
                         </label>
                         <button type="submit">Update profiles</button>
                     </form>

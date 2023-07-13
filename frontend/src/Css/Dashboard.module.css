@@ -14,8 +14,9 @@ body.dashboard {
 
 .dashboard {
   display: flex;
-  width: 100%;
+  width: calc(100vw - 250px);
   min-height: 100vh;
+  margin-left: 250px;
 }
 
 .sidebar {
@@ -84,10 +85,13 @@ body.dashboard {
 .header {
   padding: 20px;
   box-sizing: border-box;
-  background-color: #3487C7;
-  color: white;
+  background: linear-gradient(to right,  #dfe4f8 0%, #083e80 100%);
+  color: black;
   position: relative;
   border-bottom: none;
+  border-bottom-right-radius: 50px;
+  font-weight: bold;
+  z-index: 1;
 }
 
 .page-title {
@@ -100,7 +104,7 @@ body.dashboard {
   position: absolute;
   bottom: -1px;
   left: 0;
-  width: 100%;
+  width: 100vh;
   height: 1px;
   background-color: transparent;
 }

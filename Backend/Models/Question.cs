@@ -20,7 +20,7 @@ public class QuestionOpen {
     public int Id { get; set; }
     public string QuestionText { get; set; }
     public int CompanyId { get; set; }
-    public List<AnswerOpen> Answers { get; set; } 
+    public List<AnswerOpen>? Answers { get; set; } 
 }
 
 
@@ -67,7 +67,7 @@ public class QuestionDTO
 {
     public int Id { get; set; }
     public string QuestionText { get; set; }
-    public List<AnswerDTO> Answers { get; set; }
+    public List<AnswerDTO>? Answers { get; set; }
     public int CompanyId { get; set; } // Add this line
 }
 

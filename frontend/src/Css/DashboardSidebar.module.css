@@ -1,19 +1,18 @@
 .sidebar {
     width: 250px;
-    background-color: #d6d6d6;
+    background: linear-gradient(to bottom, #FFFFFF 0%,   50%, #083e80 100%);
     padding: 20px;
     box-sizing: border-box;
-    position: flex; /* updated from sticky to fixed */
+    position: fixed; /* updated from sticky to fixed */
     top: 0;
     left: 0;
     overflow-y: auto;
-    height: 100%; /* updated from 100% to 100vh */
-    
+    height: 100vh;
+    border-bottom-right-radius: 20px;
+    z-index: 2;
 }
   
   /* Rest of the CSS */
-  
-  
   .logo-container {
     display: flex;
     align-items: center;
@@ -43,11 +42,15 @@
   }
   
   .nav-button:hover {
-    background-color: #e0e0e0;
+    background-color: #ffffff;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
   }
   
   .nav-button.active {
-    background-color: #bdbaba;
+    background-color: #ffffff;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
   }
   
   .nav-button > button {

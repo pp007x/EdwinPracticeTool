@@ -7,5 +7,6 @@
             "database": "${workspaceFolder:EdwinPracticeTool}/Backend/LoginApi.db"
         }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "git.ignoreLimitWarning": true
 }

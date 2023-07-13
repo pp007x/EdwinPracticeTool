@@ -22,6 +22,7 @@ public class OpenAnswers {
     public int QuestionOpenId { get; set; }
     public string AnswerText { get; set; }
     public int Session { get; set; }
+    public DateTime Date { get; set; }
 }
 
 public class TotalScore
@@ -32,6 +33,7 @@ public class TotalScore
     public int ScoreValueS { get; set; }
     public int ScoreValueI { get; set; }
     public int ScoreValueD { get; set; }
+    public DateOnly Date { get; set; }
 
     // Returns the id of the highest score
     public int GetHighestScoreId()

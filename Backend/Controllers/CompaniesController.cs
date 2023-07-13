@@ -129,6 +129,19 @@ public async Task<ActionResult<IEnumerable<User>>> GetUsersForCompany()
             return users;
         }
 
+[HttpGet("code/{companyCode}")]
+public async Task<ActionResult<Company>> GetCompanyByCode(string companyCode)
+{
+    var company = await _context.Companies.FirstOrDefaultAsync(c => c.Code == companyCode);
+
+    if (company == null)
+    {
+        return NotFound();
+    }
+
+    return company;
+}
+
         // CompaniesController.cs
 [HttpDelete("{id}")]
 [Authorize(Roles = "Admin")]

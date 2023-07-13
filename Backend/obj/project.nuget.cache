@@ -1,11 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "J5CNyq1kGfvNdloHr/mcFArNEO5uuE4rCn8NyE72s1K8afiZZE7RM6hAsWvAQ0Zu24+qNofrPzlpKuxYzQ6ZZA==",
+  "dgSpecHash": "EKSCheyoTbHhJasoZRl3QSKw4vp3bntS561zb59tz8s9Gbt78ruCWeCDzo0+NAB1CCxsoh6CY0fo0Cm5Bc7Sgw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\LoginApi.csproj",
+  "projectFilePath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\LoginApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\steph\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\documentformat.openxml\\2.13.1\\documentformat.openxml.2.13.1.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\enums.net\\4.0.1\\enums.net.4.0.1.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\itextsharp\\5.0.5\\itextsharp.5.0.5.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\mathnet.numerics.signed\\4.15.0\\mathnet.numerics.signed.4.15.0.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.7\\microsoft.aspnetcore.authentication.jwtbearer.7.0.7.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.1\\microsoft.aspnetcore.openapi.7.0.1.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
@@ -34,10 +39,18 @@
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.15.1\\microsoft.identitymodel.protocols.6.15.1.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.15.1\\microsoft.identitymodel.protocols.openidconnect.6.15.1.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.31.0\\microsoft.identitymodel.tokens.6.31.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\microsoft.io.recyclablememorystream\\2.3.2\\microsoft.io.recyclablememorystream.2.3.2.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\npoi\\2.6.1\\npoi.2.6.1.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\openxmlpowertools\\4.5.3.2\\openxmlpowertools.4.5.3.2.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\sharpziplib\\1.3.3\\sharpziplib.1.3.3.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\sixlabors.fonts\\1.0.0-beta19\\sixlabors.fonts.1.0.0-beta19.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\sixlabors.imagesharp\\2.1.4\\sixlabors.imagesharp.2.1.4.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\spire.doc\\11.4.12\\spire.doc.11.4.12.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.4\\sqlitepclraw.bundle_e_sqlite3.2.1.4.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\sqlitepclraw.core\\2.1.4\\sqlitepclraw.core.2.1.4.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.4\\sqlitepclraw.lib.e_sqlite3.2.1.4.nupkg.sha512",
@@ -46,14 +59,138 @@
     "C:\\Users\\steph\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\syncfusion.compression.base\\22.1.34\\syncfusion.compression.base.22.1.34.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\syncfusion.compression.net.core\\22.1.38\\syncfusion.compression.net.core.22.1.38.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\syncfusion.docio.aspnet\\22.1.34\\syncfusion.docio.aspnet.22.1.34.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\syncfusion.docio.net.core\\22.1.38\\syncfusion.docio.net.core.22.1.38.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\syncfusion.doctopdfconverter.aspnet\\22.1.34\\syncfusion.doctopdfconverter.aspnet.22.1.34.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\syncfusion.licensing\\22.1.38\\syncfusion.licensing.22.1.38.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\syncfusion.officechart.base\\22.1.34\\syncfusion.officechart.base.22.1.34.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\syncfusion.officechart.net.core\\22.1.38\\syncfusion.officechart.net.core.22.1.38.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\syncfusion.pdf.aspnet\\22.1.34\\syncfusion.pdf.aspnet.22.1.34.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\syncfusion.pdf.net.core\\22.1.38\\syncfusion.pdf.net.core.22.1.38.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.0\\system.configuration.configurationmanager.6.0.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.formats.asn1\\6.0.0\\system.formats.asn1.6.0.0.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.31.0\\system.identitymodel.tokens.jwt.6.31.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.management.automation.dll\\10.0.10586\\system.management.automation.dll.10.0.10586.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.security.accesscontrol\\6.0.0\\system.security.accesscontrol.6.0.0.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.security.cryptography.pkcs\\6.0.1\\system.security.cryptography.pkcs.6.0.1.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.security.cryptography.protecteddata\\6.0.0\\system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.security.cryptography.xml\\6.0.1\\system.security.cryptography.xml.6.0.1.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.security.permissions\\6.0.0\\system.security.permissions.6.0.0.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
-    "C:\\Users\\steph\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
+    "C:\\Users\\steph\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
+    "C:\\Users\\steph\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "LoginApi depends on iTextSharp (>= 4.1.6) but iTextSharp 4.1.6 was not found. An approximate best match of iTextSharp 5.0.5 was resolved.",
+      "libraryId": "iTextSharp",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "LoginApi depends on Spire.Doc (>= 11.4.6) but Spire.Doc 11.4.6 was not found. An approximate best match of Spire.Doc 11.4.12 was resolved.",
+      "libraryId": "Spire.Doc",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'iTextSharp 5.0.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "iTextSharp",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'OpenXmlPowerTools 4.5.3.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "OpenXmlPowerTools",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Syncfusion.Compression.Base 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Syncfusion.Compression.Base",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Syncfusion.DocIO.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Syncfusion.DocIO.AspNet",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Syncfusion.DocToPDFConverter.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Syncfusion.DocToPDFConverter.AspNet",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Syncfusion.OfficeChart.Base 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Syncfusion.OfficeChart.Base",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Syncfusion.Pdf.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Syncfusion.Pdf.AspNet",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Management.Automation.dll 10.0.10586' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Management.Automation.dll",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

@@ -39,9 +39,9 @@ function LoginForm() {
           'Authorization': `Bearer ${response.data}`
         }
       });
-    
-      const companyType = companyResponse.data.CompanyType;
-    
+      
+      const companyType = companyResponse.data.companyType;
+      console.log(companyType)
       // Check user's scores
       try {
         const totalScoreResponse = await axios.get(`${config.API_BASE_URL}/api/TotalScores/user/me`, {
@@ -65,7 +65,7 @@ function LoginForm() {
         }
     
       } catch (error) {
-        navigate(companyType === 1 ? '/infoReactionForm' : '/inforeactionformOpen');
+        navigate(companyType === 1 ? '/infoReactionForm' : '/reactionformOpen');
       }
     
     } catch (error) {

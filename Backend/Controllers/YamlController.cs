@@ -58,5 +58,37 @@ namespace LoginApi.Controllers
                 return BadRequest("An error occurred: " + e.Message);
             }
         }
+private readonly ILogger<YamlUploadController> _logger;
+        [HttpPost("YamlUploadForType2")]
+        [Authorize(Roles = "Admin")]
+            public async Task<IActionResult> PostQuestionDataForType2([FromBody] List<QuestionOpen> questionDTOs)
+            {
+                try
+                {
+                    foreach (var questionDTO in questionDTOs)
+                    {
+                        var question = new QuestionOpen 
+                        { 
+                            QuestionText = questionDTO.QuestionText,
+                            CompanyId = questionDTO.CompanyId,
+                            Answers = questionDTO.Answers?.Select(a => new AnswerOpen { AnswerText = a.AnswerText }).ToList() // Handle potential null value here
+                        };
+                        _context.QuestionOpen.Add(question);
+                    }
+                    await _context.SaveChangesAsync();
+                    return Ok("Questions and answers from YAML file for type 2 company successfully saved to database");
+                }
+                catch (Exception e)
+                {
+                    // Log the exception details
+                    _logger.LogError(e, "An error occurred while processing the request.");
+                    
+                    // Respond with a detailed error message for debugging purposes.
+                    // Be aware that in a production system, you should not expose internal error details like this.
+                    return BadRequest("An error occurred: " + e.Message);
+                }
+
+            }
+
     }
 }

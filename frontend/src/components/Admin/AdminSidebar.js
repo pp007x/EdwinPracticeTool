@@ -87,6 +87,12 @@ const AdminSidebar = () => {
           >
             Reset password
           </Link>
+          <Link
+            to="/admin/hulpvakjes"
+            className={`${styles["nav-button"]} ${location.pathname === '/admin/hulpvakjes' ? styles.active : ''}`}
+          >
+            Edit help boxes
+          </Link>
         </div>
       </div>
     </div>

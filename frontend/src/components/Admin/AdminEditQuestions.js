@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import config from '../../config';
 import DashboardSidebar from './AdminSidebar';
-import styles from '../../Css/CompanyDashboard.module.css'; 
+import styles from '../../Css/CompanyDashboard.module.css';
 
 const Header = ({ title }) => (
   <div className={styles.header}>
@@ -14,14 +14,13 @@ function AdminEditQuestions() {
   const [questions, setQuestions] = useState([]);
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState('');
+  const [selectedCompanyType, setSelectedCompanyType] = useState(null);
   const [editedQuestions, setEditedQuestions] = useState([]);
-
 
   const getCompanyName = () => {
     const company = companies.find(c => c.id === parseInt(selectedCompany,10));
     return company ? company.name : '';
-  }
-
+  };
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -35,12 +34,10 @@ function AdminEditQuestions() {
       .then(data => setCompanies(data));
   }, []);
 
-  const handleCompanyChange = (event) => {
-    const companyId = event.target.value;
-    setSelectedCompany(companyId);
-
-    if (companyId) {
-      fetch(`${config.API_BASE_URL}/api/Questions/${companyId}`, {
+  useEffect(() => {
+    if (selectedCompany) {
+      console.log(selectedCompany);
+      fetch(`${config.API_BASE_URL}/api/${selectedCompanyType === 2 ? 'OpenReactionForm/companyOpen' : 'Questions'}/${selectedCompany}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -52,6 +49,16 @@ function AdminEditQuestions() {
         })
         .catch(error => console.error(error));
     }
+  }, [selectedCompany, selectedCompanyType]);
+
+
+  const handleCompanyChange = (event) => {
+    const companyId = event.target.value;
+    const company = companies.find(c => c.id === parseInt(companyId, 10));
+    
+    setSelectedCompany(companyId);
+    setSelectedCompanyType(company ? company.companyType : null);
+  
   };
 
   const handleQuestionChange = (index, event) => {
@@ -63,6 +70,25 @@ function AdminEditQuestions() {
     });
   };
 
+  const handleDeleteQuestion = (questionId) => {
+    fetch(`${config.API_BASE_URL}/api/${selectedCompanyType === 2 ? 'OpenReactionForm' : 'Questions'}/${questionId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          setEditedQuestions(prevState => prevState.filter(question => question.id !== questionId));
+        } else {
+          console.error('Failed to delete question');
+        }
+      })
+      .catch(error => console.error('Error:', error));
+  };
+  
+
+
   const handleAnswerChange = (questionIndex, answerIndex, event) => {
     const { name, value } = event.target;
     setEditedQuestions(prevState => {
@@ -73,7 +99,7 @@ function AdminEditQuestions() {
   };
 
   const handleSubmit = () => {
-    fetch(`${config.API_BASE_URL}/api/Questions`, {
+    fetch(`${config.API_BASE_URL}/api/${selectedCompanyType === 2 ? 'OpenReactionForm' : 'Questions'}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -90,9 +116,7 @@ function AdminEditQuestions() {
       })
       .catch(error => console.error('Error:', error));
   };
-
-
-
+  
   return (
     <div className={styles.dashboard}>
       <DashboardSidebar />
@@ -112,7 +136,8 @@ function AdminEditQuestions() {
                 </select>
               </label>
             </div>
-
+            {selectedCompanyType !== 2 && questions.length > 0 && (
+              <div>
             {questions.length > 0 ? (
               <div>
                   <h2>Existing Questions for Company: {getCompanyName()}</h2>
@@ -195,6 +220,7 @@ function AdminEditQuestions() {
                                 />
                               </label>
                             </div>
+                            <button style={{ width: '150px', fontSize: 'smaller', backgroundColor: 'red', color: 'white' }} onClick={() => handleDeleteQuestion(question.id)}>Delete Question</button>
                           </li>
                         ))}
                       </ul>
@@ -205,8 +231,42 @@ function AdminEditQuestions() {
                 <button onClick={handleSubmit}>Submit All Changes</button>
               </div>
             ) : (
-              <p>No questions found for the selected company.</p>
+              <p></p>
+            
             )}
+                          </div>
+            )}
+
+{selectedCompanyType === 2 && questions.length > 0 ? (
+    <div>
+      <h2>Open Questions for Company: {getCompanyName()}</h2>
+
+      <ul>
+        {editedQuestions.map((question, questionIndex) => (
+          <li key={question.id}>
+            <div className={styles.inputFieldWrapper}>
+              <label>
+                Question Text:
+                <input
+                  type="text"
+                  className={styles.inputEditQuestion}
+                  name="questionText"
+                  value={question.questionText}
+                  onChange={event => handleQuestionChange(questionIndex, event)}
+                />
+              </label>
+            </div>
+            <button style={{ width: '150px', fontSize: 'smaller', backgroundColor: 'red', color: 'white' }} onClick={() => handleDeleteQuestion(question.id)}>Delete Question</button>
+          </li>
+        ))}
+      </ul>
+
+      <button onClick={handleSubmit}>Submit All Changes</button>
+    </div>
+  ) : ( 
+    <p></p>
+  )}
+
           </div>
         </div>
       </div>
