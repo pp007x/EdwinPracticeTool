@@ -23,6 +23,7 @@ import InfoReactionForm from './components/InfoReactionForm';
 import InforeactionFormOpen from './components/AndereVragen/InfoReactionFormOpen';
 import ReactionFormOpen from './components/AndereVragen/ReactionFormOpen';
 import OpenDashboard from './components/AndereVragen/OpenDashboard';
+import HulpVakjes from './components/Admin/HulpVakjes';
 function App() {
     return (
         <Router>
@@ -51,6 +52,7 @@ function App() {
                 <Route path="/inforeactionformOpen" element={<InforeactionFormOpen />} />
                 <Route path="/reactionformOpen" element={<ReactionFormOpen />} />
                 <Route path="/opendashboard" element={<OpenDashboard />} />
+                <Route path="/admin/hulpvakjes" element={<ProtectedComponent><HulpVakjes /></ProtectedComponent>} />
             </Routes>
         </Router>
     );

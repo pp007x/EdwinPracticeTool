@@ -44,6 +44,9 @@ public async Task<IActionResult> PostTotalScore(TotalScore totalScore)
 
     totalScore.UserId = loggedInUserId;
 
+    // Set the current date
+    totalScore.Date = DateOnly.FromDateTime(DateTime.Today);
+
     _context.TotalScores.Add(totalScore);
 
     // New code starts here
@@ -58,7 +61,7 @@ public async Task<IActionResult> PostTotalScore(TotalScore totalScore)
     var sortedScoreValues = scoreValues.OrderByDescending(x => x.Value).ToList();
 
     var boxValue = sortedScoreValues[0].Key + sortedScoreValues[1].Key.ToLower();
-    
+
     var user = await _context.Users.FindAsync(loggedInUserId);
     if (user == null)
     {

@@ -35,7 +35,7 @@ public async Task<ActionResult<string>> Register(User newUser)
 
     // Check if the user with the provided username already exists in the same company
     var existingUser = await _context.Users
-        .SingleOrDefaultAsync(x => x.Username == newUser.Username && x.CompanyId == newUser.CompanyId);
+        .SingleOrDefaultAsync(x => x.Username == newUser.Username);
 
     if (existingUser != null)
     {

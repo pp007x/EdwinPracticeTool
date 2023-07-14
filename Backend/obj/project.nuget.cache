@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J5CNyq1kGfvNdloHr/mcFArNEO5uuE4rCn8NyE72s1K8afiZZE7RM6hAsWvAQ0Zu24+qNofrPzlpKuxYzQ6ZZA==",
+  "dgSpecHash": "cR6l1hxzNDZccF9zbsBrR4SODNCJ42YAN8intnrwvCr5AwsbxRm0KK2JoXhUKHjdSWeNPP1MELFlbqGI9k4ZJw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\LoginApi.csproj",
+  "projectFilePath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\LoginApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\steph\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\steph\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

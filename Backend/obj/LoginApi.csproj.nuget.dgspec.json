@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\LoginApi.csproj": {}
+    "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\LoginApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\LoginApi.csproj": {
+    "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\LoginApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\LoginApi.csproj",
+        "projectUniqueName": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\LoginApi.csproj",
         "projectName": "LoginApi",
-        "projectPath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\LoginApi.csproj",
+        "projectPath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\LoginApi.csproj",
         "packagesPath": "C:\\Users\\steph\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\obj\\",
+        "outputPath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\steph\\AppData\\Roaming\\NuGet\\NuGet.Config"

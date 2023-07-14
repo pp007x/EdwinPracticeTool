@@ -116,6 +116,7 @@ const ReactionForm = () => {
                   ))}
                 </div>
               </label>
+              <p></p>
             </div>
           ))}
           <div className={styles["button"]}>

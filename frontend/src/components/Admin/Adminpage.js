@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AdminSidebar from './AdminSidebar';
-import AdminHeader from './AdminHeader';
 import styles from '../../Css/CompanyDashboard.module.css'; 
 import config from '../../config';
 
@@ -13,6 +12,12 @@ function AdminPortal() {
     password: "",
     isAdmin: false
   });
+  const Header = ({ title }) => (
+    <div className={styles.header}>
+      <hr />
+      <div className={styles['page-title']}>{title}</div>
+    </div>
+  );
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -57,7 +62,7 @@ function AdminPortal() {
     <div className={styles.dashboard} >
         <AdminSidebar />
         <div className={styles.main}>
-            <AdminHeader />
+            <Header />
             <div className={styles.content}>
           <h1>Admin Portal</h1>
         </div>

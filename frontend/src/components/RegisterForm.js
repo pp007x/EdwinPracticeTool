@@ -21,19 +21,22 @@ function RegisterForm() {
       setRegisterError("Password must be at least 8 characters long, include at least one upper case letter, one lower case letter, one numeric digit, and one special character.");
       return;
     }
-
+    console.log(companyCode)
     try {
+      const companyResponse = await axios.get(`${config.API_BASE_URL}/api/Companies/code/${companyCode}`);
+    const companyId = companyResponse.data.id;
       const registrationResponse = await axios.post(`${config.API_BASE_URL}/api/Authentication/Register`, {
         username,
         password,
-        companyId: parseInt(companyCode)  // Ensure this value is integer
+        companyId: parseInt(companyId)  // Ensure this value is integer
       });
-  
+      
       localStorage.setItem('token', registrationResponse.data);
   
       await handleLogin(); // Wait for the registration process to complete before proceeding with login
   
     } catch (error) {
+      console.log(error.response.data);
       setRegisterError("Registration failed.");
     }
   };
@@ -58,13 +61,13 @@ function RegisterForm() {
           'Authorization': `Bearer ${loginResponse.data}`
         }
       });
-  
-      const companyType = companyResponse.data.CompanyType;
-  
+      console.log(companyResponse)
+      const companyType = companyResponse.data.companyType;
+      console.log(companyType)
       if (userRole === 'Admin') {
         navigate('/admin');
       } else {
-        navigate(companyType === 1 ? '/inforeactionform' : '/inforeactionformOpen');
+        navigate(companyType === 1 ? '/inforeactionform' : '/reactionformOpen');
       }
   
     } catch (error) {
