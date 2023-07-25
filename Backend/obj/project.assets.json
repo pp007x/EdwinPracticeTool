@@ -15,48 +15,6 @@
           }
         }
       },
-      "BouncyCastle.Cryptography/2.2.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/BouncyCastle.Cryptography.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/BouncyCastle.Cryptography.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "DocumentFormat.OpenXml/2.13.1": {
-        "type": "package",
-        "dependencies": {
-          "System.IO.Packaging": "4.7.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Enums.NET/4.0.1": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.0/Enums.NET.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/Enums.NET.dll": {
-            "related": ".pdb;.xml"
-          }
-        }
-      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -66,28 +24,6 @@
         },
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "iTextSharp/5.0.5": {
-        "type": "package",
-        "compile": {
-          "lib/itextsharp.dll": {}
-        },
-        "runtime": {
-          "lib/itextsharp.dll": {}
-        }
-      },
-      "MathNet.Numerics.Signed/4.15.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/MathNet.Numerics.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/MathNet.Numerics.dll": {
             "related": ".xml"
           }
         }
@@ -571,19 +507,6 @@
           }
         }
       },
-      "Microsoft.IO.RecyclableMemoryStream/2.3.2": {
-        "type": "package",
-        "compile": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -615,28 +538,6 @@
           }
         }
       },
-      "Microsoft.Win32.SystemEvents/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
       "Mono.TextTemplating/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -647,130 +548,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
-        }
-      },
-      "NPOI/2.6.1": {
-        "type": "package",
-        "dependencies": {
-          "BouncyCastle.Cryptography": "2.2.1",
-          "Enums.NET": "4.0.1",
-          "MathNet.Numerics.Signed": "4.15.0",
-          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
-          "SharpZipLib": "1.3.3",
-          "SixLabors.Fonts": "1.0.0-beta19",
-          "SixLabors.ImageSharp": "2.1.4",
-          "System.Configuration.ConfigurationManager": "6.0.0",
-          "System.Security.Cryptography.Xml": "6.0.1",
-          "System.Text.Encoding.CodePages": "6.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.1/NPOI.Core.dll": {
-            "related": ".pdb;.xml"
-          },
-          "lib/netstandard2.1/NPOI.OOXML.dll": {
-            "related": ".pdb;.xml"
-          },
-          "lib/netstandard2.1/NPOI.OpenXml4Net.dll": {
-            "related": ".pdb;.xml"
-          },
-          "lib/netstandard2.1/NPOI.OpenXmlFormats.dll": {
-            "related": ".dll.config;.pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.1/NPOI.Core.dll": {
-            "related": ".pdb;.xml"
-          },
-          "lib/netstandard2.1/NPOI.OOXML.dll": {
-            "related": ".pdb;.xml"
-          },
-          "lib/netstandard2.1/NPOI.OpenXml4Net.dll": {
-            "related": ".pdb;.xml"
-          },
-          "lib/netstandard2.1/NPOI.OpenXmlFormats.dll": {
-            "related": ".dll.config;.pdb;.xml"
-          }
-        }
-      },
-      "OpenXmlPowerTools/4.5.3.2": {
-        "type": "package",
-        "dependencies": {
-          "DocumentFormat.OpenXml": "2.7.2",
-          "System.Management.Automation.dll": "10.0.10586"
-        },
-        "compile": {
-          "lib/net45/OpenXmlPowerTools.dll": {}
-        },
-        "runtime": {
-          "lib/net45/OpenXmlPowerTools.dll": {}
-        }
-      },
-      "SharpZipLib/1.3.3": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.1/ICSharpCode.SharpZipLib.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.1/ICSharpCode.SharpZipLib.dll": {
-            "related": ".pdb;.xml"
-          }
-        }
-      },
-      "SixLabors.Fonts/1.0.0-beta19": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.1/SixLabors.Fonts.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/SixLabors.Fonts.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "SixLabors.ImageSharp/2.1.4": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "5.0.0",
-          "System.Text.Encoding.CodePages": "5.0.0"
-        },
-        "compile": {
-          "lib/netcoreapp3.1/SixLabors.ImageSharp.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/SixLabors.ImageSharp.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Spire.Doc/11.4.12": {
-        "type": "package",
-        "dependencies": {
-          "System.Drawing.Common": "6.0.0",
-          "System.Security.Cryptography.Xml": "6.0.0",
-          "System.Security.Permissions": "6.0.0",
-          "System.Text.Encoding.CodePages": "6.0.0"
-        },
-        "compile": {
-          "lib/net6.0/Spire.Doc.dll": {
-            "related": ".xml"
-          },
-          "lib/net6.0/Spire.Pdf.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Spire.Doc.dll": {
-            "related": ".xml"
-          },
-          "lib/net6.0/Spire.Pdf.dll": {
-            "related": ".xml"
-          }
         }
       },
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.4": {
@@ -979,165 +756,6 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Syncfusion.Compression.Base/22.1.34": {
-        "type": "package",
-        "compile": {
-          "lib/net46/Syncfusion.Compression.Base.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.Compression.Base.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Syncfusion.Compression.Net.Core/22.1.38": {
-        "type": "package",
-        "compile": {
-          "lib/net7.0/Syncfusion.Compression.Portable.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/Syncfusion.Compression.Portable.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Syncfusion.DocIO.AspNet/22.1.34": {
-        "type": "package",
-        "dependencies": {
-          "Syncfusion.Compression.Base": "22.1.34",
-          "Syncfusion.Licensing": "22.1.34",
-          "Syncfusion.OfficeChart.Base": "22.1.34"
-        },
-        "compile": {
-          "lib/net46/Syncfusion.DocIO.Base.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.DocIO.Base.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Syncfusion.DocIO.Net.Core/22.1.38": {
-        "type": "package",
-        "dependencies": {
-          "Syncfusion.Compression.Net.Core": "22.1.38",
-          "Syncfusion.Licensing": "22.1.38",
-          "Syncfusion.OfficeChart.Net.Core": "22.1.38",
-          "System.Text.Encoding.CodePages": "4.4.0"
-        },
-        "compile": {
-          "lib/net7.0/Syncfusion.DocIO.Portable.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/Syncfusion.DocIO.Portable.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Syncfusion.DocToPDFConverter.AspNet/22.1.34": {
-        "type": "package",
-        "dependencies": {
-          "Syncfusion.Compression.Base": "22.1.34",
-          "Syncfusion.DocIO.AspNet": "22.1.34",
-          "Syncfusion.Licensing": "22.1.34",
-          "Syncfusion.OfficeChart.Base": "22.1.34",
-          "Syncfusion.Pdf.AspNet": "22.1.34"
-        },
-        "compile": {
-          "lib/net46/Syncfusion.DocToPdfConverter.Base.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.DocToPdfConverter.Base.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Syncfusion.Licensing/22.1.38": {
-        "type": "package",
-        "compile": {
-          "lib/net7.0/Syncfusion.Licensing.dll": {}
-        },
-        "runtime": {
-          "lib/net7.0/Syncfusion.Licensing.dll": {}
-        }
-      },
-      "Syncfusion.OfficeChart.Base/22.1.34": {
-        "type": "package",
-        "dependencies": {
-          "Syncfusion.Compression.Base": "22.1.34"
-        },
-        "compile": {
-          "lib/net46/Syncfusion.OfficeChart.Base.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.OfficeChart.Base.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Syncfusion.OfficeChart.Net.Core/22.1.38": {
-        "type": "package",
-        "dependencies": {
-          "Syncfusion.Compression.Net.Core": "22.1.38"
-        },
-        "compile": {
-          "lib/net7.0/Syncfusion.OfficeChart.Portable.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/Syncfusion.OfficeChart.Portable.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Syncfusion.Pdf.AspNet/22.1.34": {
-        "type": "package",
-        "dependencies": {
-          "Syncfusion.Compression.Base": "22.1.34",
-          "Syncfusion.Licensing": "22.1.34"
-        },
-        "compile": {
-          "lib/net46/Syncfusion.Pdf.Base.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net46/Syncfusion.Pdf.Base.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Syncfusion.Pdf.Net.Core/22.1.38": {
-        "type": "package",
-        "dependencies": {
-          "Syncfusion.Compression.Net.Core": "22.1.38",
-          "Syncfusion.Licensing": "22.1.38",
-          "System.Text.Encoding.CodePages": "4.4.0"
-        },
-        "compile": {
-          "lib/net7.0/Syncfusion.Pdf.Portable.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/Syncfusion.Pdf.Portable.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.CodeDom/4.4.0": {
         "type": "package",
         "compile": {
@@ -1147,71 +765,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.CodeDom.dll": {}
-        }
-      },
-      "System.Configuration.ConfigurationManager/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Security.Cryptography.ProtectedData": "6.0.0",
-          "System.Security.Permissions": "6.0.0"
-        },
-        "compile": {
-          "lib/net6.0/System.Configuration.ConfigurationManager.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Configuration.ConfigurationManager.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        }
-      },
-      "System.Drawing.Common/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Win32.SystemEvents": "6.0.0"
-        },
-        "compile": {
-          "lib/net6.0/System.Drawing.Common.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Drawing.Common.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/unix/lib/net6.0/System.Drawing.Common.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/net6.0/System.Drawing.Common.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
-      "System.Formats.Asn1/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Formats.Asn1.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Formats.Asn1.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
       "System.IdentityModel.Tokens.Jwt/6.31.0": {
@@ -1229,28 +782,6 @@
           "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll": {
             "related": ".xml"
           }
-        }
-      },
-      "System.IO.Packaging/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.IO.Packaging.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.IO.Packaging.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "System.Management.Automation.dll/10.0.10586": {
-        "type": "package",
-        "compile": {
-          "lib/net40/System.Management.Automation.dll": {}
-        },
-        "runtime": {
-          "lib/net40/System.Management.Automation.dll": {}
         }
       },
       "System.Memory/4.5.3": {
@@ -1274,44 +805,6 @@
           }
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        }
-      },
-      "System.Security.AccessControl/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Security.AccessControl.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Security.AccessControl.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Security.AccessControl.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
       "System.Security.Cryptography.Cng/4.5.0": {
         "type": "package",
         "compile": {
@@ -1329,93 +822,6 @@
           }
         }
       },
-      "System.Security.Cryptography.Pkcs/6.0.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Formats.Asn1": "6.0.0"
-        },
-        "compile": {
-          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
-      "System.Security.Cryptography.ProtectedData/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Security.Cryptography.ProtectedData.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Security.Cryptography.ProtectedData.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
-      "System.Security.Cryptography.Xml/6.0.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Security.AccessControl": "6.0.0",
-          "System.Security.Cryptography.Pkcs": "6.0.1"
-        },
-        "compile": {
-          "lib/net6.0/System.Security.Cryptography.Xml.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Security.Cryptography.Xml.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        }
-      },
-      "System.Security.Permissions/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Security.AccessControl": "6.0.0",
-          "System.Windows.Extensions": "6.0.0"
-        },
-        "compile": {
-          "lib/net6.0/System.Security.Permissions.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Security.Permissions.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        }
-      },
       "System.Text.Encoding/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1426,31 +832,6 @@
         "compile": {
           "ref/netstandard1.3/System.Text.Encoding.dll": {
             "related": ".xml"
-          }
-        }
-      },
-      "System.Text.Encoding.CodePages/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
-        },
-        "compile": {
-          "lib/net6.0/System.Text.Encoding.CodePages.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Text.Encoding.CodePages.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.dll": {
-            "assetType": "runtime",
-            "rid": "win"
           }
         }
       },
@@ -1494,28 +875,6 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
-      },
-      "System.Windows.Extensions/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Drawing.Common": "6.0.0"
-        },
-        "compile": {
-          "lib/net6.0/System.Windows.Extensions.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Windows.Extensions.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Windows.Extensions.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
       }
     }
   },
@@ -1551,80 +910,6 @@
         "readme.md"
       ]
     },
-    "BouncyCastle.Cryptography/2.2.1": {
-      "sha512": "A6Zr52zVqJKt18ZBsTnX0qhG0kwIQftVAjLmszmkiR/trSp8H+xj1gUOzk7XHwaKgyREMSV1v9XaKrBUeIOdvQ==",
-      "type": "package",
-      "path": "bouncycastle.cryptography/2.2.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.md",
-        "README.md",
-        "bouncycastle.cryptography.2.2.1.nupkg.sha512",
-        "bouncycastle.cryptography.nuspec",
-        "lib/net461/BouncyCastle.Cryptography.dll",
-        "lib/net461/BouncyCastle.Cryptography.xml",
-        "lib/net6.0/BouncyCastle.Cryptography.dll",
-        "lib/net6.0/BouncyCastle.Cryptography.xml",
-        "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
-        "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
-        "packageIcon.png"
-      ]
-    },
-    "DocumentFormat.OpenXml/2.13.1": {
-      "sha512": "iLoOw/9rhoxPbhxUa8rcHRANpnPlUs3DGqqRlScVjZutGwcUkD2UCRo8YteUUva6nSvAm7ebAXKf5aGF4nQC6Q==",
-      "type": "package",
-      "path": "documentformat.openxml/2.13.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "documentformat.openxml.2.13.1.nupkg.sha512",
-        "documentformat.openxml.nuspec",
-        "icon.png",
-        "lib/net35/DocumentFormat.OpenXml.dll",
-        "lib/net35/DocumentFormat.OpenXml.xml",
-        "lib/net40/DocumentFormat.OpenXml.dll",
-        "lib/net40/DocumentFormat.OpenXml.xml",
-        "lib/net46/DocumentFormat.OpenXml.dll",
-        "lib/net46/DocumentFormat.OpenXml.xml",
-        "lib/netstandard1.3/DocumentFormat.OpenXml.dll",
-        "lib/netstandard1.3/DocumentFormat.OpenXml.xml",
-        "lib/netstandard2.0/DocumentFormat.OpenXml.dll",
-        "lib/netstandard2.0/DocumentFormat.OpenXml.xml"
-      ]
-    },
-    "Enums.NET/4.0.1": {
-      "sha512": "OUGCd5L8zHZ61GAf436G0gf/H6yrSUkEpV5vm2CbCUuz9Rx7iLFLP5iHSSfmOtqNpuyo4vYte0CvYEmPZXRmRQ==",
-      "type": "package",
-      "path": "enums.net/4.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "enums.net.4.0.1.nupkg.sha512",
-        "enums.net.nuspec",
-        "lib/net45/Enums.NET.dll",
-        "lib/net45/Enums.NET.pdb",
-        "lib/net45/Enums.NET.xml",
-        "lib/netcoreapp3.0/Enums.NET.dll",
-        "lib/netcoreapp3.0/Enums.NET.pdb",
-        "lib/netcoreapp3.0/Enums.NET.xml",
-        "lib/netstandard1.0/Enums.NET.dll",
-        "lib/netstandard1.0/Enums.NET.pdb",
-        "lib/netstandard1.0/Enums.NET.xml",
-        "lib/netstandard1.1/Enums.NET.dll",
-        "lib/netstandard1.1/Enums.NET.pdb",
-        "lib/netstandard1.1/Enums.NET.xml",
-        "lib/netstandard1.3/Enums.NET.dll",
-        "lib/netstandard1.3/Enums.NET.pdb",
-        "lib/netstandard1.3/Enums.NET.xml",
-        "lib/netstandard2.0/Enums.NET.dll",
-        "lib/netstandard2.0/Enums.NET.pdb",
-        "lib/netstandard2.0/Enums.NET.xml",
-        "lib/netstandard2.1/Enums.NET.dll",
-        "lib/netstandard2.1/Enums.NET.pdb",
-        "lib/netstandard2.1/Enums.NET.xml"
-      ]
-    },
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -1641,39 +926,6 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
-      ]
-    },
-    "iTextSharp/5.0.5": {
-      "sha512": "vwda8iRfWwpuNU/JyLYGmBd56J32WVyPZxk51e4p74+4krPNtcfU7WlrNn06aIlGdLvWhsuDNjA0hYK/spp2gA==",
-      "type": "package",
-      "path": "itextsharp/5.0.5",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "AGPL.txt",
-        "itextsharp.5.0.5.nupkg.sha512",
-        "itextsharp.nuspec",
-        "lib/itextsharp.dll"
-      ]
-    },
-    "MathNet.Numerics.Signed/4.15.0": {
-      "sha512": "LFjukMRatkg9dgRM7U/gM4uKgaWAX7E0lt3fsVDTPdtBIVuh7uPlksDie290br1/tv1a4Ar/Bz9ywCPSL8PhHg==",
-      "type": "package",
-      "path": "mathnet.numerics.signed/4.15.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "icon.png",
-        "lib/net40/MathNet.Numerics.dll",
-        "lib/net40/MathNet.Numerics.xml",
-        "lib/net461/MathNet.Numerics.dll",
-        "lib/net461/MathNet.Numerics.xml",
-        "lib/netstandard1.3/MathNet.Numerics.dll",
-        "lib/netstandard1.3/MathNet.Numerics.xml",
-        "lib/netstandard2.0/MathNet.Numerics.dll",
-        "lib/netstandard2.0/MathNet.Numerics.xml",
-        "mathnet.numerics.signed.4.15.0.nupkg.sha512",
-        "mathnet.numerics.signed.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.7": {
@@ -2572,28 +1824,6 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "Microsoft.IO.RecyclableMemoryStream/2.3.2": {
-      "sha512": "Oh1qXXFdJFcHozvb4H6XYLf2W0meZFuG0A+TfapFPj9z5fd4vxiARGEhAaLj/6XWQaMYIv4SH/9Q6H78Hw0E2Q==",
-      "type": "package",
-      "path": "microsoft.io.recyclablememorystream/2.3.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "lib/net462/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/net462/Microsoft.IO.RecyclableMemoryStream.xml",
-        "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.xml",
-        "lib/netcoreapp2.1/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/netcoreapp2.1/Microsoft.IO.RecyclableMemoryStream.xml",
-        "lib/netstandard2.0/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/netstandard2.0/Microsoft.IO.RecyclableMemoryStream.xml",
-        "lib/netstandard2.1/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/netstandard2.1/Microsoft.IO.RecyclableMemoryStream.xml",
-        "microsoft.io.recyclablememorystream.2.3.2.nupkg.sha512",
-        "microsoft.io.recyclablememorystream.nuspec"
-      ]
-    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
@@ -2638,35 +1868,6 @@
         "microsoft.openapi.nuspec"
       ]
     },
-    "Microsoft.Win32.SystemEvents/6.0.0": {
-      "sha512": "hqTM5628jSsQiv+HGpiq3WKBl2c8v1KZfby2J6Pr7pEPlK9waPdgEO6b8A/+/xn/yZ9ulv8HuqK71ONy2tg67A==",
-      "type": "package",
-      "path": "microsoft.win32.systemevents/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/Microsoft.Win32.SystemEvents.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/Microsoft.Win32.SystemEvents.dll",
-        "lib/net461/Microsoft.Win32.SystemEvents.xml",
-        "lib/net6.0/Microsoft.Win32.SystemEvents.dll",
-        "lib/net6.0/Microsoft.Win32.SystemEvents.xml",
-        "lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll",
-        "lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.xml",
-        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
-        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-        "microsoft.win32.systemevents.nuspec",
-        "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll",
-        "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.xml",
-        "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll",
-        "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.xml",
-        "useSharedDesignerContext.txt"
-      ]
-    },
     "Mono.TextTemplating/2.2.1": {
       "sha512": "KZYeKBET/2Z0gY1WlTAK7+RHTl7GSbtvTLDXEZZojUdAPqpQNDL6tHv7VUpqfX5VEOh+uRGKaZXkuD253nEOBQ==",
       "type": "package",
@@ -2678,153 +1879,6 @@
         "lib/netstandard2.0/Mono.TextTemplating.dll",
         "mono.texttemplating.2.2.1.nupkg.sha512",
         "mono.texttemplating.nuspec"
-      ]
-    },
-    "NPOI/2.6.1": {
-      "sha512": "DiqEeV7mXv8qQaoqKkJ6nrP11+vOZ+fQI/zi2nvl9qaraiZxlYqWqn7MMXaoAstRM+VnOFYmm0JzlP6FJ9onMg==",
-      "type": "package",
-      "path": "npoi/2.6.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE",
-        "lib/netstandard2.0/NPOI.Core.dll",
-        "lib/netstandard2.0/NPOI.Core.pdb",
-        "lib/netstandard2.0/NPOI.Core.xml",
-        "lib/netstandard2.0/NPOI.OOXML.dll",
-        "lib/netstandard2.0/NPOI.OOXML.pdb",
-        "lib/netstandard2.0/NPOI.OOXML.xml",
-        "lib/netstandard2.0/NPOI.OpenXml4Net.dll",
-        "lib/netstandard2.0/NPOI.OpenXml4Net.pdb",
-        "lib/netstandard2.0/NPOI.OpenXml4Net.xml",
-        "lib/netstandard2.0/NPOI.OpenXmlFormats.dll",
-        "lib/netstandard2.0/NPOI.OpenXmlFormats.dll.config",
-        "lib/netstandard2.0/NPOI.OpenXmlFormats.pdb",
-        "lib/netstandard2.0/NPOI.OpenXmlFormats.xml",
-        "lib/netstandard2.1/NPOI.Core.dll",
-        "lib/netstandard2.1/NPOI.Core.pdb",
-        "lib/netstandard2.1/NPOI.Core.xml",
-        "lib/netstandard2.1/NPOI.OOXML.dll",
-        "lib/netstandard2.1/NPOI.OOXML.pdb",
-        "lib/netstandard2.1/NPOI.OOXML.xml",
-        "lib/netstandard2.1/NPOI.OpenXml4Net.dll",
-        "lib/netstandard2.1/NPOI.OpenXml4Net.pdb",
-        "lib/netstandard2.1/NPOI.OpenXml4Net.xml",
-        "lib/netstandard2.1/NPOI.OpenXmlFormats.dll",
-        "lib/netstandard2.1/NPOI.OpenXmlFormats.dll.config",
-        "lib/netstandard2.1/NPOI.OpenXmlFormats.pdb",
-        "lib/netstandard2.1/NPOI.OpenXmlFormats.xml",
-        "logo/120_120.jpg",
-        "logo/240_240.png",
-        "logo/32_32.jpg",
-        "logo/60_60.jpg",
-        "npoi.2.6.1.nupkg.sha512",
-        "npoi.nuspec"
-      ]
-    },
-    "OpenXmlPowerTools/4.5.3.2": {
-      "sha512": "F0HxQxh5+ZL5lOhkddrIozQj2ml0Zzwp25P5teEDmT8iyj++ZpeXf7c6aYqvHH1A9uULyayKVUUYhLi7+55pFw==",
-      "type": "package",
-      "path": "openxmlpowertools/4.5.3.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/OpenXmlPowerTools.dll",
-        "openxmlpowertools.4.5.3.2.nupkg.sha512",
-        "openxmlpowertools.nuspec"
-      ]
-    },
-    "SharpZipLib/1.3.3": {
-      "sha512": "N8+hwhsKZm25tDJfWpBSW7EGhH/R7EMuiX+KJ4C4u+fCWVc1lJ5zg1u3S1RPPVYgTqhx/C3hxrqUpi6RwK5+Tg==",
-      "type": "package",
-      "path": "sharpziplib/1.3.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "images/sharpziplib-nuget-256x256.png",
-        "lib/net45/ICSharpCode.SharpZipLib.dll",
-        "lib/net45/ICSharpCode.SharpZipLib.pdb",
-        "lib/net45/ICSharpCode.SharpZipLib.xml",
-        "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll",
-        "lib/netstandard2.0/ICSharpCode.SharpZipLib.pdb",
-        "lib/netstandard2.0/ICSharpCode.SharpZipLib.xml",
-        "lib/netstandard2.1/ICSharpCode.SharpZipLib.dll",
-        "lib/netstandard2.1/ICSharpCode.SharpZipLib.pdb",
-        "lib/netstandard2.1/ICSharpCode.SharpZipLib.xml",
-        "sharpziplib.1.3.3.nupkg.sha512",
-        "sharpziplib.nuspec"
-      ]
-    },
-    "SixLabors.Fonts/1.0.0-beta19": {
-      "sha512": "ECJoayRT54VkJNoKBwZZllGvBIvxmnUFXsUCqHU8uAjAFrcdtxNpQ5Auyzw3d4+B+Q3KivKIrd7uO0qiNx/glg==",
-      "type": "package",
-      "path": "sixlabors.fonts/1.0.0-beta19",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netcoreapp3.1/SixLabors.Fonts.dll",
-        "lib/netcoreapp3.1/SixLabors.Fonts.xml",
-        "lib/netstandard2.0/SixLabors.Fonts.dll",
-        "lib/netstandard2.0/SixLabors.Fonts.xml",
-        "lib/netstandard2.1/SixLabors.Fonts.dll",
-        "lib/netstandard2.1/SixLabors.Fonts.xml",
-        "sixlabors.fonts.1.0.0-beta19.nupkg.sha512",
-        "sixlabors.fonts.128.png",
-        "sixlabors.fonts.nuspec"
-      ]
-    },
-    "SixLabors.ImageSharp/2.1.4": {
-      "sha512": "K6F39YCm/MaOYT0iw9lMa8tBcz2eF8JaNMneo0EnRrml6k+8EQNSKXqb8yJTq2HHkWLlRHZl6UKMn02YmR/G3g==",
-      "type": "package",
-      "path": "sixlabors.imagesharp/2.1.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net472/SixLabors.ImageSharp.dll",
-        "lib/net472/SixLabors.ImageSharp.xml",
-        "lib/netcoreapp2.1/SixLabors.ImageSharp.dll",
-        "lib/netcoreapp2.1/SixLabors.ImageSharp.xml",
-        "lib/netcoreapp3.1/SixLabors.ImageSharp.dll",
-        "lib/netcoreapp3.1/SixLabors.ImageSharp.xml",
-        "lib/netstandard2.0/SixLabors.ImageSharp.dll",
-        "lib/netstandard2.0/SixLabors.ImageSharp.xml",
-        "lib/netstandard2.1/SixLabors.ImageSharp.dll",
-        "lib/netstandard2.1/SixLabors.ImageSharp.xml",
-        "sixlabors.imagesharp.128.png",
-        "sixlabors.imagesharp.2.1.4.nupkg.sha512",
-        "sixlabors.imagesharp.nuspec"
-      ]
-    },
-    "Spire.Doc/11.4.12": {
-      "sha512": "Hgt7F98O0f0oU87cNdq/001zS6L+YypfHnyHN59nWchdEI5hdOyWs57RsWAoQxDNgAzm4lW3yXgZlP3s6JH5Qg==",
-      "type": "package",
-      "path": "spire.doc/11.4.12",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/MonoAndroid/Spire.Doc.dll",
-        "lib/MonoAndroid/Spire.Doc.xml",
-        "lib/MonoAndroid/Spire.Pdf.dll",
-        "lib/MonoAndroid/Spire.Pdf.xml",
-        "lib/net40/Spire.Doc.XML",
-        "lib/net40/Spire.Doc.dll",
-        "lib/net40/Spire.Pdf.dll",
-        "lib/net40/Spire.Pdf.xml",
-        "lib/net6.0/Spire.Doc.dll",
-        "lib/net6.0/Spire.Doc.xml",
-        "lib/net6.0/Spire.Pdf.dll",
-        "lib/net6.0/Spire.Pdf.xml",
-        "lib/netcoreapp2.0/Spire.Doc.dll",
-        "lib/netcoreapp2.0/Spire.Doc.xml",
-        "lib/netcoreapp2.0/Spire.Pdf.dll",
-        "lib/netcoreapp2.0/Spire.Pdf.xml",
-        "lib/xamarinios/Spire.Doc.dll",
-        "lib/xamarinios/Spire.Doc.xml",
-        "lib/xamarinios/Spire.Pdf.dll",
-        "lib/xamarinios/Spire.Pdf.xml",
-        "license.txt",
-        "spire.doc.11.4.12.nupkg.sha512",
-        "spire.doc.nuspec"
       ]
     },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.4": {
@@ -2998,244 +2052,6 @@
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
-    "Syncfusion.Compression.Base/22.1.34": {
-      "sha512": "zipVSNBIMc2OMcL9amwulWh/dQsvFOvONSe+Khy9QOT3PMBbI+pXF/n5FunB+z4dg3/+sAxFkugbSr821K78IQ==",
-      "type": "package",
-      "path": "syncfusion.compression.base/22.1.34",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "lib/net40/Syncfusion.Compression.Base.dll",
-        "lib/net40/Syncfusion.Compression.Base.xml",
-        "lib/net45/Syncfusion.Compression.Base.dll",
-        "lib/net45/Syncfusion.Compression.Base.xml",
-        "lib/net451/Syncfusion.Compression.Base.dll",
-        "lib/net451/Syncfusion.Compression.Base.xml",
-        "lib/net46/Syncfusion.Compression.Base.dll",
-        "lib/net46/Syncfusion.Compression.Base.xml",
-        "lib/net6.0-windows7.0/Syncfusion.Compression.Base.dll",
-        "lib/net6.0-windows7.0/Syncfusion.Compression.Base.xml",
-        "syncfusion.compression.base.22.1.34.nupkg.sha512",
-        "syncfusion.compression.base.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.Compression.Net.Core/22.1.38": {
-      "sha512": "u45DB3Xj6ypEa+jfgszHsjHsrO0y/oI/9e5JwwQ0XerOkwgie+w5TsEN9upF4tnlv5tVksfIaW/+3SPsI1z+vw==",
-      "type": "package",
-      "path": "syncfusion.compression.net.core/22.1.38",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "lib/net6.0/Syncfusion.Compression.Portable.dll",
-        "lib/net6.0/Syncfusion.Compression.Portable.xml",
-        "lib/net7.0/Syncfusion.Compression.Portable.dll",
-        "lib/net7.0/Syncfusion.Compression.Portable.xml",
-        "lib/netstandard2.0/Syncfusion.Compression.Portable.dll",
-        "lib/netstandard2.0/Syncfusion.Compression.Portable.xml",
-        "syncfusion.compression.net.core.22.1.38.nupkg.sha512",
-        "syncfusion.compression.net.core.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.DocIO.AspNet/22.1.34": {
-      "sha512": "ck0/nw9dhxDWGApCJX/V3Gi3YYWZOxkWnHS8lrseoi7MknqPBYYRKUJQuHFf8QNo/beNId2ncBoAT+ttR6s8JQ==",
-      "type": "package",
-      "path": "syncfusion.docio.aspnet/22.1.34",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "content/net40/web.config.install.xdt",
-        "content/net40/web.config.uninstall.xdt",
-        "content/net45/web.config.install.xdt",
-        "content/net45/web.config.uninstall.xdt",
-        "content/net451/web.config.install.xdt",
-        "content/net451/web.config.uninstall.xdt",
-        "content/net46/web.config.install.xdt",
-        "content/net46/web.config.uninstall.xdt",
-        "lib/net40/Syncfusion.DocIO.Base.dll",
-        "lib/net40/Syncfusion.DocIO.Base.xml",
-        "lib/net45/Syncfusion.DocIO.Base.dll",
-        "lib/net45/Syncfusion.DocIO.Base.xml",
-        "lib/net451/Syncfusion.DocIO.Base.dll",
-        "lib/net451/Syncfusion.DocIO.Base.xml",
-        "lib/net46/Syncfusion.DocIO.Base.dll",
-        "lib/net46/Syncfusion.DocIO.Base.xml",
-        "syncfusion.docio.aspnet.22.1.34.nupkg.sha512",
-        "syncfusion.docio.aspnet.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.DocIO.Net.Core/22.1.38": {
-      "sha512": "gWlx5uW5o9UKEuoBS8Ru6TZNwyz1bjdS+Nucms/RBgfdV9tZMihgbKn3J5QK9Vom6xp+nUVrilSxE9y/vkUCmw==",
-      "type": "package",
-      "path": "syncfusion.docio.net.core/22.1.38",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "lib/net6.0/Syncfusion.DocIO.Portable.dll",
-        "lib/net6.0/Syncfusion.DocIO.Portable.xml",
-        "lib/net7.0/Syncfusion.DocIO.Portable.dll",
-        "lib/net7.0/Syncfusion.DocIO.Portable.xml",
-        "lib/netstandard2.0/Syncfusion.DocIO.Portable.dll",
-        "lib/netstandard2.0/Syncfusion.DocIO.Portable.xml",
-        "syncfusion.docio.net.core.22.1.38.nupkg.sha512",
-        "syncfusion.docio.net.core.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.DocToPDFConverter.AspNet/22.1.34": {
-      "sha512": "gAJKNlf6zrjwtaO10oUTm6ka0tsYdvB0cbENbYYRljeaNhq0LUXPbWV1fkHcF/Nf2MU2WM/gB1aSMwExYDlvXg==",
-      "type": "package",
-      "path": "syncfusion.doctopdfconverter.aspnet/22.1.34",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "content/net40/web.config.install.xdt",
-        "content/net40/web.config.uninstall.xdt",
-        "content/net45/web.config.install.xdt",
-        "content/net45/web.config.uninstall.xdt",
-        "content/net451/web.config.install.xdt",
-        "content/net451/web.config.uninstall.xdt",
-        "content/net46/web.config.install.xdt",
-        "content/net46/web.config.uninstall.xdt",
-        "lib/net40/Syncfusion.DocToPdfConverter.Base.dll",
-        "lib/net40/Syncfusion.DocToPdfConverter.Base.xml",
-        "lib/net45/Syncfusion.DocToPdfConverter.Base.dll",
-        "lib/net45/Syncfusion.DocToPdfConverter.Base.xml",
-        "lib/net451/Syncfusion.DocToPdfConverter.Base.dll",
-        "lib/net451/Syncfusion.DocToPdfConverter.Base.xml",
-        "lib/net46/Syncfusion.DocToPdfConverter.Base.dll",
-        "lib/net46/Syncfusion.DocToPdfConverter.Base.xml",
-        "syncfusion.doctopdfconverter.aspnet.22.1.34.nupkg.sha512",
-        "syncfusion.doctopdfconverter.aspnet.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.Licensing/22.1.38": {
-      "sha512": "3JldUCenktIE4oxc6EXPgspzVoDCGADELefbOz9TqjhEtKM/hyj1Ll60wwbVvWm+uVgnmsX9ZqVRYqrVcvSxAw==",
-      "type": "package",
-      "path": "syncfusion.licensing/22.1.38",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "lib/MonoAndroid90/Syncfusion.Licensing.dll",
-        "lib/Xamarin.Mac/Syncfusion.Licensing.dll",
-        "lib/Xamarin.iOS10/Syncfusion.Licensing.dll",
-        "lib/net40/Syncfusion.Licensing.dll",
-        "lib/net45/Syncfusion.Licensing.dll",
-        "lib/net451/Syncfusion.Licensing.dll",
-        "lib/net46/Syncfusion.Licensing.dll",
-        "lib/net6.0/Syncfusion.Licensing.dll",
-        "lib/net7.0/Syncfusion.Licensing.dll",
-        "lib/netstandard2.0/Syncfusion.Licensing.dll",
-        "lib/uap10.0/Syncfusion.Licensing.dll",
-        "syncfusion.licensing.22.1.38.nupkg.sha512",
-        "syncfusion.licensing.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.OfficeChart.Base/22.1.34": {
-      "sha512": "1kb4EWL12yyt1QeJUuIMdzPI/ae41TuuLvEfvyfzeY88fETP8//iMTD08xQeuA1OualN2bLpKuHGpxl2JnlE8g==",
-      "type": "package",
-      "path": "syncfusion.officechart.base/22.1.34",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "lib/net40/Syncfusion.OfficeChart.Base.dll",
-        "lib/net40/Syncfusion.OfficeChart.Base.xml",
-        "lib/net45/Syncfusion.OfficeChart.Base.dll",
-        "lib/net45/Syncfusion.OfficeChart.Base.xml",
-        "lib/net451/Syncfusion.OfficeChart.Base.dll",
-        "lib/net451/Syncfusion.OfficeChart.Base.xml",
-        "lib/net46/Syncfusion.OfficeChart.Base.dll",
-        "lib/net46/Syncfusion.OfficeChart.Base.xml",
-        "lib/net6.0-windows7.0/Syncfusion.OfficeChart.Base.dll",
-        "lib/net6.0-windows7.0/Syncfusion.OfficeChart.Base.xml",
-        "syncfusion.officechart.base.22.1.34.nupkg.sha512",
-        "syncfusion.officechart.base.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.OfficeChart.Net.Core/22.1.38": {
-      "sha512": "JovWiO8j0zuMnATnLNaiSqBPM8ucUmrCLvqTg50cYStIWjDiB93atnViMcPLK1wZ6ztc4W8q5rQiMTZCSqaIeQ==",
-      "type": "package",
-      "path": "syncfusion.officechart.net.core/22.1.38",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "lib/net6.0/Syncfusion.OfficeChart.Portable.dll",
-        "lib/net6.0/Syncfusion.OfficeChart.Portable.xml",
-        "lib/net7.0/Syncfusion.OfficeChart.Portable.dll",
-        "lib/net7.0/Syncfusion.OfficeChart.Portable.xml",
-        "lib/netstandard2.0/Syncfusion.OfficeChart.Portable.dll",
-        "lib/netstandard2.0/Syncfusion.OfficeChart.Portable.xml",
-        "syncfusion.officechart.net.core.22.1.38.nupkg.sha512",
-        "syncfusion.officechart.net.core.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.Pdf.AspNet/22.1.34": {
-      "sha512": "f1f4C9JTIIDSQi26Tkr8NixzV01CupIcpYDoFT0JGRh2xJt1nvem/Ytv5tpJ42ZFvstfs/QWCa0GuRAgqIGrEw==",
-      "type": "package",
-      "path": "syncfusion.pdf.aspnet/22.1.34",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "content/net40/web.config.install.xdt",
-        "content/net40/web.config.uninstall.xdt",
-        "content/net45/web.config.install.xdt",
-        "content/net45/web.config.uninstall.xdt",
-        "content/net451/web.config.install.xdt",
-        "content/net451/web.config.uninstall.xdt",
-        "content/net46/web.config.install.xdt",
-        "content/net46/web.config.uninstall.xdt",
-        "lib/net40/Syncfusion.Pdf.Base.dll",
-        "lib/net40/Syncfusion.Pdf.Base.xml",
-        "lib/net45/Syncfusion.Pdf.Base.dll",
-        "lib/net45/Syncfusion.Pdf.Base.xml",
-        "lib/net451/Syncfusion.Pdf.Base.dll",
-        "lib/net451/Syncfusion.Pdf.Base.xml",
-        "lib/net46/Syncfusion.Pdf.Base.dll",
-        "lib/net46/Syncfusion.Pdf.Base.xml",
-        "syncfusion.pdf.aspnet.22.1.34.nupkg.sha512",
-        "syncfusion.pdf.aspnet.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.Pdf.Net.Core/22.1.38": {
-      "sha512": "HRTkSJ4hwKkRpFB1BB42sBO2/oqsa7magbztyVqFOFXHHhzSlzL/vWAV7CaWnvMH6mIRr9OTaoZBVtyxgM6uSw==",
-      "type": "package",
-      "path": "syncfusion.pdf.net.core/22.1.38",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "lib/net6.0/Syncfusion.Pdf.Portable.dll",
-        "lib/net6.0/Syncfusion.Pdf.Portable.xml",
-        "lib/net7.0/Syncfusion.Pdf.Portable.dll",
-        "lib/net7.0/Syncfusion.Pdf.Portable.xml",
-        "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll",
-        "lib/netstandard2.0/Syncfusion.Pdf.Portable.xml",
-        "syncfusion.pdf.net.core.22.1.38.nupkg.sha512",
-        "syncfusion.pdf.net.core.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
     "System.CodeDom/4.4.0": {
       "sha512": "2sCCb7doXEwtYAbqzbF/8UAeDRMNmPaQbU2q50Psg1J9KzumyVVCgKQY8s53WIPTufNT0DpSe9QRvVjOzfDWBA==",
       "type": "package",
@@ -3255,93 +2071,6 @@
         "system.codedom.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "System.Configuration.ConfigurationManager/6.0.0": {
-      "sha512": "7T+m0kDSlIPTHIkPMIu6m6tV6qsMqJpvQWW2jIc2qi7sn40qxFo0q+7mEQAhMPXZHMKnWrnv47ntGlM/ejvw3g==",
-      "type": "package",
-      "path": "system.configuration.configurationmanager/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Configuration.ConfigurationManager.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Configuration.ConfigurationManager.dll",
-        "lib/net461/System.Configuration.ConfigurationManager.xml",
-        "lib/net6.0/System.Configuration.ConfigurationManager.dll",
-        "lib/net6.0/System.Configuration.ConfigurationManager.xml",
-        "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll",
-        "lib/netstandard2.0/System.Configuration.ConfigurationManager.xml",
-        "runtimes/win/lib/net461/System.Configuration.ConfigurationManager.dll",
-        "runtimes/win/lib/net461/System.Configuration.ConfigurationManager.xml",
-        "system.configuration.configurationmanager.6.0.0.nupkg.sha512",
-        "system.configuration.configurationmanager.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
-    "System.Drawing.Common/6.0.0": {
-      "sha512": "NfuoKUiP2nUWwKZN6twGqXioIe1zVD0RIj2t976A+czLHr2nY454RwwXs6JU9Htc6mwqL6Dn/nEL3dpVf2jOhg==",
-      "type": "package",
-      "path": "system.drawing.common/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Drawing.Common.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.Drawing.Common.dll",
-        "lib/net461/System.Drawing.Common.xml",
-        "lib/net6.0/System.Drawing.Common.dll",
-        "lib/net6.0/System.Drawing.Common.xml",
-        "lib/netcoreapp3.1/System.Drawing.Common.dll",
-        "lib/netcoreapp3.1/System.Drawing.Common.xml",
-        "lib/netstandard2.0/System.Drawing.Common.dll",
-        "lib/netstandard2.0/System.Drawing.Common.xml",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "runtimes/unix/lib/net6.0/System.Drawing.Common.dll",
-        "runtimes/unix/lib/net6.0/System.Drawing.Common.xml",
-        "runtimes/unix/lib/netcoreapp3.1/System.Drawing.Common.dll",
-        "runtimes/unix/lib/netcoreapp3.1/System.Drawing.Common.xml",
-        "runtimes/win/lib/net6.0/System.Drawing.Common.dll",
-        "runtimes/win/lib/net6.0/System.Drawing.Common.xml",
-        "runtimes/win/lib/netcoreapp3.1/System.Drawing.Common.dll",
-        "runtimes/win/lib/netcoreapp3.1/System.Drawing.Common.xml",
-        "system.drawing.common.6.0.0.nupkg.sha512",
-        "system.drawing.common.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
-    "System.Formats.Asn1/6.0.0": {
-      "sha512": "T6fD00dQ3NTbPDy31m4eQUwKW84s03z0N2C8HpOklyeaDgaJPa/TexP4/SkORMSOwc7WhKifnA6Ya33AkzmafA==",
-      "type": "package",
-      "path": "system.formats.asn1/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Formats.Asn1.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Formats.Asn1.dll",
-        "lib/net461/System.Formats.Asn1.xml",
-        "lib/net6.0/System.Formats.Asn1.dll",
-        "lib/net6.0/System.Formats.Asn1.xml",
-        "lib/netstandard2.0/System.Formats.Asn1.dll",
-        "lib/netstandard2.0/System.Formats.Asn1.xml",
-        "system.formats.asn1.6.0.0.nupkg.sha512",
-        "system.formats.asn1.nuspec",
-        "useSharedDesignerContext.txt"
       ]
     },
     "System.IdentityModel.Tokens.Jwt/6.31.0": {
@@ -3365,45 +2094,6 @@
         "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml",
         "system.identitymodel.tokens.jwt.6.31.0.nupkg.sha512",
         "system.identitymodel.tokens.jwt.nuspec"
-      ]
-    },
-    "System.IO.Packaging/4.7.0": {
-      "sha512": "9VV4KAbgRQZ79iEoG40KIeZy38O30oWwewScAST879+oki8g/Wa2HXZQgrhDDxQM4GkP1PnRJll05NMiVPbYAw==",
-      "type": "package",
-      "path": "system.io.packaging/4.7.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net46/System.IO.Packaging.dll",
-        "lib/net46/System.IO.Packaging.xml",
-        "lib/netstandard1.3/System.IO.Packaging.dll",
-        "lib/netstandard1.3/System.IO.Packaging.xml",
-        "lib/netstandard2.0/System.IO.Packaging.dll",
-        "lib/netstandard2.0/System.IO.Packaging.xml",
-        "ref/net46/System.IO.Packaging.dll",
-        "ref/net46/System.IO.Packaging.xml",
-        "ref/netstandard1.3/System.IO.Packaging.dll",
-        "ref/netstandard1.3/System.IO.Packaging.xml",
-        "ref/netstandard2.0/System.IO.Packaging.dll",
-        "ref/netstandard2.0/System.IO.Packaging.xml",
-        "system.io.packaging.4.7.0.nupkg.sha512",
-        "system.io.packaging.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.Management.Automation.dll/10.0.10586": {
-      "sha512": "eknkOPXmlrZ6gXNfmkkLFrhbopXcU815BCaxTVHiY44UtTpA/zm8EKy4uCyb4HicITf5S8FA/9WiXeLdBXusBA==",
-      "type": "package",
-      "path": "system.management.automation.dll/10.0.10586",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/System.Management.Automation.dll",
-        "system.management.automation.dll.10.0.10586.nupkg.sha512",
-        "system.management.automation.dll.nuspec"
       ]
     },
     "System.Memory/4.5.3": {
@@ -3519,60 +2209,6 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
-      "sha512": "/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
-      "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
-        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
-        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll",
-        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll",
-        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.xml",
-        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
-        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-        "system.runtime.compilerservices.unsafe.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
-    "System.Security.AccessControl/6.0.0": {
-      "sha512": "AUADIc0LIEQe7MzC+I0cl0rAT8RrTAKFHl53yHjEUzNVIaUlhFY11vc2ebiVJzVBuOzun6F7FBA+8KAbGTTedQ==",
-      "type": "package",
-      "path": "system.security.accesscontrol/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Security.AccessControl.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Security.AccessControl.dll",
-        "lib/net461/System.Security.AccessControl.xml",
-        "lib/net6.0/System.Security.AccessControl.dll",
-        "lib/net6.0/System.Security.AccessControl.xml",
-        "lib/netstandard2.0/System.Security.AccessControl.dll",
-        "lib/netstandard2.0/System.Security.AccessControl.xml",
-        "runtimes/win/lib/net461/System.Security.AccessControl.dll",
-        "runtimes/win/lib/net461/System.Security.AccessControl.xml",
-        "runtimes/win/lib/net6.0/System.Security.AccessControl.dll",
-        "runtimes/win/lib/net6.0/System.Security.AccessControl.xml",
-        "runtimes/win/lib/netstandard2.0/System.Security.AccessControl.dll",
-        "runtimes/win/lib/netstandard2.0/System.Security.AccessControl.xml",
-        "system.security.accesscontrol.6.0.0.nupkg.sha512",
-        "system.security.accesscontrol.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
     "System.Security.Cryptography.Cng/4.5.0": {
       "sha512": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
       "type": "package",
@@ -3634,132 +2270,6 @@
         "system.security.cryptography.cng.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "System.Security.Cryptography.Pkcs/6.0.1": {
-      "sha512": "ynmbW2GjIGg9K1wXmVIRs4IlyDolf0JXNpzFQ8JCVgwM+myUC2JeUggl2PwQig2PNVMegKmN1aAx7WPQ8tI3vA==",
-      "type": "package",
-      "path": "system.security.cryptography.pkcs/6.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Security.Cryptography.Pkcs.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Security.Cryptography.Pkcs.dll",
-        "lib/net461/System.Security.Cryptography.Pkcs.xml",
-        "lib/net6.0/System.Security.Cryptography.Pkcs.dll",
-        "lib/net6.0/System.Security.Cryptography.Pkcs.xml",
-        "lib/netcoreapp3.1/System.Security.Cryptography.Pkcs.dll",
-        "lib/netcoreapp3.1/System.Security.Cryptography.Pkcs.xml",
-        "lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
-        "lib/netstandard2.0/System.Security.Cryptography.Pkcs.xml",
-        "lib/netstandard2.1/System.Security.Cryptography.Pkcs.dll",
-        "lib/netstandard2.1/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/net461/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/net461/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/netcoreapp3.1/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netcoreapp3.1/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/netstandard2.1/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netstandard2.1/System.Security.Cryptography.Pkcs.xml",
-        "system.security.cryptography.pkcs.6.0.1.nupkg.sha512",
-        "system.security.cryptography.pkcs.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
-    "System.Security.Cryptography.ProtectedData/6.0.0": {
-      "sha512": "rp1gMNEZpvx9vP0JW0oHLxlf8oSiQgtno77Y4PLUBjSiDYoD77Y8uXHr1Ea5XG4/pIKhqAdxZ8v8OTUtqo9PeQ==",
-      "type": "package",
-      "path": "system.security.cryptography.protecteddata/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Security.Cryptography.ProtectedData.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.Security.Cryptography.ProtectedData.dll",
-        "lib/net461/System.Security.Cryptography.ProtectedData.xml",
-        "lib/net6.0/System.Security.Cryptography.ProtectedData.dll",
-        "lib/net6.0/System.Security.Cryptography.ProtectedData.xml",
-        "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
-        "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.xml",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "runtimes/win/lib/net461/System.Security.Cryptography.ProtectedData.dll",
-        "runtimes/win/lib/net461/System.Security.Cryptography.ProtectedData.xml",
-        "runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll",
-        "runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.xml",
-        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
-        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.xml",
-        "system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
-        "system.security.cryptography.protecteddata.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
-    "System.Security.Cryptography.Xml/6.0.1": {
-      "sha512": "5e5bI28T0x73AwTsbuFP4qSRzthmU2C0Gqgg3AZ3KTxmSyA+Uhk31puA3srdaeWaacVnHhLdJywCzqOiEpbO/w==",
-      "type": "package",
-      "path": "system.security.cryptography.xml/6.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Security.Cryptography.Xml.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Security.Cryptography.Xml.dll",
-        "lib/net461/System.Security.Cryptography.Xml.xml",
-        "lib/net6.0/System.Security.Cryptography.Xml.dll",
-        "lib/net6.0/System.Security.Cryptography.Xml.xml",
-        "lib/netstandard2.0/System.Security.Cryptography.Xml.dll",
-        "lib/netstandard2.0/System.Security.Cryptography.Xml.xml",
-        "runtimes/win/lib/net461/System.Security.Cryptography.Xml.dll",
-        "runtimes/win/lib/net461/System.Security.Cryptography.Xml.xml",
-        "system.security.cryptography.xml.6.0.1.nupkg.sha512",
-        "system.security.cryptography.xml.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
-    "System.Security.Permissions/6.0.0": {
-      "sha512": "T/uuc7AklkDoxmcJ7LGkyX1CcSviZuLCa4jg3PekfJ7SU0niF0IVTXwUiNVP9DSpzou2PpxJ+eNY2IfDM90ZCg==",
-      "type": "package",
-      "path": "system.security.permissions/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Security.Permissions.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Security.Permissions.dll",
-        "lib/net461/System.Security.Permissions.xml",
-        "lib/net5.0/System.Security.Permissions.dll",
-        "lib/net5.0/System.Security.Permissions.xml",
-        "lib/net6.0/System.Security.Permissions.dll",
-        "lib/net6.0/System.Security.Permissions.xml",
-        "lib/netcoreapp3.1/System.Security.Permissions.dll",
-        "lib/netcoreapp3.1/System.Security.Permissions.xml",
-        "lib/netstandard2.0/System.Security.Permissions.dll",
-        "lib/netstandard2.0/System.Security.Permissions.xml",
-        "runtimes/win/lib/net461/System.Security.Permissions.dll",
-        "runtimes/win/lib/net461/System.Security.Permissions.xml",
-        "system.security.permissions.6.0.0.nupkg.sha512",
-        "system.security.permissions.nuspec",
-        "useSharedDesignerContext.txt"
       ]
     },
     "System.Text.Encoding/4.3.0": {
@@ -3828,45 +2338,6 @@
         "ref/xamarinwatchos10/_._",
         "system.text.encoding.4.3.0.nupkg.sha512",
         "system.text.encoding.nuspec"
-      ]
-    },
-    "System.Text.Encoding.CodePages/6.0.0": {
-      "sha512": "ZFCILZuOvtKPauZ/j/swhvw68ZRi9ATCfvGbk1QfydmcXBkIWecWKn/250UH7rahZ5OoDBaiAudJtPvLwzw85A==",
-      "type": "package",
-      "path": "system.text.encoding.codepages/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.Text.Encoding.CodePages.dll",
-        "lib/net461/System.Text.Encoding.CodePages.xml",
-        "lib/net6.0/System.Text.Encoding.CodePages.dll",
-        "lib/net6.0/System.Text.Encoding.CodePages.xml",
-        "lib/netcoreapp3.1/System.Text.Encoding.CodePages.dll",
-        "lib/netcoreapp3.1/System.Text.Encoding.CodePages.xml",
-        "lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
-        "lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "runtimes/win/lib/net461/System.Text.Encoding.CodePages.dll",
-        "runtimes/win/lib/net461/System.Text.Encoding.CodePages.xml",
-        "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.dll",
-        "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.xml",
-        "runtimes/win/lib/netcoreapp3.1/System.Text.Encoding.CodePages.dll",
-        "runtimes/win/lib/netcoreapp3.1/System.Text.Encoding.CodePages.xml",
-        "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
-        "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
-        "system.text.encoding.codepages.6.0.0.nupkg.sha512",
-        "system.text.encoding.codepages.nuspec",
-        "useSharedDesignerContext.txt"
       ]
     },
     "System.Text.Encodings.Web/7.0.0": {
@@ -3970,49 +2441,17 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "System.Windows.Extensions/6.0.0": {
-      "sha512": "IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
-      "type": "package",
-      "path": "system.windows.extensions/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net6.0/System.Windows.Extensions.dll",
-        "lib/net6.0/System.Windows.Extensions.xml",
-        "lib/netcoreapp3.1/System.Windows.Extensions.dll",
-        "lib/netcoreapp3.1/System.Windows.Extensions.xml",
-        "runtimes/win/lib/net6.0/System.Windows.Extensions.dll",
-        "runtimes/win/lib/net6.0/System.Windows.Extensions.xml",
-        "runtimes/win/lib/netcoreapp3.1/System.Windows.Extensions.dll",
-        "runtimes/win/lib/netcoreapp3.1/System.Windows.Extensions.xml",
-        "system.windows.extensions.6.0.0.nupkg.sha512",
-        "system.windows.extensions.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "BCrypt.Net-Next >= 4.0.3",
-      "DocumentFormat.OpenXml >= 2.13.1",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.7",
       "Microsoft.AspNetCore.OpenApi >= 7.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.7",
       "Microsoft.EntityFrameworkCore.Sqlite >= 7.0.7",
-      "NPOI >= 2.6.1",
-      "OpenXmlPowerTools >= 4.5.3.2",
-      "Spire.Doc >= 11.4.6",
       "Swashbuckle.AspNetCore >= 6.4.0",
-      "Syncfusion.DocIO.Net.Core >= 22.1.38",
-      "Syncfusion.DocToPDFConverter.AspNet >= 22.1.34",
-      "Syncfusion.Pdf.Net.Core >= 22.1.38",
-      "System.Drawing.Common >= 6.0.0",
-      "System.IdentityModel.Tokens.Jwt >= 6.31.0",
-      "iTextSharp >= 4.1.6"
+      "System.IdentityModel.Tokens.Jwt >= 6.31.0"
     ]
   },
   "packageFolders": {
@@ -4021,11 +2460,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\LoginApi.csproj",
+      "projectUniqueName": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\LoginApi.csproj",
       "projectName": "LoginApi",
-      "projectPath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\LoginApi.csproj",
+      "projectPath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\LoginApi.csproj",
       "packagesPath": "C:\\Users\\steph\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\backend\\obj\\",
+      "outputPath": "C:\\Users\\steph\\Documents\\EdwinPracticeTool\\Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\steph\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4056,10 +2495,6 @@
             "target": "Package",
             "version": "[4.0.3, )"
           },
-          "DocumentFormat.OpenXml": {
-            "target": "Package",
-            "version": "[2.13.1, )"
-          },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[7.0.7, )"
@@ -4078,45 +2513,13 @@
             "target": "Package",
             "version": "[7.0.7, )"
           },
-          "NPOI": {
-            "target": "Package",
-            "version": "[2.6.1, )"
-          },
-          "OpenXmlPowerTools": {
-            "target": "Package",
-            "version": "[4.5.3.2, )"
-          },
-          "Spire.Doc": {
-            "target": "Package",
-            "version": "[11.4.6, )"
-          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.4.0, )"
           },
-          "Syncfusion.DocIO.Net.Core": {
-            "target": "Package",
-            "version": "[22.1.38, )"
-          },
-          "Syncfusion.DocToPDFConverter.AspNet": {
-            "target": "Package",
-            "version": "[22.1.34, )"
-          },
-          "Syncfusion.Pdf.Net.Core": {
-            "target": "Package",
-            "version": "[22.1.38, )"
-          },
-          "System.Drawing.Common": {
-            "target": "Package",
-            "version": "[6.0.0, )"
-          },
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
             "version": "[6.31.0, )"
-          },
-          "iTextSharp": {
-            "target": "Package",
-            "version": "[4.1.6, )"
           }
         },
         "imports": [
@@ -4141,107 +2544,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "LoginApi depends on iTextSharp (>= 4.1.6) but iTextSharp 4.1.6 was not found. An approximate best match of iTextSharp 5.0.5 was resolved.",
-      "libraryId": "iTextSharp",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "LoginApi depends on Spire.Doc (>= 11.4.6) but Spire.Doc 11.4.6 was not found. An approximate best match of Spire.Doc 11.4.12 was resolved.",
-      "libraryId": "Spire.Doc",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'iTextSharp 5.0.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "iTextSharp",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'OpenXmlPowerTools 4.5.3.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "OpenXmlPowerTools",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.Compression.Base 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.Compression.Base",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.DocIO.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.DocIO.AspNet",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.DocToPDFConverter.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.DocToPDFConverter.AspNet",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.OfficeChart.Base 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.OfficeChart.Base",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.Pdf.AspNet 22.1.34' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Syncfusion.Pdf.AspNet",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Management.Automation.dll 10.0.10586' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "System.Management.Automation.dll",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  }
 }

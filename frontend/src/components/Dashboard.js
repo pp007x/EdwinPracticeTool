@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import ReactDOM from 'react-dom';
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from 'recharts';
@@ -9,6 +10,9 @@ import config from '../config';
 import Draggable from 'react-draggable';
 import { AppContext } from '../context';
 import { Button } from '@material-ui/core';
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import { renderToString } from "react-dom/server";
 
 const backgroundColor = '#087a80';
 
@@ -29,7 +33,9 @@ const Dashboard = () => {
   const [boxTwoPos, setBoxTwoPos] = useState({x: 0, y: 0});
   const [boxThreePos, setBoxThreePos] = useState({x: 0, y: 0});
   const [boxFourPos, setBoxFourPos] = useState({x: 0, y: 0});
+  const [tempRadarChart, setTempRadarChart] = useState(null);
 
+  const pdfRef = useRef(); 
   const resetPositions = () => {
     setBoxOnePos({x: 0, y: 0});
     setBoxTwoPos({x: 0, y: 0});
@@ -46,7 +52,6 @@ const Dashboard = () => {
     const boxTwoPos = JSON.parse(localStorage.getItem('boxTwoPos'));
     const boxThreePos = JSON.parse(localStorage.getItem('boxThreePos'));
     const boxFourPos = JSON.parse(localStorage.getItem('boxFourPos'));
-
     if (boxOnePos) setBoxOnePos(boxOnePos);
     if (boxTwoPos) setBoxTwoPos(boxTwoPos);
     if (boxThreePos) setBoxThreePos(boxThreePos);
@@ -111,6 +116,103 @@ const Dashboard = () => {
     });
   }, []);
 
+  const handleDownload = () => {
+    const pdf = new jsPDF();
+    const scoreValues = [
+      { title: 'Score Value D:', value: resultData.scoreValueD },
+      { title: 'Score Value I:', value: resultData.scoreValueI },
+      { title: 'Score Value S:', value: resultData.scoreValueS },
+      { title: 'Score Value C:', value: resultData.scoreValueC },
+    ];
+    const onderwerp = onderwerpData ? onderwerpData.name : 'Loading...';
+    const onderwerpDescription = onderwerpData 
+    ? onderwerpData.description.replace(/<br>/g, '\n')  // replace <br> with new lines
+    : 'Loading...';
+
+    let textOffset = 10;
+    pdf.setFontSize(16);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text(`Username: ${Username}`, 10, textOffset);
+    textOffset += 10;
+    pdf.text(`Datum van afname: ${DateData && new Date(DateData).toLocaleDateString()}`, 10, textOffset);
+    textOffset += 10;
+    pdf.text(`Onderwerp: ${onderwerp}`, 10, textOffset);
+    textOffset += 10;
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'normal');
+    const splitTitle = pdf.splitTextToSize(`${onderwerpDescription}`, 180);
+    pdf.text(splitTitle, 10, textOffset);
+    textOffset += 10 * splitTitle.length;  // adjust offset
+
+    pdf.addPage();
+    pdf.setFontSize(16);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text(`Behaalde scores:`, 10, 20); // Updated textOffset to 20
+    textOffset = 30; // Initialize textOffset with 30 or appropriate starting point for scores
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'normal');
+  
+    scoreValues.forEach(scoreValue => {
+      pdf.text(`${scoreValue.title} ${scoreValue.value}`, 10, textOffset);
+      textOffset += 10;
+    });
+
+    const tempRadarChart = (
+      <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={chartData}>
+        <PolarGrid />
+        <PolarAngleAxis dataKey="subject" tick={{ fill: 'black' }} />
+        <PolarRadiusAxis PolarRadiusAxis angle={90} domain={[0, 40]} axisLine={{ stroke: 'white' }}tick={props => { const {x, y, payload} = props;
+                      return (
+                        <g transform={`translate(${x},${y})`}>
+                          <text
+                            x={0}
+                            y={0}
+                            dy={16}
+                            textAnchor="end"
+                            fill="#000"
+                            transform="rotate(-45)"
+                          >
+                            {payload.value}
+                          </text>
+                        </g>
+                      );
+                    }}/>
+        <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+      </RadarChart>
+    );
+    setTempRadarChart(tempRadarChart);
+    const tempChartDiv = document.createElement('div');
+    tempChartDiv.style.width = '600px';
+    tempChartDiv.style.height = '500px';
+    tempChartDiv.style.position = 'absolute';
+    tempChartDiv.style.left = '-10000px';
+    document.body.appendChild(tempChartDiv);
+    ReactDOM.render(tempRadarChart, tempChartDiv);
+    setTimeout(() => {
+      html2canvas(tempChartDiv)
+      .then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        
+        const imgWidthMM = canvas.width / 3.78;  // convert width from px to mm
+        const imgHeightMM = canvas.height / 3.78;  // convert height from px to mm
+    
+        const pageWidthMM = 200;  // width of A4 paper in mm
+        const pageHeightMM = 297;  // height of A4 paper in mm
+    
+        const x = (pageWidthMM - imgWidthMM) / 2;
+        const y = (pageHeightMM - imgHeightMM) / 2;
+    
+        pdf.addImage(imgData, 'PNG', x, y, imgWidthMM, imgHeightMM);
+        pdf.save("download.pdf");
+        setTempRadarChart(null);
+      })
+      .then(() => {
+        ReactDOM.unmountComponentAtNode(tempChartDiv);
+        document.body.removeChild(tempChartDiv);
+      });}, 1000);
+  };
+  
+  
   
   return (
     <AppContext.Provider value={{ resetPositions }}>
@@ -120,9 +222,7 @@ const Dashboard = () => {
         <Header title={onderwerpData ? onderwerpData.name : 'Loading...'} style={{ zIndex: 1000 }} />
         
         <div className={styles.content} style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-        <Button variant="contained" color="primary" onClick={resetPositions}>
-            Reset Positions
-          </Button>
+        <div ref={pdfRef}>
         <Draggable
         
   position={boxOnePos}
@@ -181,9 +281,12 @@ const Dashboard = () => {
                     fill="#ffffff"
                     fillOpacity={0.6}
                     className={styles["radar-polygon"]}
+                    
                   />
                 </RadarChart>
+                <button onClick={handleDownload}>Download PDF</button>
               </div>
+              
             </div>
           </Draggable>
           
@@ -264,6 +367,11 @@ const Dashboard = () => {
           </div>
           </Draggable>
           </div>
+          </div>
+          <div>
+      {tempRadarChart}
+    </div>
+    
         </div>
       </div>
       </AppContext.Provider>
